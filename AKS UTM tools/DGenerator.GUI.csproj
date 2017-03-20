@@ -45,7 +45,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\SshConnection.cs" />
     <Compile Include="Windows\FindWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,7 +57,6 @@
     <Compile Include="Windows\HelpWindow.Designer.cs">
       <DependentUpon>HelpWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Connection.cs" />
     <Compile Include="Windows\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>

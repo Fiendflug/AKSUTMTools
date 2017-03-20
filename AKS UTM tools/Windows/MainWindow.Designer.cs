@@ -99,9 +99,12 @@
             this.buttonCloseSshConnection = new System.Windows.Forms.Button();
             this.buttonSshConnection = new System.Windows.Forms.Button();
             this.pictureBoxWait = new System.Windows.Forms.PictureBox();
+            this.statusLabel = new System.Windows.Forms.Label();
+            this.mainDataGrid = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMain)).BeginInit();
             this.menuStripMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWait)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewMain
@@ -733,11 +736,34 @@
             this.pictureBoxWait.TabIndex = 29;
             this.pictureBoxWait.TabStop = false;
             // 
+            // statusLabel
+            // 
+            this.statusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.statusLabel.AutoSize = true;
+            this.statusLabel.Location = new System.Drawing.Point(145, 711);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(215, 13);
+            this.statusLabel.TabIndex = 30;
+            this.statusLabel.Text = "Статус - Нет подключения к базе данных";
+            // 
+            // mainDataGrid
+            // 
+            this.mainDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.mainDataGrid.Location = new System.Drawing.Point(12, 69);
+            this.mainDataGrid.Name = "mainDataGrid";
+            this.mainDataGrid.Size = new System.Drawing.Size(992, 624);
+            this.mainDataGrid.TabIndex = 31;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1016, 741);
+            this.Controls.Add(this.mainDataGrid);
+            this.Controls.Add(this.statusLabel);
             this.Controls.Add(this.pictureBoxWait);
             this.Controls.Add(this.buttonShowOrganizationClients);
             this.Controls.Add(this.buttonShowLegalClients);
@@ -772,6 +798,7 @@
             this.menuStripMain.ResumeLayout(false);
             this.menuStripMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWait)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainDataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -848,6 +875,8 @@
         private System.Windows.Forms.Button buttonShowLegalClients;
         private System.Windows.Forms.Button buttonShowOrganizationClients;
         private System.Windows.Forms.PictureBox pictureBoxWait;
+        private System.Windows.Forms.Label statusLabel;
+        private System.Windows.Forms.DataGridView mainDataGrid;
     }
 }
 
