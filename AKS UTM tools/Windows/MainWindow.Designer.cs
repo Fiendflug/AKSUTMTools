@@ -99,7 +99,7 @@
             this.buttonCloseSshConnection = new System.Windows.Forms.Button();
             this.buttonSshConnection = new System.Windows.Forms.Button();
             this.pictureBoxWait = new System.Windows.Forms.PictureBox();
-            this.statusLabel = new System.Windows.Forms.Label();
+            this.StatusLabel = new System.Windows.Forms.Label();
             this.mainDataGrid = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMain)).BeginInit();
             this.menuStripMain.SuspendLayout();
@@ -736,15 +736,15 @@
             this.pictureBoxWait.TabIndex = 29;
             this.pictureBoxWait.TabStop = false;
             // 
-            // statusLabel
+            // StatusLabel
             // 
-            this.statusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.statusLabel.AutoSize = true;
-            this.statusLabel.Location = new System.Drawing.Point(145, 711);
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(215, 13);
-            this.statusLabel.TabIndex = 30;
-            this.statusLabel.Text = "Статус - Нет подключения к базе данных";
+            this.StatusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.StatusLabel.AutoSize = true;
+            this.StatusLabel.Location = new System.Drawing.Point(145, 711);
+            this.StatusLabel.Name = "StatusLabel";
+            this.StatusLabel.Size = new System.Drawing.Size(215, 13);
+            this.StatusLabel.TabIndex = 30;
+            this.StatusLabel.Text = "Статус - Нет подключения к базе данных";
             // 
             // mainDataGrid
             // 
@@ -763,7 +763,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1016, 741);
             this.Controls.Add(this.mainDataGrid);
-            this.Controls.Add(this.statusLabel);
+            this.Controls.Add(this.StatusLabel);
             this.Controls.Add(this.pictureBoxWait);
             this.Controls.Add(this.buttonShowOrganizationClients);
             this.Controls.Add(this.buttonShowLegalClients);
@@ -875,7 +875,7 @@
         private System.Windows.Forms.Button buttonShowLegalClients;
         private System.Windows.Forms.Button buttonShowOrganizationClients;
         private System.Windows.Forms.PictureBox pictureBoxWait;
-        private System.Windows.Forms.Label statusLabel;
+        private System.Windows.Forms.Label StatusLabel;
         private System.Windows.Forms.DataGridView mainDataGrid;
     }
 }

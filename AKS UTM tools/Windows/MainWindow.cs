@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DGenerator.Data.SSH;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,12 +26,16 @@ namespace AKS_UTM_tools
 
         private void buttonSshConnection_Click(object sender, EventArgs e)
         {
-            
+            SSHWorker.Connect();
+            if (SSHWorker.Worker != null)
+                StatusLabel.Text = "Подключено к серверу";
         }
 
         private void buttonCloseSshConnection_Click(object sender, EventArgs e)
         {
-            
+            SSHWorker.Disconnect();
+            if (SSHWorker.Worker != null)
+                StatusLabel.Text = "Не подключено к серверу";
         }
     }
 }
