@@ -401,7 +401,7 @@
         CXDnm/M7KvkEw2wOvhkVVuoAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="открытьSSHсоединениеToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="ConnectToServerTopMenu.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAIGNIUk0AAHolAACAgwAA+f8AAIDoAABS
         CAABFVgAADqXAAAXb9daH5AAAAAJcEhZcwAADdAAAA3QARBsPQcAADnVaVRYdFhNTDpjb20uYWRvYmUu
@@ -952,7 +952,7 @@
         CXDnm/M7KvkEw2wOvhkVVuoAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="buttonSshConnection.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="ButtonSshConnection.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAIGNIUk0AAHolAACAgwAA+f8AAIDoAABS
         CAABFVgAADqXAAAXb9daH5AAAAAJcEhZcwAADdAAAA3QARBsPQcAADnVaVRYdFhNTDpjb20uYWRvYmUu

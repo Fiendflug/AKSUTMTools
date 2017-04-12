@@ -40,8 +40,8 @@
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.выйтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.действияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.открытьSSHсоединениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.открытьSCP0соединениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ConnectToServerTopMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.DisconnectServerTopMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.действияToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.открытьПапкуСCDRамиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.передатьФайлыНаСерверUTMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -96,8 +96,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.buttonCdrConvertToUtmFormat = new System.Windows.Forms.Button();
-            this.buttonCloseSshConnection = new System.Windows.Forms.Button();
-            this.buttonSshConnection = new System.Windows.Forms.Button();
+            this.ButtonCloseSshConnection = new System.Windows.Forms.Button();
+            this.ButtonSshConnection = new System.Windows.Forms.Button();
             this.pictureBoxWait = new System.Windows.Forms.PictureBox();
             this.StatusLabel = new System.Windows.Forms.Label();
             this.mainDataGrid = new System.Windows.Forms.DataGridView();
@@ -185,25 +185,27 @@
             // действияToolStripMenuItem
             // 
             this.действияToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.открытьSSHсоединениеToolStripMenuItem,
-            this.открытьSCP0соединениеToolStripMenuItem});
+            this.ConnectToServerTopMenu,
+            this.DisconnectServerTopMenu});
             this.действияToolStripMenuItem.Name = "действияToolStripMenuItem";
             this.действияToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
             this.действияToolStripMenuItem.Text = "Соединения";
             // 
-            // открытьSSHсоединениеToolStripMenuItem
+            // ConnectToServerTopMenu
             // 
-            this.открытьSSHсоединениеToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("открытьSSHсоединениеToolStripMenuItem.Image")));
-            this.открытьSSHсоединениеToolStripMenuItem.Name = "открытьSSHсоединениеToolStripMenuItem";
-            this.открытьSSHсоединениеToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.открытьSSHсоединениеToolStripMenuItem.Text = "Открыть SSH-соединение";
+            this.ConnectToServerTopMenu.Image = ((System.Drawing.Image)(resources.GetObject("ConnectToServerTopMenu.Image")));
+            this.ConnectToServerTopMenu.Name = "ConnectToServerTopMenu";
+            this.ConnectToServerTopMenu.Size = new System.Drawing.Size(206, 22);
+            this.ConnectToServerTopMenu.Text = "Открыть SSH-соединение";
+            this.ConnectToServerTopMenu.Click += new System.EventHandler(this.ConnectToServerTopMenu_Click);
             // 
-            // открытьSCP0соединениеToolStripMenuItem
+            // DisconnectServerTopMenu
             // 
-            this.открытьSCP0соединениеToolStripMenuItem.Image = global::AKS_UTM_tools.Properties.Resources.ssh_close_24px;
-            this.открытьSCP0соединениеToolStripMenuItem.Name = "открытьSCP0соединениеToolStripMenuItem";
-            this.открытьSCP0соединениеToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.открытьSCP0соединениеToolStripMenuItem.Text = "Закрыть SSH-соединение";
+            this.DisconnectServerTopMenu.Image = global::AKS_UTM_tools.Properties.Resources.ssh_close_24px;
+            this.DisconnectServerTopMenu.Name = "DisconnectServerTopMenu";
+            this.DisconnectServerTopMenu.Size = new System.Drawing.Size(206, 22);
+            this.DisconnectServerTopMenu.Text = "Закрыть SSH-соединение";
+            this.DisconnectServerTopMenu.Click += new System.EventHandler(this.DisconnectServerTopMenu_Click);
             // 
             // действияToolStripMenuItem1
             // 
@@ -695,31 +697,31 @@
             this.toolTipMain.SetToolTip(this.buttonCdrConvertToUtmFormat, "Преобразовать CDR - файлы в UTM формат");
             this.buttonCdrConvertToUtmFormat.UseVisualStyleBackColor = true;
             // 
-            // buttonCloseSshConnection
+            // ButtonCloseSshConnection
             // 
-            this.buttonCloseSshConnection.FlatAppearance.BorderSize = 0;
-            this.buttonCloseSshConnection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCloseSshConnection.Image = global::AKS_UTM_tools.Properties.Resources.ssh_close_24px;
-            this.buttonCloseSshConnection.Location = new System.Drawing.Point(54, 27);
-            this.buttonCloseSshConnection.Name = "buttonCloseSshConnection";
-            this.buttonCloseSshConnection.Size = new System.Drawing.Size(36, 36);
-            this.buttonCloseSshConnection.TabIndex = 9;
-            this.toolTipMain.SetToolTip(this.buttonCloseSshConnection, "Закрыть SSH - соединение");
-            this.buttonCloseSshConnection.UseVisualStyleBackColor = true;
-            this.buttonCloseSshConnection.Click += new System.EventHandler(this.buttonCloseSshConnection_Click);
+            this.ButtonCloseSshConnection.FlatAppearance.BorderSize = 0;
+            this.ButtonCloseSshConnection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonCloseSshConnection.Image = global::AKS_UTM_tools.Properties.Resources.ssh_close_24px;
+            this.ButtonCloseSshConnection.Location = new System.Drawing.Point(54, 27);
+            this.ButtonCloseSshConnection.Name = "ButtonCloseSshConnection";
+            this.ButtonCloseSshConnection.Size = new System.Drawing.Size(36, 36);
+            this.ButtonCloseSshConnection.TabIndex = 9;
+            this.toolTipMain.SetToolTip(this.ButtonCloseSshConnection, "Закрыть SSH - соединение");
+            this.ButtonCloseSshConnection.UseVisualStyleBackColor = true;
+            this.ButtonCloseSshConnection.Click += new System.EventHandler(this.ButtonCloseSshConnection_Click);
             // 
-            // buttonSshConnection
+            // ButtonSshConnection
             // 
-            this.buttonSshConnection.FlatAppearance.BorderSize = 0;
-            this.buttonSshConnection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSshConnection.Image = ((System.Drawing.Image)(resources.GetObject("buttonSshConnection.Image")));
-            this.buttonSshConnection.Location = new System.Drawing.Point(12, 27);
-            this.buttonSshConnection.Name = "buttonSshConnection";
-            this.buttonSshConnection.Size = new System.Drawing.Size(36, 36);
-            this.buttonSshConnection.TabIndex = 8;
-            this.toolTipMain.SetToolTip(this.buttonSshConnection, "Открыть SSH - соединение");
-            this.buttonSshConnection.UseVisualStyleBackColor = true;
-            this.buttonSshConnection.Click += new System.EventHandler(this.buttonSshConnection_Click);
+            this.ButtonSshConnection.FlatAppearance.BorderSize = 0;
+            this.ButtonSshConnection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonSshConnection.Image = ((System.Drawing.Image)(resources.GetObject("ButtonSshConnection.Image")));
+            this.ButtonSshConnection.Location = new System.Drawing.Point(12, 27);
+            this.ButtonSshConnection.Name = "ButtonSshConnection";
+            this.ButtonSshConnection.Size = new System.Drawing.Size(36, 36);
+            this.ButtonSshConnection.TabIndex = 8;
+            this.toolTipMain.SetToolTip(this.ButtonSshConnection, "Открыть SSH - соединение");
+            this.ButtonSshConnection.UseVisualStyleBackColor = true;
+            this.ButtonSshConnection.Click += new System.EventHandler(this.ButtonSshConnection_Click);
             // 
             // pictureBoxWait
             // 
@@ -742,9 +744,9 @@
             this.StatusLabel.AutoSize = true;
             this.StatusLabel.Location = new System.Drawing.Point(145, 711);
             this.StatusLabel.Name = "StatusLabel";
-            this.StatusLabel.Size = new System.Drawing.Size(215, 13);
+            this.StatusLabel.Size = new System.Drawing.Size(256, 13);
             this.StatusLabel.TabIndex = 30;
-            this.StatusLabel.Text = "Статус - Нет подключения к базе данных";
+            this.StatusLabel.Text = "Подключение к серверу еще не осуществлялось";
             // 
             // mainDataGrid
             // 
@@ -784,8 +786,8 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonCdrConvertToUtmFormat);
-            this.Controls.Add(this.buttonCloseSshConnection);
-            this.Controls.Add(this.buttonSshConnection);
+            this.Controls.Add(this.ButtonCloseSshConnection);
+            this.Controls.Add(this.ButtonSshConnection);
             this.Controls.Add(this.dataGridViewMain);
             this.Controls.Add(this.menuStripMain);
             this.MainMenuStrip = this.menuStripMain;
@@ -809,8 +811,8 @@
         private System.Windows.Forms.DataGridView dataGridViewMain;
         private System.Windows.Forms.MenuStrip menuStripMain;
         private System.Windows.Forms.ToolStripMenuItem действияToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem открытьSSHсоединениеToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem открытьSCP0соединениеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ConnectToServerTopMenu;
+        private System.Windows.Forms.ToolStripMenuItem DisconnectServerTopMenu;
         private System.Windows.Forms.ToolStripMenuItem действияToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem открытьПапкуСCDRамиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem передатьToolStripMenuItem;
@@ -849,8 +851,8 @@
         private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
         private System.Windows.Forms.ToolStripMenuItem выйтиToolStripMenuItem;
-        private System.Windows.Forms.Button buttonSshConnection;
-        private System.Windows.Forms.Button buttonCloseSshConnection;
+        private System.Windows.Forms.Button ButtonSshConnection;
+        private System.Windows.Forms.Button ButtonCloseSshConnection;
         private System.Windows.Forms.Button buttonCdrConvertToUtmFormat;
         private System.Windows.Forms.ToolTip toolTipMain;
         private System.Windows.Forms.Button button1;

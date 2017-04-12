@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DGenerator.Data.SSH
+namespace DGenerator.Data.ServerUTM
 {
-    public class SSHConnectConfig
+    public class ServerConnectionInfo
     {
         public string ServerHost { get; set; }
         public uint ServerPort { get; set; }

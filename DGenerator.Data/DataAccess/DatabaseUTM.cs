@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DGenerator.Data.DataAccess
 {
-    class DatabaseWorker
+    class DatabaseUTM
     {
     }
 }

@@ -1,4 +1,4 @@
-﻿using DGenerator.Data.SSH;
+﻿using DGenerator.Data.ServerUTM;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,18 +24,30 @@ namespace AKS_UTM_tools
            
         }
 
-        private void buttonSshConnection_Click(object sender, EventArgs e)
+        private void ButtonSshConnection_Click(object sender, EventArgs e)
         {
-            SSHWorker.Connect();
-            if (SSHWorker.Worker != null)
-                StatusLabel.Text = "Подключено к серверу";
+            ServerUTM.Connect();
+            StatusLabel.Text = ServerUTM.Status;
         }
 
-        private void buttonCloseSshConnection_Click(object sender, EventArgs e)
+        private void ButtonCloseSshConnection_Click(object sender, EventArgs e)
         {
-            SSHWorker.Disconnect();
-            if (SSHWorker.Worker != null)
-                StatusLabel.Text = "Не подключено к серверу";
+            ServerUTM.Disconnect();
+            StatusLabel.Text = ServerUTM.Status;
+        }
+
+        private void ConnectToServerTopMenu_Click(object sender, EventArgs e)
+        {
+            ServerUTM.Connect();
+            StatusLabel.Text = ServerUTM.Status;
+        }
+
+        private void DisconnectServerTopMenu_Click(object sender, EventArgs e)
+        {
+            ServerUTM.Disconnect();
+            StatusLabel.Text = ServerUTM.Status;
+            //ServerUTM.TransferCDR(new string[]
+            //{ @"C:\Bills\Files\Tests\test.txt",  @"C:\Bills\Files\Tests\test1.txt", @"C:\Bills\Files\Tests\test2.txt"}, "/usr/cdr_for_utm/");
         }
     }
 }
