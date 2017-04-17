@@ -30,13 +30,18 @@
         {
             this.SuspendLayout();
             // 
-            // Settings
+            // SettingsWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(292, 273);
-            this.Name = "Settings";
-            this.Text = "AKS UTM Tools Настройки";
+            this.ClientSize = new System.Drawing.Size(792, 573);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "SettingsWindow";
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "DGenerator Настройки";
             this.ResumeLayout(false);
 
         }

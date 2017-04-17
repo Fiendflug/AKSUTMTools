@@ -33,21 +33,21 @@
             this.dataGridViewMain = new System.Windows.Forms.DataGridView();
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.системаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.выбратьРасчетныйПериодToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.поискToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PeriodTopMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.FinderTopMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
-            this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SettingsTopMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
-            this.выйтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.QuitTopMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.действияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ConnectToServerTopMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.DisconnectServerTopMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.действияToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.открытьПапкуСCDRамиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.передатьФайлыНаСерверUTMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ConvertCdrTopMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.TransferCdrToServerTopMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.передатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.зархивироватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ViewCdrInFolderTopMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.ZipCdrTopMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.документыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сформироватьДетализацииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.всемПользователямToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -80,27 +80,28 @@
             this.buttonShowOrganizationClients = new System.Windows.Forms.Button();
             this.buttonShowLegalClients = new System.Windows.Forms.Button();
             this.buttonShowAllClients = new System.Windows.Forms.Button();
-            this.buttonSelectPeriod = new System.Windows.Forms.Button();
-            this.buttonFindClient = new System.Windows.Forms.Button();
-            this.buttonExit = new System.Windows.Forms.Button();
+            this.PeriodButton = new System.Windows.Forms.Button();
+            this.FinderButton = new System.Windows.Forms.Button();
+            this.QuitButton = new System.Windows.Forms.Button();
             this.buttonLicense = new System.Windows.Forms.Button();
             this.buttonInfo = new System.Windows.Forms.Button();
             this.buttonHelp = new System.Windows.Forms.Button();
-            this.buttonSettings = new System.Windows.Forms.Button();
+            this.SettingsButton = new System.Windows.Forms.Button();
             this.buttonCreqteTrafficReport = new System.Windows.Forms.Button();
             this.buttonCreateOperatorsReport = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.buttonCreateBill = new System.Windows.Forms.Button();
             this.buttonCreateDetail = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.buttonCdrConvertToUtmFormat = new System.Windows.Forms.Button();
-            this.ButtonCloseSshConnection = new System.Windows.Forms.Button();
-            this.ButtonSshConnection = new System.Windows.Forms.Button();
+            this.ZipCdrButton = new System.Windows.Forms.Button();
+            this.ViewCdrInFolderButton = new System.Windows.Forms.Button();
+            this.TransferCdrToServerButton = new System.Windows.Forms.Button();
+            this.ConvertCdrButton = new System.Windows.Forms.Button();
+            this.CloseSshConnectionButton = new System.Windows.Forms.Button();
+            this.SshConnectionButton = new System.Windows.Forms.Button();
             this.pictureBoxWait = new System.Windows.Forms.PictureBox();
             this.StatusLabel = new System.Windows.Forms.Label();
             this.mainDataGrid = new System.Windows.Forms.DataGridView();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMain)).BeginInit();
             this.menuStripMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWait)).BeginInit();
@@ -134,53 +135,53 @@
             // системаToolStripMenuItem
             // 
             this.системаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.выбратьРасчетныйПериодToolStripMenuItem,
-            this.поискToolStripMenuItem,
+            this.PeriodTopMenu,
+            this.FinderTopMenu,
             this.toolStripSeparator10,
-            this.настройкиToolStripMenuItem,
+            this.SettingsTopMenu,
             this.toolStripSeparator9,
-            this.выйтиToolStripMenuItem});
+            this.QuitTopMenu});
             this.системаToolStripMenuItem.Name = "системаToolStripMenuItem";
             this.системаToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.системаToolStripMenuItem.Text = "Система";
             // 
-            // выбратьРасчетныйПериодToolStripMenuItem
+            // PeriodTopMenu
             // 
-            this.выбратьРасчетныйПериодToolStripMenuItem.Image = global::AKS_UTM_tools.Properties.Resources.calendar_24px;
-            this.выбратьРасчетныйПериодToolStripMenuItem.Name = "выбратьРасчетныйПериодToolStripMenuItem";
-            this.выбратьРасчетныйПериодToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
-            this.выбратьРасчетныйПериодToolStripMenuItem.Text = "Выбрать расчетный период";
+            this.PeriodTopMenu.Image = global::AKS_UTM_tools.Properties.Resources.calendar_24px;
+            this.PeriodTopMenu.Name = "PeriodTopMenu";
+            this.PeriodTopMenu.Size = new System.Drawing.Size(216, 22);
+            this.PeriodTopMenu.Text = "Выбрать расчетный период";
             // 
-            // поискToolStripMenuItem
+            // FinderTopMenu
             // 
-            this.поискToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("поискToolStripMenuItem.Image")));
-            this.поискToolStripMenuItem.Name = "поискToolStripMenuItem";
-            this.поискToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
-            this.поискToolStripMenuItem.Text = "Найти клиента";
+            this.FinderTopMenu.Image = ((System.Drawing.Image)(resources.GetObject("FinderTopMenu.Image")));
+            this.FinderTopMenu.Name = "FinderTopMenu";
+            this.FinderTopMenu.Size = new System.Drawing.Size(216, 22);
+            this.FinderTopMenu.Text = "Найти клиента";
             // 
             // toolStripSeparator10
             // 
             this.toolStripSeparator10.Name = "toolStripSeparator10";
             this.toolStripSeparator10.Size = new System.Drawing.Size(213, 6);
             // 
-            // настройкиToolStripMenuItem
+            // SettingsTopMenu
             // 
-            this.настройкиToolStripMenuItem.Image = global::AKS_UTM_tools.Properties.Resources.settings_24px;
-            this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
-            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
-            this.настройкиToolStripMenuItem.Text = "Настройки";
+            this.SettingsTopMenu.Image = global::AKS_UTM_tools.Properties.Resources.settings_24px;
+            this.SettingsTopMenu.Name = "SettingsTopMenu";
+            this.SettingsTopMenu.Size = new System.Drawing.Size(216, 22);
+            this.SettingsTopMenu.Text = "Настройки";
             // 
             // toolStripSeparator9
             // 
             this.toolStripSeparator9.Name = "toolStripSeparator9";
             this.toolStripSeparator9.Size = new System.Drawing.Size(213, 6);
             // 
-            // выйтиToolStripMenuItem
+            // QuitTopMenu
             // 
-            this.выйтиToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("выйтиToolStripMenuItem.Image")));
-            this.выйтиToolStripMenuItem.Name = "выйтиToolStripMenuItem";
-            this.выйтиToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
-            this.выйтиToolStripMenuItem.Text = "Выйти";
+            this.QuitTopMenu.Image = ((System.Drawing.Image)(resources.GetObject("QuitTopMenu.Image")));
+            this.QuitTopMenu.Name = "QuitTopMenu";
+            this.QuitTopMenu.Size = new System.Drawing.Size(216, 22);
+            this.QuitTopMenu.Text = "Выйти";
             // 
             // действияToolStripMenuItem
             // 
@@ -210,47 +211,47 @@
             // действияToolStripMenuItem1
             // 
             this.действияToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.открытьПапкуСCDRамиToolStripMenuItem,
-            this.передатьФайлыНаСерверUTMToolStripMenuItem,
+            this.ConvertCdrTopMenu,
+            this.TransferCdrToServerTopMenu,
             this.toolStripSeparator2,
-            this.передатьToolStripMenuItem,
-            this.зархивироватьToolStripMenuItem});
+            this.ViewCdrInFolderTopMenu,
+            this.ZipCdrTopMenu});
             this.действияToolStripMenuItem1.Name = "действияToolStripMenuItem1";
             this.действияToolStripMenuItem1.Size = new System.Drawing.Size(40, 20);
             this.действияToolStripMenuItem1.Text = "CDR";
             // 
-            // открытьПапкуСCDRамиToolStripMenuItem
+            // ConvertCdrTopMenu
             // 
-            this.открытьПапкуСCDRамиToolStripMenuItem.Image = global::AKS_UTM_tools.Properties.Resources.convert_24px;
-            this.открытьПапкуСCDRамиToolStripMenuItem.Name = "открытьПапкуСCDRамиToolStripMenuItem";
-            this.открытьПапкуСCDRамиToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
-            this.открытьПапкуСCDRамиToolStripMenuItem.Text = "Преобразовать в UTM формат";
+            this.ConvertCdrTopMenu.Image = global::AKS_UTM_tools.Properties.Resources.convert_24px;
+            this.ConvertCdrTopMenu.Name = "ConvertCdrTopMenu";
+            this.ConvertCdrTopMenu.Size = new System.Drawing.Size(238, 22);
+            this.ConvertCdrTopMenu.Text = "Преобразовать в UTM формат";
             // 
-            // передатьФайлыНаСерверUTMToolStripMenuItem
+            // TransferCdrToServerTopMenu
             // 
-            this.передатьФайлыНаСерверUTMToolStripMenuItem.Image = global::AKS_UTM_tools.Properties.Resources.upload_24px;
-            this.передатьФайлыНаСерверUTMToolStripMenuItem.Name = "передатьФайлыНаСерверUTMToolStripMenuItem";
-            this.передатьФайлыНаСерверUTMToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
-            this.передатьФайлыНаСерверUTMToolStripMenuItem.Text = "Передать файлы на сервер UTM";
+            this.TransferCdrToServerTopMenu.Image = global::AKS_UTM_tools.Properties.Resources.upload_24px;
+            this.TransferCdrToServerTopMenu.Name = "TransferCdrToServerTopMenu";
+            this.TransferCdrToServerTopMenu.Size = new System.Drawing.Size(238, 22);
+            this.TransferCdrToServerTopMenu.Text = "Передать файлы на сервер UTM";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(235, 6);
             // 
-            // передатьToolStripMenuItem
+            // ViewCdrInFolderTopMenu
             // 
-            this.передатьToolStripMenuItem.Image = global::AKS_UTM_tools.Properties.Resources.browse_24px;
-            this.передатьToolStripMenuItem.Name = "передатьToolStripMenuItem";
-            this.передатьToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
-            this.передатьToolStripMenuItem.Text = "Просмотреть файлы";
+            this.ViewCdrInFolderTopMenu.Image = global::AKS_UTM_tools.Properties.Resources.browse_24px;
+            this.ViewCdrInFolderTopMenu.Name = "ViewCdrInFolderTopMenu";
+            this.ViewCdrInFolderTopMenu.Size = new System.Drawing.Size(238, 22);
+            this.ViewCdrInFolderTopMenu.Text = "Просмотреть файлы";
             // 
-            // зархивироватьToolStripMenuItem
+            // ZipCdrTopMenu
             // 
-            this.зархивироватьToolStripMenuItem.Image = global::AKS_UTM_tools.Properties.Resources.arch_24px;
-            this.зархивироватьToolStripMenuItem.Name = "зархивироватьToolStripMenuItem";
-            this.зархивироватьToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
-            this.зархивироватьToolStripMenuItem.Text = "Зархивировать файлы";
+            this.ZipCdrTopMenu.Image = global::AKS_UTM_tools.Properties.Resources.arch_24px;
+            this.ZipCdrTopMenu.Name = "ZipCdrTopMenu";
+            this.ZipCdrTopMenu.Size = new System.Drawing.Size(238, 22);
+            this.ZipCdrTopMenu.Text = "Зархивировать файлы";
             // 
             // документыToolStripMenuItem
             // 
@@ -505,41 +506,41 @@
             this.toolTipMain.SetToolTip(this.buttonShowAllClients, "Все клиенты");
             this.buttonShowAllClients.UseVisualStyleBackColor = true;
             // 
-            // buttonSelectPeriod
+            // PeriodButton
             // 
-            this.buttonSelectPeriod.FlatAppearance.BorderSize = 0;
-            this.buttonSelectPeriod.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSelectPeriod.Image = global::AKS_UTM_tools.Properties.Resources.calendar_24px;
-            this.buttonSelectPeriod.Location = new System.Drawing.Point(570, 27);
-            this.buttonSelectPeriod.Name = "buttonSelectPeriod";
-            this.buttonSelectPeriod.Size = new System.Drawing.Size(36, 36);
-            this.buttonSelectPeriod.TabIndex = 25;
-            this.toolTipMain.SetToolTip(this.buttonSelectPeriod, "Выбрать отчетный период");
-            this.buttonSelectPeriod.UseVisualStyleBackColor = true;
+            this.PeriodButton.FlatAppearance.BorderSize = 0;
+            this.PeriodButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PeriodButton.Image = global::AKS_UTM_tools.Properties.Resources.calendar_24px;
+            this.PeriodButton.Location = new System.Drawing.Point(570, 27);
+            this.PeriodButton.Name = "PeriodButton";
+            this.PeriodButton.Size = new System.Drawing.Size(36, 36);
+            this.PeriodButton.TabIndex = 25;
+            this.toolTipMain.SetToolTip(this.PeriodButton, "Выбрать отчетный период");
+            this.PeriodButton.UseVisualStyleBackColor = true;
             // 
-            // buttonFindClient
+            // FinderButton
             // 
-            this.buttonFindClient.FlatAppearance.BorderSize = 0;
-            this.buttonFindClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFindClient.Image = ((System.Drawing.Image)(resources.GetObject("buttonFindClient.Image")));
-            this.buttonFindClient.Location = new System.Drawing.Point(528, 27);
-            this.buttonFindClient.Name = "buttonFindClient";
-            this.buttonFindClient.Size = new System.Drawing.Size(36, 36);
-            this.buttonFindClient.TabIndex = 24;
-            this.toolTipMain.SetToolTip(this.buttonFindClient, "Найти клиента");
-            this.buttonFindClient.UseVisualStyleBackColor = true;
+            this.FinderButton.FlatAppearance.BorderSize = 0;
+            this.FinderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FinderButton.Image = ((System.Drawing.Image)(resources.GetObject("FinderButton.Image")));
+            this.FinderButton.Location = new System.Drawing.Point(528, 27);
+            this.FinderButton.Name = "FinderButton";
+            this.FinderButton.Size = new System.Drawing.Size(36, 36);
+            this.FinderButton.TabIndex = 24;
+            this.toolTipMain.SetToolTip(this.FinderButton, "Найти клиента");
+            this.FinderButton.UseVisualStyleBackColor = true;
             // 
-            // buttonExit
+            // QuitButton
             // 
-            this.buttonExit.FlatAppearance.BorderSize = 0;
-            this.buttonExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonExit.Image = ((System.Drawing.Image)(resources.GetObject("buttonExit.Image")));
-            this.buttonExit.Location = new System.Drawing.Point(798, 27);
-            this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(36, 36);
-            this.buttonExit.TabIndex = 23;
-            this.toolTipMain.SetToolTip(this.buttonExit, "Выйти");
-            this.buttonExit.UseVisualStyleBackColor = true;
+            this.QuitButton.FlatAppearance.BorderSize = 0;
+            this.QuitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.QuitButton.Image = ((System.Drawing.Image)(resources.GetObject("QuitButton.Image")));
+            this.QuitButton.Location = new System.Drawing.Point(798, 27);
+            this.QuitButton.Name = "QuitButton";
+            this.QuitButton.Size = new System.Drawing.Size(36, 36);
+            this.QuitButton.TabIndex = 23;
+            this.toolTipMain.SetToolTip(this.QuitButton, "Выйти");
+            this.QuitButton.UseVisualStyleBackColor = true;
             // 
             // buttonLicense
             // 
@@ -577,17 +578,18 @@
             this.toolTipMain.SetToolTip(this.buttonHelp, "Справка");
             this.buttonHelp.UseVisualStyleBackColor = true;
             // 
-            // buttonSettings
+            // SettingsButton
             // 
-            this.buttonSettings.FlatAppearance.BorderSize = 0;
-            this.buttonSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSettings.Image = global::AKS_UTM_tools.Properties.Resources.settings_24px;
-            this.buttonSettings.Location = new System.Drawing.Point(612, 27);
-            this.buttonSettings.Name = "buttonSettings";
-            this.buttonSettings.Size = new System.Drawing.Size(36, 36);
-            this.buttonSettings.TabIndex = 19;
-            this.toolTipMain.SetToolTip(this.buttonSettings, "Настройки");
-            this.buttonSettings.UseVisualStyleBackColor = true;
+            this.SettingsButton.FlatAppearance.BorderSize = 0;
+            this.SettingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SettingsButton.Image = global::AKS_UTM_tools.Properties.Resources.settings_24px;
+            this.SettingsButton.Location = new System.Drawing.Point(612, 27);
+            this.SettingsButton.Name = "SettingsButton";
+            this.SettingsButton.Size = new System.Drawing.Size(36, 36);
+            this.SettingsButton.TabIndex = 19;
+            this.toolTipMain.SetToolTip(this.SettingsButton, "Настройки");
+            this.SettingsButton.UseVisualStyleBackColor = true;
+            this.SettingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
             // 
             // buttonCreqteTrafficReport
             // 
@@ -649,79 +651,79 @@
             this.toolTipMain.SetToolTip(this.buttonCreateDetail, "Сформировать  детализации");
             this.buttonCreateDetail.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // ZipCdrButton
             // 
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Image = global::AKS_UTM_tools.Properties.Resources.arch_24px;
-            this.button3.Location = new System.Drawing.Point(240, 27);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(36, 36);
-            this.button3.TabIndex = 13;
-            this.toolTipMain.SetToolTip(this.button3, "Заархивировать CDR - файлы");
-            this.button3.UseVisualStyleBackColor = true;
+            this.ZipCdrButton.FlatAppearance.BorderSize = 0;
+            this.ZipCdrButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ZipCdrButton.Image = global::AKS_UTM_tools.Properties.Resources.arch_24px;
+            this.ZipCdrButton.Location = new System.Drawing.Point(240, 27);
+            this.ZipCdrButton.Name = "ZipCdrButton";
+            this.ZipCdrButton.Size = new System.Drawing.Size(36, 36);
+            this.ZipCdrButton.TabIndex = 13;
+            this.toolTipMain.SetToolTip(this.ZipCdrButton, "Заархивировать CDR - файлы");
+            this.ZipCdrButton.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // ViewCdrInFolderButton
             // 
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Image = global::AKS_UTM_tools.Properties.Resources.browse_24px;
-            this.button2.Location = new System.Drawing.Point(198, 27);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(36, 36);
-            this.button2.TabIndex = 12;
-            this.toolTipMain.SetToolTip(this.button2, "Просмотреть CDR - файлы");
-            this.button2.UseVisualStyleBackColor = true;
+            this.ViewCdrInFolderButton.FlatAppearance.BorderSize = 0;
+            this.ViewCdrInFolderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ViewCdrInFolderButton.Image = global::AKS_UTM_tools.Properties.Resources.browse_24px;
+            this.ViewCdrInFolderButton.Location = new System.Drawing.Point(198, 27);
+            this.ViewCdrInFolderButton.Name = "ViewCdrInFolderButton";
+            this.ViewCdrInFolderButton.Size = new System.Drawing.Size(36, 36);
+            this.ViewCdrInFolderButton.TabIndex = 12;
+            this.toolTipMain.SetToolTip(this.ViewCdrInFolderButton, "Просмотреть CDR - файлы");
+            this.ViewCdrInFolderButton.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // TransferCdrToServerButton
             // 
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = global::AKS_UTM_tools.Properties.Resources.upload_24px;
-            this.button1.Location = new System.Drawing.Point(156, 27);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(36, 36);
-            this.button1.TabIndex = 11;
-            this.toolTipMain.SetToolTip(this.button1, "Передать CDR - файлы на UTM сервер");
-            this.button1.UseVisualStyleBackColor = true;
+            this.TransferCdrToServerButton.FlatAppearance.BorderSize = 0;
+            this.TransferCdrToServerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TransferCdrToServerButton.Image = global::AKS_UTM_tools.Properties.Resources.upload_24px;
+            this.TransferCdrToServerButton.Location = new System.Drawing.Point(156, 27);
+            this.TransferCdrToServerButton.Name = "TransferCdrToServerButton";
+            this.TransferCdrToServerButton.Size = new System.Drawing.Size(36, 36);
+            this.TransferCdrToServerButton.TabIndex = 11;
+            this.toolTipMain.SetToolTip(this.TransferCdrToServerButton, "Передать CDR - файлы на UTM сервер");
+            this.TransferCdrToServerButton.UseVisualStyleBackColor = true;
             // 
-            // buttonCdrConvertToUtmFormat
+            // ConvertCdrButton
             // 
-            this.buttonCdrConvertToUtmFormat.FlatAppearance.BorderSize = 0;
-            this.buttonCdrConvertToUtmFormat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCdrConvertToUtmFormat.Image = global::AKS_UTM_tools.Properties.Resources.convert_24px;
-            this.buttonCdrConvertToUtmFormat.Location = new System.Drawing.Point(114, 27);
-            this.buttonCdrConvertToUtmFormat.Name = "buttonCdrConvertToUtmFormat";
-            this.buttonCdrConvertToUtmFormat.Size = new System.Drawing.Size(36, 36);
-            this.buttonCdrConvertToUtmFormat.TabIndex = 10;
-            this.toolTipMain.SetToolTip(this.buttonCdrConvertToUtmFormat, "Преобразовать CDR - файлы в UTM формат");
-            this.buttonCdrConvertToUtmFormat.UseVisualStyleBackColor = true;
+            this.ConvertCdrButton.FlatAppearance.BorderSize = 0;
+            this.ConvertCdrButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ConvertCdrButton.Image = global::AKS_UTM_tools.Properties.Resources.convert_24px;
+            this.ConvertCdrButton.Location = new System.Drawing.Point(114, 27);
+            this.ConvertCdrButton.Name = "ConvertCdrButton";
+            this.ConvertCdrButton.Size = new System.Drawing.Size(36, 36);
+            this.ConvertCdrButton.TabIndex = 10;
+            this.toolTipMain.SetToolTip(this.ConvertCdrButton, "Преобразовать CDR - файлы в UTM формат");
+            this.ConvertCdrButton.UseVisualStyleBackColor = true;
             // 
-            // ButtonCloseSshConnection
+            // CloseSshConnectionButton
             // 
-            this.ButtonCloseSshConnection.FlatAppearance.BorderSize = 0;
-            this.ButtonCloseSshConnection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonCloseSshConnection.Image = global::AKS_UTM_tools.Properties.Resources.ssh_close_24px;
-            this.ButtonCloseSshConnection.Location = new System.Drawing.Point(54, 27);
-            this.ButtonCloseSshConnection.Name = "ButtonCloseSshConnection";
-            this.ButtonCloseSshConnection.Size = new System.Drawing.Size(36, 36);
-            this.ButtonCloseSshConnection.TabIndex = 9;
-            this.toolTipMain.SetToolTip(this.ButtonCloseSshConnection, "Закрыть SSH - соединение");
-            this.ButtonCloseSshConnection.UseVisualStyleBackColor = true;
-            this.ButtonCloseSshConnection.Click += new System.EventHandler(this.ButtonCloseSshConnection_Click);
+            this.CloseSshConnectionButton.FlatAppearance.BorderSize = 0;
+            this.CloseSshConnectionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CloseSshConnectionButton.Image = global::AKS_UTM_tools.Properties.Resources.ssh_close_24px;
+            this.CloseSshConnectionButton.Location = new System.Drawing.Point(54, 27);
+            this.CloseSshConnectionButton.Name = "CloseSshConnectionButton";
+            this.CloseSshConnectionButton.Size = new System.Drawing.Size(36, 36);
+            this.CloseSshConnectionButton.TabIndex = 9;
+            this.toolTipMain.SetToolTip(this.CloseSshConnectionButton, "Закрыть SSH - соединение");
+            this.CloseSshConnectionButton.UseVisualStyleBackColor = true;
+            this.CloseSshConnectionButton.Click += new System.EventHandler(this.ButtonCloseSshConnection_Click);
             // 
-            // ButtonSshConnection
+            // SshConnectionButton
             // 
-            this.ButtonSshConnection.FlatAppearance.BorderSize = 0;
-            this.ButtonSshConnection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonSshConnection.Image = ((System.Drawing.Image)(resources.GetObject("ButtonSshConnection.Image")));
-            this.ButtonSshConnection.Location = new System.Drawing.Point(12, 27);
-            this.ButtonSshConnection.Name = "ButtonSshConnection";
-            this.ButtonSshConnection.Size = new System.Drawing.Size(36, 36);
-            this.ButtonSshConnection.TabIndex = 8;
-            this.toolTipMain.SetToolTip(this.ButtonSshConnection, "Открыть SSH - соединение");
-            this.ButtonSshConnection.UseVisualStyleBackColor = true;
-            this.ButtonSshConnection.Click += new System.EventHandler(this.ButtonSshConnection_Click);
+            this.SshConnectionButton.FlatAppearance.BorderSize = 0;
+            this.SshConnectionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SshConnectionButton.Image = ((System.Drawing.Image)(resources.GetObject("SshConnectionButton.Image")));
+            this.SshConnectionButton.Location = new System.Drawing.Point(12, 27);
+            this.SshConnectionButton.Name = "SshConnectionButton";
+            this.SshConnectionButton.Size = new System.Drawing.Size(36, 36);
+            this.SshConnectionButton.TabIndex = 8;
+            this.toolTipMain.SetToolTip(this.SshConnectionButton, "Открыть SSH - соединение");
+            this.SshConnectionButton.UseVisualStyleBackColor = true;
+            this.SshConnectionButton.Click += new System.EventHandler(this.ButtonSshConnection_Click);
             // 
             // pictureBoxWait
             // 
@@ -759,6 +761,10 @@
             this.mainDataGrid.Size = new System.Drawing.Size(992, 624);
             this.mainDataGrid.TabIndex = 31;
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "OpenCdrDialog";
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -770,30 +776,30 @@
             this.Controls.Add(this.buttonShowOrganizationClients);
             this.Controls.Add(this.buttonShowLegalClients);
             this.Controls.Add(this.buttonShowAllClients);
-            this.Controls.Add(this.buttonSelectPeriod);
-            this.Controls.Add(this.buttonFindClient);
-            this.Controls.Add(this.buttonExit);
+            this.Controls.Add(this.PeriodButton);
+            this.Controls.Add(this.FinderButton);
+            this.Controls.Add(this.QuitButton);
             this.Controls.Add(this.buttonLicense);
             this.Controls.Add(this.buttonInfo);
             this.Controls.Add(this.buttonHelp);
-            this.Controls.Add(this.buttonSettings);
+            this.Controls.Add(this.SettingsButton);
             this.Controls.Add(this.buttonCreqteTrafficReport);
             this.Controls.Add(this.buttonCreateOperatorsReport);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.buttonCreateBill);
             this.Controls.Add(this.buttonCreateDetail);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.buttonCdrConvertToUtmFormat);
-            this.Controls.Add(this.ButtonCloseSshConnection);
-            this.Controls.Add(this.ButtonSshConnection);
+            this.Controls.Add(this.ZipCdrButton);
+            this.Controls.Add(this.ViewCdrInFolderButton);
+            this.Controls.Add(this.TransferCdrToServerButton);
+            this.Controls.Add(this.ConvertCdrButton);
+            this.Controls.Add(this.CloseSshConnectionButton);
+            this.Controls.Add(this.SshConnectionButton);
             this.Controls.Add(this.dataGridViewMain);
             this.Controls.Add(this.menuStripMain);
             this.MainMenuStrip = this.menuStripMain;
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AKS UTM Tools";
+            this.Text = "DGenerator";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMain)).EndInit();
@@ -814,11 +820,11 @@
         private System.Windows.Forms.ToolStripMenuItem ConnectToServerTopMenu;
         private System.Windows.Forms.ToolStripMenuItem DisconnectServerTopMenu;
         private System.Windows.Forms.ToolStripMenuItem действияToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem открытьПапкуСCDRамиToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem передатьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem передатьФайлыНаСерверUTMToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ConvertCdrTopMenu;
+        private System.Windows.Forms.ToolStripMenuItem ViewCdrInFolderTopMenu;
+        private System.Windows.Forms.ToolStripMenuItem TransferCdrToServerTopMenu;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem зархивироватьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ZipCdrTopMenu;
         private System.Windows.Forms.ToolStripMenuItem документыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сформироватьДетализацииToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem всемПользователямToolStripMenuItem;
@@ -848,37 +854,38 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripMenuItem лицензионноеСоглашениеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem системаToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SettingsTopMenu;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
-        private System.Windows.Forms.ToolStripMenuItem выйтиToolStripMenuItem;
-        private System.Windows.Forms.Button ButtonSshConnection;
-        private System.Windows.Forms.Button ButtonCloseSshConnection;
-        private System.Windows.Forms.Button buttonCdrConvertToUtmFormat;
+        private System.Windows.Forms.ToolStripMenuItem QuitTopMenu;
+        private System.Windows.Forms.Button SshConnectionButton;
+        private System.Windows.Forms.Button CloseSshConnectionButton;
+        private System.Windows.Forms.Button ConvertCdrButton;
         private System.Windows.Forms.ToolTip toolTipMain;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button TransferCdrToServerButton;
+        private System.Windows.Forms.Button ViewCdrInFolderButton;
+        private System.Windows.Forms.Button ZipCdrButton;
         private System.Windows.Forms.Button buttonCreateDetail;
         private System.Windows.Forms.Button buttonCreateBill;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button buttonCreateOperatorsReport;
         private System.Windows.Forms.Button buttonCreqteTrafficReport;
-        private System.Windows.Forms.Button buttonSettings;
+        private System.Windows.Forms.Button SettingsButton;
         private System.Windows.Forms.Button buttonHelp;
         private System.Windows.Forms.Button buttonInfo;
         private System.Windows.Forms.Button buttonLicense;
-        private System.Windows.Forms.Button buttonExit;
-        private System.Windows.Forms.ToolStripMenuItem выбратьРасчетныйПериодToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem поискToolStripMenuItem;
+        private System.Windows.Forms.Button QuitButton;
+        private System.Windows.Forms.ToolStripMenuItem PeriodTopMenu;
+        private System.Windows.Forms.ToolStripMenuItem FinderTopMenu;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
-        private System.Windows.Forms.Button buttonFindClient;
-        private System.Windows.Forms.Button buttonSelectPeriod;
+        private System.Windows.Forms.Button FinderButton;
+        private System.Windows.Forms.Button PeriodButton;
         private System.Windows.Forms.Button buttonShowAllClients;
         private System.Windows.Forms.Button buttonShowLegalClients;
         private System.Windows.Forms.Button buttonShowOrganizationClients;
         private System.Windows.Forms.PictureBox pictureBoxWait;
         private System.Windows.Forms.Label StatusLabel;
         private System.Windows.Forms.DataGridView mainDataGrid;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

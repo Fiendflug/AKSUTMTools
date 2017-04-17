@@ -49,5 +49,10 @@ namespace AKS_UTM_tools
             //ServerUTM.TransferCDR(new string[]
             //{ @"C:\Bills\Files\Tests\test.txt",  @"C:\Bills\Files\Tests\test1.txt", @"C:\Bills\Files\Tests\test2.txt"}, "/usr/cdr_for_utm/");
         }
+
+        private void SettingsButton_Click(object sender, EventArgs e)
+        {
+            new SettingsWindow().ShowDialog();
+        }
     }
 }
