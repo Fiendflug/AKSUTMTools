@@ -37,7 +37,14 @@
             this.OkSettingsButton = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.HelpSettingsButton = new System.Windows.Forms.Button();
+            this.LocalCdrPathGroup = new System.Windows.Forms.GroupBox();
+            this.LocalCdrPathLabel = new System.Windows.Forms.Label();
+            this.LocalCdrPathSelectButton = new System.Windows.Forms.Button();
+            this.RemoteCdrPathlabel = new System.Windows.Forms.Label();
+            this.RemoteCdrpathButton = new System.Windows.Forms.Button();
             this.SettingsTabControl.SuspendLayout();
+            this.CdrTab.SuspendLayout();
+            this.LocalCdrPathGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // SettingsTabControl
@@ -74,9 +81,10 @@
             // 
             // CdrTab
             // 
+            this.CdrTab.Controls.Add(this.LocalCdrPathGroup);
             this.CdrTab.Location = new System.Drawing.Point(4, 22);
             this.CdrTab.Name = "CdrTab";
-            this.CdrTab.Size = new System.Drawing.Size(642, 355);
+            this.CdrTab.Size = new System.Drawing.Size(642, 379);
             this.CdrTab.TabIndex = 2;
             this.CdrTab.Text = "Файлы статистики";
             this.CdrTab.UseVisualStyleBackColor = true;
@@ -126,6 +134,55 @@
             this.HelpSettingsButton.Text = "Помощь";
             this.HelpSettingsButton.UseVisualStyleBackColor = true;
             // 
+            // LocalCdrPathGroup
+            // 
+            this.LocalCdrPathGroup.Controls.Add(this.RemoteCdrpathButton);
+            this.LocalCdrPathGroup.Controls.Add(this.RemoteCdrPathlabel);
+            this.LocalCdrPathGroup.Controls.Add(this.LocalCdrPathSelectButton);
+            this.LocalCdrPathGroup.Controls.Add(this.LocalCdrPathLabel);
+            this.LocalCdrPathGroup.Location = new System.Drawing.Point(11, 12);
+            this.LocalCdrPathGroup.Name = "LocalCdrPathGroup";
+            this.LocalCdrPathGroup.Size = new System.Drawing.Size(618, 96);
+            this.LocalCdrPathGroup.TabIndex = 0;
+            this.LocalCdrPathGroup.TabStop = false;
+            this.LocalCdrPathGroup.Text = "Путь для конвертированных CDR";
+            // 
+            // LocalCdrPathLabel
+            // 
+            this.LocalCdrPathLabel.AutoSize = true;
+            this.LocalCdrPathLabel.Location = new System.Drawing.Point(6, 25);
+            this.LocalCdrPathLabel.Name = "LocalCdrPathLabel";
+            this.LocalCdrPathLabel.Size = new System.Drawing.Size(149, 13);
+            this.LocalCdrPathLabel.TabIndex = 1;
+            this.LocalCdrPathLabel.Text = "Локальное расположение - ";
+            // 
+            // LocalCdrPathSelectButton
+            // 
+            this.LocalCdrPathSelectButton.Location = new System.Drawing.Point(580, 20);
+            this.LocalCdrPathSelectButton.Name = "LocalCdrPathSelectButton";
+            this.LocalCdrPathSelectButton.Size = new System.Drawing.Size(25, 25);
+            this.LocalCdrPathSelectButton.TabIndex = 2;
+            this.LocalCdrPathSelectButton.Text = "...";
+            this.LocalCdrPathSelectButton.UseVisualStyleBackColor = true;
+            // 
+            // RemoteCdrPathlabel
+            // 
+            this.RemoteCdrPathlabel.AutoSize = true;
+            this.RemoteCdrPathlabel.Location = new System.Drawing.Point(6, 61);
+            this.RemoteCdrPathlabel.Name = "RemoteCdrPathlabel";
+            this.RemoteCdrPathlabel.Size = new System.Drawing.Size(151, 13);
+            this.RemoteCdrPathlabel.TabIndex = 3;
+            this.RemoteCdrPathlabel.Text = "Расположение на сервере - ";
+            // 
+            // RemoteCdrpathButton
+            // 
+            this.RemoteCdrpathButton.Location = new System.Drawing.Point(535, 55);
+            this.RemoteCdrpathButton.Name = "RemoteCdrpathButton";
+            this.RemoteCdrpathButton.Size = new System.Drawing.Size(70, 25);
+            this.RemoteCdrpathButton.TabIndex = 4;
+            this.RemoteCdrpathButton.Text = "Изменить";
+            this.RemoteCdrpathButton.UseVisualStyleBackColor = true;
+            // 
             // SettingsWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -144,6 +201,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DGenerator Настройки";
             this.SettingsTabControl.ResumeLayout(false);
+            this.CdrTab.ResumeLayout(false);
+            this.LocalCdrPathGroup.ResumeLayout(false);
+            this.LocalCdrPathGroup.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -159,5 +219,10 @@
         private System.Windows.Forms.Button OkSettingsButton;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button HelpSettingsButton;
+        private System.Windows.Forms.GroupBox LocalCdrPathGroup;
+        private System.Windows.Forms.Button LocalCdrPathSelectButton;
+        private System.Windows.Forms.Label LocalCdrPathLabel;
+        private System.Windows.Forms.Button RemoteCdrpathButton;
+        private System.Windows.Forms.Label RemoteCdrPathlabel;
     }
 }

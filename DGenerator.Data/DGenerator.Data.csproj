@@ -51,7 +51,6 @@
     <Compile Include="Models\UsersReport.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SQL\Queries.cs" />
     <Compile Include="ServerUTM\ServerConnectionInfo.cs" />
     <Compile Include="ServerUTM\ServerUTM.cs" />
   </ItemGroup>
