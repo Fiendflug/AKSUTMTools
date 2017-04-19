@@ -16,5 +16,10 @@ namespace AKS_UTM_tools
         {
             InitializeComponent();
         }
+
+        private void LocalCdrPathLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

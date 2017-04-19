@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess\DatabaseUTM.cs" />
+    <Compile Include="DataAccess\SqlQueries.cs" />
     <Compile Include="Models\Bill.cs" />
     <Compile Include="Models\PhoneConnect.cs" />
     <Compile Include="Models\TrunkDetail.cs" />
