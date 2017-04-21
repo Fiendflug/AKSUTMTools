@@ -48,8 +48,9 @@
             this.ReportsTab = new System.Windows.Forms.TabPage();
             this.SubmitSettingsButton = new System.Windows.Forms.Button();
             this.OkSettingsButton = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.CancelSettingsButton = new System.Windows.Forms.Button();
             this.HelpSettingsButton = new System.Windows.Forms.Button();
+            this.pathBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.SettingsTabControl.SuspendLayout();
             this.CdrTab.SuspendLayout();
             this.ZipCdrPathGroup.SuspendLayout();
@@ -120,6 +121,7 @@
             this.ZipCdrPathSelectButton.TabIndex = 2;
             this.ZipCdrPathSelectButton.Text = "...";
             this.ZipCdrPathSelectButton.UseVisualStyleBackColor = true;
+            this.ZipCdrPathSelectButton.Click += new System.EventHandler(this.ZipCdrPathSelectButton_Click);
             // 
             // ZipCdrPathLabel
             // 
@@ -224,6 +226,7 @@
             this.LocalCdrPathSelectButton.TabIndex = 2;
             this.LocalCdrPathSelectButton.Text = "...";
             this.LocalCdrPathSelectButton.UseVisualStyleBackColor = true;
+            this.LocalCdrPathSelectButton.Click += new System.EventHandler(this.LocalCdrPathSelectButton_Click);
             // 
             // LocalCdrPathLabel
             // 
@@ -251,6 +254,7 @@
             this.SubmitSettingsButton.TabIndex = 1;
             this.SubmitSettingsButton.Text = "Применить";
             this.SubmitSettingsButton.UseVisualStyleBackColor = true;
+            this.SubmitSettingsButton.Click += new System.EventHandler(this.SubmitSettingsButton_Click);
             // 
             // OkSettingsButton
             // 
@@ -260,15 +264,17 @@
             this.OkSettingsButton.TabIndex = 2;
             this.OkSettingsButton.Text = "ОК";
             this.OkSettingsButton.UseVisualStyleBackColor = true;
+            this.OkSettingsButton.Click += new System.EventHandler(this.OkSettingsButton_Click);
             // 
-            // button3
+            // CancelSettingsButton
             // 
-            this.button3.Location = new System.Drawing.Point(326, 420);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(150, 40);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Отмена";
-            this.button3.UseVisualStyleBackColor = true;
+            this.CancelSettingsButton.Location = new System.Drawing.Point(326, 420);
+            this.CancelSettingsButton.Name = "CancelSettingsButton";
+            this.CancelSettingsButton.Size = new System.Drawing.Size(150, 40);
+            this.CancelSettingsButton.TabIndex = 3;
+            this.CancelSettingsButton.Text = "Отмена";
+            this.CancelSettingsButton.UseVisualStyleBackColor = true;
+            this.CancelSettingsButton.Click += new System.EventHandler(this.CancelSettingsButton_Click);
             // 
             // HelpSettingsButton
             // 
@@ -278,6 +284,7 @@
             this.HelpSettingsButton.TabIndex = 4;
             this.HelpSettingsButton.Text = "Помощь";
             this.HelpSettingsButton.UseVisualStyleBackColor = true;
+            this.HelpSettingsButton.Click += new System.EventHandler(this.HelpSettingsButton_Click);
             // 
             // SettingsWindow
             // 
@@ -285,7 +292,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(644, 475);
             this.Controls.Add(this.HelpSettingsButton);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.CancelSettingsButton);
             this.Controls.Add(this.OkSettingsButton);
             this.Controls.Add(this.SubmitSettingsButton);
             this.Controls.Add(this.SettingsTabControl);
@@ -318,7 +325,7 @@
         private System.Windows.Forms.TabPage ReportsTab;
         private System.Windows.Forms.Button SubmitSettingsButton;
         private System.Windows.Forms.Button OkSettingsButton;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button CancelSettingsButton;
         private System.Windows.Forms.Button HelpSettingsButton;
         private System.Windows.Forms.GroupBox LocalCdrPathGroup;
         private System.Windows.Forms.Button LocalCdrPathSelectButton;
@@ -333,5 +340,6 @@
         private System.Windows.Forms.GroupBox ZipCdrPathGroup;
         private System.Windows.Forms.Button ZipCdrPathSelectButton;
         private System.Windows.Forms.Label ZipCdrPathLabel;
+        private System.Windows.Forms.FolderBrowserDialog pathBrowserDialog;
     }
 }

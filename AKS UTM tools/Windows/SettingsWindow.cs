@@ -1,4 +1,4 @@
-﻿using DGenerator.Service.Settings;
+﻿using DGenerator.Service.SettingsService;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,7 +25,7 @@ namespace AKS_UTM_tools
         private void SettingsWindow_Load(object sender, EventArgs e)
         {
 
-            //CDR Settings section
+            //CDR Settings section (Labels, Checkboxes, Buttons)
             
             LocalCdrPathLabel.Text = Settings.GetSetting("LocalCdrPath");
             RemoteCdrPathlabel.Text = Settings.GetSetting("RemoteCdrPath");
@@ -48,6 +48,49 @@ namespace AKS_UTM_tools
         }
 
         private void EditCdrSettingsButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LocalCdrPathSelectButton_Click(object sender, EventArgs e)
+        {
+            if(pathBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                Settings.UpdateSetting("LocalCdrPath", pathBrowserDialog.SelectedPath);
+                LocalCdrPathLabel.Text = pathBrowserDialog.SelectedPath;
+            }
+        }
+
+        private void ZipCdrPathSelectButton_Click(object sender, EventArgs e)
+        {
+            if (pathBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                Settings.UpdateSetting("ZipCdrPath", pathBrowserDialog.SelectedPath);
+                ZipCdrPathLabel.Text = pathBrowserDialog.SelectedPath;
+            }
+        }
+
+
+
+        // Main controls (OK, Submit, Cancel, Help)
+
+        private void SubmitSettingsButton_Click(object sender, EventArgs e)
+        {
+            Settings.SaveSettings();
+        }
+
+        private void OkSettingsButton_Click(object sender, EventArgs e)
+        {
+            Settings.SaveSettings();
+            Close();
+        }
+
+        private void CancelSettingsButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void HelpSettingsButton_Click(object sender, EventArgs e)
         {
 
         }
