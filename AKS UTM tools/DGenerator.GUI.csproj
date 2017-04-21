@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AKS_UTM_tools</RootNamespace>
     <AssemblyName>AKS UTM tools</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -222,9 +223,17 @@
     <None Include="Resources\waiting_64px.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DGenerator.CDR\DGenerator.CDR.csproj">
+      <Project>{8091a8cd-cbd4-47b9-8105-941ec34d3aeb}</Project>
+      <Name>DGenerator.CDR</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DGenerator.Data\DGenerator.Data.csproj">
       <Project>{c1df1ba0-1058-4076-9ce9-c9db907e364b}</Project>
       <Name>DGenerator.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DGenerator.Service\DGenerator.Service.csproj">
+      <Project>{92aaf079-a35f-4a26-8010-8b71d224b7e1}</Project>
+      <Name>DGenerator.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

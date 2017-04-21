@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Управление общими сведениями о сборке осуществляется с помощью 
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("DGenerator.Services")]
+[assembly: AssemblyTitle("DGenerator.Service")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("DGenerator.Services")]
+[assembly: AssemblyProduct("DGenerator.Service")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("e087fe70-f273-4402-a98a-bc283cc83233")]
+[assembly: Guid("92aaf079-a35f-4a26-8010-8b71d224b7e1")]
 
 // Сведения о версии сборки состоят из следующих четырех значений:
 //

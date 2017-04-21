@@ -32,6 +32,14 @@
             this.CommonTab = new System.Windows.Forms.TabPage();
             this.ConnectTab = new System.Windows.Forms.TabPage();
             this.CdrTab = new System.Windows.Forms.TabPage();
+            this.ZipCdrPathGroup = new System.Windows.Forms.GroupBox();
+            this.ZipCdrPathSelectButton = new System.Windows.Forms.Button();
+            this.ZipCdrPathLabel = new System.Windows.Forms.Label();
+            this.CdrConvertGroup = new System.Windows.Forms.GroupBox();
+            this.EditCdrSettingsButton = new System.Windows.Forms.Button();
+            this.EditCdrCheckbox = new System.Windows.Forms.CheckBox();
+            this.DeleteZeroCallsCdrCheckbox = new System.Windows.Forms.CheckBox();
+            this.DelecteLocalCdrCheckbox = new System.Windows.Forms.CheckBox();
             this.LocalCdrPathGroup = new System.Windows.Forms.GroupBox();
             this.RemoteCdrpathButton = new System.Windows.Forms.Button();
             this.RemoteCdrPathlabel = new System.Windows.Forms.Label();
@@ -42,19 +50,11 @@
             this.OkSettingsButton = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.HelpSettingsButton = new System.Windows.Forms.Button();
-            this.CdrConvertGroup = new System.Windows.Forms.GroupBox();
-            this.DelecteLocalCdrCheckbox = new System.Windows.Forms.CheckBox();
-            this.DeleteZeroCallsCdrCheckbox = new System.Windows.Forms.CheckBox();
-            this.EditCdrCheckbox = new System.Windows.Forms.CheckBox();
-            this.EditCdrSettingsButton = new System.Windows.Forms.Button();
-            this.ZipCdrPathGroup = new System.Windows.Forms.GroupBox();
-            this.ZipCdrPathSelectButton = new System.Windows.Forms.Button();
-            this.ZipCdrPathLabel = new System.Windows.Forms.Label();
             this.SettingsTabControl.SuspendLayout();
             this.CdrTab.SuspendLayout();
-            this.LocalCdrPathGroup.SuspendLayout();
-            this.CdrConvertGroup.SuspendLayout();
             this.ZipCdrPathGroup.SuspendLayout();
+            this.CdrConvertGroup.SuspendLayout();
+            this.LocalCdrPathGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // SettingsTabControl
@@ -100,6 +100,90 @@
             this.CdrTab.TabIndex = 2;
             this.CdrTab.Text = "Файлы статистики";
             this.CdrTab.UseVisualStyleBackColor = true;
+            // 
+            // ZipCdrPathGroup
+            // 
+            this.ZipCdrPathGroup.Controls.Add(this.ZipCdrPathSelectButton);
+            this.ZipCdrPathGroup.Controls.Add(this.ZipCdrPathLabel);
+            this.ZipCdrPathGroup.Location = new System.Drawing.Point(11, 251);
+            this.ZipCdrPathGroup.Name = "ZipCdrPathGroup";
+            this.ZipCdrPathGroup.Size = new System.Drawing.Size(618, 66);
+            this.ZipCdrPathGroup.TabIndex = 2;
+            this.ZipCdrPathGroup.TabStop = false;
+            this.ZipCdrPathGroup.Text = "Путь для заархивированных CDR";
+            // 
+            // ZipCdrPathSelectButton
+            // 
+            this.ZipCdrPathSelectButton.Location = new System.Drawing.Point(581, 26);
+            this.ZipCdrPathSelectButton.Name = "ZipCdrPathSelectButton";
+            this.ZipCdrPathSelectButton.Size = new System.Drawing.Size(24, 23);
+            this.ZipCdrPathSelectButton.TabIndex = 2;
+            this.ZipCdrPathSelectButton.Text = "...";
+            this.ZipCdrPathSelectButton.UseVisualStyleBackColor = true;
+            // 
+            // ZipCdrPathLabel
+            // 
+            this.ZipCdrPathLabel.AutoSize = true;
+            this.ZipCdrPathLabel.Location = new System.Drawing.Point(4, 31);
+            this.ZipCdrPathLabel.Name = "ZipCdrPathLabel";
+            this.ZipCdrPathLabel.Size = new System.Drawing.Size(149, 13);
+            this.ZipCdrPathLabel.TabIndex = 1;
+            this.ZipCdrPathLabel.Text = "Локальное расположение - ";
+            // 
+            // CdrConvertGroup
+            // 
+            this.CdrConvertGroup.Controls.Add(this.EditCdrSettingsButton);
+            this.CdrConvertGroup.Controls.Add(this.EditCdrCheckbox);
+            this.CdrConvertGroup.Controls.Add(this.DeleteZeroCallsCdrCheckbox);
+            this.CdrConvertGroup.Controls.Add(this.DelecteLocalCdrCheckbox);
+            this.CdrConvertGroup.Location = new System.Drawing.Point(11, 120);
+            this.CdrConvertGroup.Name = "CdrConvertGroup";
+            this.CdrConvertGroup.Size = new System.Drawing.Size(618, 115);
+            this.CdrConvertGroup.TabIndex = 1;
+            this.CdrConvertGroup.TabStop = false;
+            this.CdrConvertGroup.Text = "Параметры конвертирования";
+            // 
+            // EditCdrSettingsButton
+            // 
+            this.EditCdrSettingsButton.Enabled = false;
+            this.EditCdrSettingsButton.Location = new System.Drawing.Point(400, 72);
+            this.EditCdrSettingsButton.Name = "EditCdrSettingsButton";
+            this.EditCdrSettingsButton.Size = new System.Drawing.Size(205, 25);
+            this.EditCdrSettingsButton.TabIndex = 5;
+            this.EditCdrSettingsButton.Text = "Параметры коррекции длительности";
+            this.EditCdrSettingsButton.UseVisualStyleBackColor = true;
+            this.EditCdrSettingsButton.Click += new System.EventHandler(this.EditCdrSettingsButton_Click);
+            // 
+            // EditCdrCheckbox
+            // 
+            this.EditCdrCheckbox.AutoSize = true;
+            this.EditCdrCheckbox.Location = new System.Drawing.Point(9, 77);
+            this.EditCdrCheckbox.Name = "EditCdrCheckbox";
+            this.EditCdrCheckbox.Size = new System.Drawing.Size(229, 17);
+            this.EditCdrCheckbox.TabIndex = 2;
+            this.EditCdrCheckbox.Text = "Корректировать длительность вызовов";
+            this.EditCdrCheckbox.UseVisualStyleBackColor = true;
+            this.EditCdrCheckbox.CheckedChanged += new System.EventHandler(this.EditCdrCheckbox_CheckedChanged);
+            // 
+            // DeleteZeroCallsCdrCheckbox
+            // 
+            this.DeleteZeroCallsCdrCheckbox.AutoSize = true;
+            this.DeleteZeroCallsCdrCheckbox.Location = new System.Drawing.Point(9, 52);
+            this.DeleteZeroCallsCdrCheckbox.Name = "DeleteZeroCallsCdrCheckbox";
+            this.DeleteZeroCallsCdrCheckbox.Size = new System.Drawing.Size(246, 17);
+            this.DeleteZeroCallsCdrCheckbox.TabIndex = 1;
+            this.DeleteZeroCallsCdrCheckbox.Text = "Удалять вызовы с нулевой длительностью";
+            this.DeleteZeroCallsCdrCheckbox.UseVisualStyleBackColor = true;
+            // 
+            // DelecteLocalCdrCheckbox
+            // 
+            this.DelecteLocalCdrCheckbox.AutoSize = true;
+            this.DelecteLocalCdrCheckbox.Location = new System.Drawing.Point(9, 27);
+            this.DelecteLocalCdrCheckbox.Name = "DelecteLocalCdrCheckbox";
+            this.DelecteLocalCdrCheckbox.Size = new System.Drawing.Size(302, 17);
+            this.DelecteLocalCdrCheckbox.TabIndex = 0;
+            this.DelecteLocalCdrCheckbox.Text = "Удалять локальные файлы после передачи на сервер";
+            this.DelecteLocalCdrCheckbox.UseVisualStyleBackColor = true;
             // 
             // LocalCdrPathGroup
             // 
@@ -149,7 +233,6 @@
             this.LocalCdrPathLabel.Size = new System.Drawing.Size(149, 13);
             this.LocalCdrPathLabel.TabIndex = 1;
             this.LocalCdrPathLabel.Text = "Локальное расположение - ";
-            this.LocalCdrPathLabel.Click += new System.EventHandler(this.LocalCdrPathLabel_Click);
             // 
             // ReportsTab
             // 
@@ -196,87 +279,6 @@
             this.HelpSettingsButton.Text = "Помощь";
             this.HelpSettingsButton.UseVisualStyleBackColor = true;
             // 
-            // CdrConvertGroup
-            // 
-            this.CdrConvertGroup.Controls.Add(this.EditCdrSettingsButton);
-            this.CdrConvertGroup.Controls.Add(this.EditCdrCheckbox);
-            this.CdrConvertGroup.Controls.Add(this.DeleteZeroCallsCdrCheckbox);
-            this.CdrConvertGroup.Controls.Add(this.DelecteLocalCdrCheckbox);
-            this.CdrConvertGroup.Location = new System.Drawing.Point(11, 120);
-            this.CdrConvertGroup.Name = "CdrConvertGroup";
-            this.CdrConvertGroup.Size = new System.Drawing.Size(618, 115);
-            this.CdrConvertGroup.TabIndex = 1;
-            this.CdrConvertGroup.TabStop = false;
-            this.CdrConvertGroup.Text = "Параметры конвертирования";
-            // 
-            // DelecteLocalCdrCheckbox
-            // 
-            this.DelecteLocalCdrCheckbox.AutoSize = true;
-            this.DelecteLocalCdrCheckbox.Location = new System.Drawing.Point(9, 27);
-            this.DelecteLocalCdrCheckbox.Name = "DelecteLocalCdrCheckbox";
-            this.DelecteLocalCdrCheckbox.Size = new System.Drawing.Size(302, 17);
-            this.DelecteLocalCdrCheckbox.TabIndex = 0;
-            this.DelecteLocalCdrCheckbox.Text = "Удалять локальные файлы после передачи на сервер";
-            this.DelecteLocalCdrCheckbox.UseVisualStyleBackColor = true;
-            // 
-            // DeleteZeroCallsCdrCheckbox
-            // 
-            this.DeleteZeroCallsCdrCheckbox.AutoSize = true;
-            this.DeleteZeroCallsCdrCheckbox.Location = new System.Drawing.Point(9, 52);
-            this.DeleteZeroCallsCdrCheckbox.Name = "DeleteZeroCallsCdrCheckbox";
-            this.DeleteZeroCallsCdrCheckbox.Size = new System.Drawing.Size(246, 17);
-            this.DeleteZeroCallsCdrCheckbox.TabIndex = 1;
-            this.DeleteZeroCallsCdrCheckbox.Text = "Удалять вызовы с нулевой длительностью";
-            this.DeleteZeroCallsCdrCheckbox.UseVisualStyleBackColor = true;
-            // 
-            // EditCdrCheckbox
-            // 
-            this.EditCdrCheckbox.AutoSize = true;
-            this.EditCdrCheckbox.Location = new System.Drawing.Point(9, 77);
-            this.EditCdrCheckbox.Name = "EditCdrCheckbox";
-            this.EditCdrCheckbox.Size = new System.Drawing.Size(229, 17);
-            this.EditCdrCheckbox.TabIndex = 2;
-            this.EditCdrCheckbox.Text = "Корректировать длительность вызовов";
-            this.EditCdrCheckbox.UseVisualStyleBackColor = true;
-            // 
-            // EditCdrSettingsButton
-            // 
-            this.EditCdrSettingsButton.Location = new System.Drawing.Point(400, 72);
-            this.EditCdrSettingsButton.Name = "EditCdrSettingsButton";
-            this.EditCdrSettingsButton.Size = new System.Drawing.Size(205, 25);
-            this.EditCdrSettingsButton.TabIndex = 5;
-            this.EditCdrSettingsButton.Text = "Параметры коррекции длительности";
-            this.EditCdrSettingsButton.UseVisualStyleBackColor = true;
-            // 
-            // ZipCdrPathGroup
-            // 
-            this.ZipCdrPathGroup.Controls.Add(this.ZipCdrPathSelectButton);
-            this.ZipCdrPathGroup.Controls.Add(this.ZipCdrPathLabel);
-            this.ZipCdrPathGroup.Location = new System.Drawing.Point(11, 251);
-            this.ZipCdrPathGroup.Name = "ZipCdrPathGroup";
-            this.ZipCdrPathGroup.Size = new System.Drawing.Size(618, 66);
-            this.ZipCdrPathGroup.TabIndex = 2;
-            this.ZipCdrPathGroup.TabStop = false;
-            this.ZipCdrPathGroup.Text = "Путь для заархивированных CDR";
-            // 
-            // ZipCdrPathSelectButton
-            // 
-            this.ZipCdrPathSelectButton.Location = new System.Drawing.Point(581, 26);
-            this.ZipCdrPathSelectButton.Name = "ZipCdrPathSelectButton";
-            this.ZipCdrPathSelectButton.Size = new System.Drawing.Size(24, 23);
-            this.ZipCdrPathSelectButton.TabIndex = 2;
-            this.ZipCdrPathSelectButton.Text = "...";
-            this.ZipCdrPathSelectButton.UseVisualStyleBackColor = true;
-            // 
-            // ZipCdrPathLabel
-            // 
-            this.ZipCdrPathLabel.AutoSize = true;
-            this.ZipCdrPathLabel.Location = new System.Drawing.Point(4, 31);
-            this.ZipCdrPathLabel.Name = "ZipCdrPathLabel";
-            this.ZipCdrPathLabel.Size = new System.Drawing.Size(149, 13);
-            this.ZipCdrPathLabel.TabIndex = 1;
-            this.ZipCdrPathLabel.Text = "Локальное расположение - ";
-            // 
             // SettingsWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -294,14 +296,15 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DGenerator Настройки";
+            this.Load += new System.EventHandler(this.SettingsWindow_Load);
             this.SettingsTabControl.ResumeLayout(false);
             this.CdrTab.ResumeLayout(false);
-            this.LocalCdrPathGroup.ResumeLayout(false);
-            this.LocalCdrPathGroup.PerformLayout();
-            this.CdrConvertGroup.ResumeLayout(false);
-            this.CdrConvertGroup.PerformLayout();
             this.ZipCdrPathGroup.ResumeLayout(false);
             this.ZipCdrPathGroup.PerformLayout();
+            this.CdrConvertGroup.ResumeLayout(false);
+            this.CdrConvertGroup.PerformLayout();
+            this.LocalCdrPathGroup.ResumeLayout(false);
+            this.LocalCdrPathGroup.PerformLayout();
             this.ResumeLayout(false);
 
         }
