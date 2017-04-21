@@ -176,6 +176,7 @@
             this.DeleteZeroCallsCdrCheckbox.TabIndex = 1;
             this.DeleteZeroCallsCdrCheckbox.Text = "Удалять вызовы с нулевой длительностью";
             this.DeleteZeroCallsCdrCheckbox.UseVisualStyleBackColor = true;
+            this.DeleteZeroCallsCdrCheckbox.CheckedChanged += new System.EventHandler(this.DeleteZeroCallsCdrCheckbox_CheckedChanged);
             // 
             // DelecteLocalCdrCheckbox
             // 
@@ -186,6 +187,7 @@
             this.DelecteLocalCdrCheckbox.TabIndex = 0;
             this.DelecteLocalCdrCheckbox.Text = "Удалять локальные файлы после передачи на сервер";
             this.DelecteLocalCdrCheckbox.UseVisualStyleBackColor = true;
+            this.DelecteLocalCdrCheckbox.CheckedChanged += new System.EventHandler(this.DelecteLocalCdrCheckbox_CheckedChanged);
             // 
             // LocalCdrPathGroup
             // 

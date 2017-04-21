@@ -39,12 +39,40 @@ namespace AKS_UTM_tools
                 
         }
 
+        private void DelecteLocalCdrCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            var value = "";
+            if (DelecteLocalCdrCheckbox.Checked)
+                value = "1";
+            else
+                value = "0";
+            Settings.UpdateSetting("RemoveConvertedCdr", value);
+        }
+
+        private void DeleteZeroCallsCdrCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            var value = "";
+            if (DeleteZeroCallsCdrCheckbox.Checked)
+                value = "1";
+            else
+                value = "0";
+            Settings.UpdateSetting("RemoveCallsWithNullDuration", value);
+        }
+
         private void EditCdrCheckbox_CheckedChanged(object sender, EventArgs e)
         {
-            if (!EditCdrCheckbox.Checked)
-                EditCdrSettingsButton.Enabled = false;
-            else
+            var value = "";
+            if (EditCdrCheckbox.Checked)
+            {
                 EditCdrSettingsButton.Enabled = true;
+                value = "1";
+            }
+            else
+            {
+                EditCdrSettingsButton.Enabled = false;
+                value = "0";
+            }
+            Settings.UpdateSetting("CorretCdrDuration", value);
         }
 
         private void EditCdrSettingsButton_Click(object sender, EventArgs e)
