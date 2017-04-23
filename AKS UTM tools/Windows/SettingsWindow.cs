@@ -1,4 +1,4 @@
-﻿using DGenerator.Service.SettingsService;
+﻿using DGenerator.Service.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,6 +38,8 @@ namespace AKS_UTM_tools
                 EditCdrCheckbox.Checked = true;
                 
         }
+
+        //CDR Settings controls section
 
         private void DelecteLocalCdrCheckbox_CheckedChanged(object sender, EventArgs e)
         {

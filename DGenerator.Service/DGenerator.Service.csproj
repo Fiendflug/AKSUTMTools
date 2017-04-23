@@ -42,7 +42,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings\SettingsService.cs" />
+    <Compile Include="Services\CdrService.cs" />
+    <Compile Include="Services\SettingsService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DGenerator.CDR\DGenerator.CDR.csproj">
+      <Project>{8091a8cd-cbd4-47b9-8105-941ec34d3aeb}</Project>
+      <Name>DGenerator.CDR</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DGenerator.Data\DGenerator.Data.csproj">
+      <Project>{c1df1ba0-1058-4076-9ce9-c9db907e364b}</Project>
+      <Name>DGenerator.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

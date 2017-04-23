@@ -8,12 +8,12 @@ using System.Configuration;
 
 namespace DGenerator.CDR.Convert
 {
-    public class ConverterCDR
+    public class ConverterCdr
     {
         string[] AllFiles { get; set; }
         string DestinationPath { get; set; }
 
-        ConverterCDR(string[] filePaths, string destionationPath)
+        public ConverterCdr(string[] filePaths, string destionationPath)
         {
             AllFiles = filePaths;
             DestinationPath = destionationPath;

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 
-namespace DGenerator.Service.SettingsService
+namespace DGenerator.Service.Services
 {
     public class SettingsService
     {
