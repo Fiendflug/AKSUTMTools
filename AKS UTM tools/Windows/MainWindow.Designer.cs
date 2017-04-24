@@ -101,7 +101,7 @@
             this.pictureBoxWait = new System.Windows.Forms.PictureBox();
             this.StatusLabel = new System.Windows.Forms.Label();
             this.mainDataGrid = new System.Windows.Forms.DataGridView();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMain)).BeginInit();
             this.menuStripMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWait)).BeginInit();
@@ -698,6 +698,7 @@
             this.ConvertCdrButton.TabIndex = 10;
             this.toolTipMain.SetToolTip(this.ConvertCdrButton, "Преобразовать CDR - файлы в UTM формат");
             this.ConvertCdrButton.UseVisualStyleBackColor = true;
+            this.ConvertCdrButton.Click += new System.EventHandler(this.ConvertCdrButton_Click);
             // 
             // CloseSshConnectionButton
             // 
@@ -761,9 +762,11 @@
             this.mainDataGrid.Size = new System.Drawing.Size(992, 624);
             this.mainDataGrid.TabIndex = 31;
             // 
-            // openFileDialog1
+            // openFileDialog
             // 
-            this.openFileDialog1.FileName = "OpenCdrDialog";
+            this.openFileDialog.FileName = "*.log";
+            this.openFileDialog.Filter = "\"Log файлы сатистики|*.log\"";
+            this.openFileDialog.Multiselect = true;
             // 
             // MainWindow
             // 
@@ -885,7 +888,7 @@
         private System.Windows.Forms.PictureBox pictureBoxWait;
         private System.Windows.Forms.Label StatusLabel;
         private System.Windows.Forms.DataGridView mainDataGrid;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }
 

@@ -34,9 +34,8 @@ namespace AKS_UTM_tools
                 DelecteLocalCdrCheckbox.Checked = true;
             if (Settings.GetSetting("RemoveCallsWithNullDuration") == "1")
                 DeleteZeroCallsCdrCheckbox.Checked = true;
-            if (Settings.GetSetting("CorretCdrDuration") == "1")
+            if (Settings.GetSetting("CorrectCdrDuration") == "1")
                 EditCdrCheckbox.Checked = true;
-                
         }
 
         //CDR Settings controls section
@@ -74,7 +73,7 @@ namespace AKS_UTM_tools
                 EditCdrSettingsButton.Enabled = false;
                 value = "0";
             }
-            Settings.UpdateSetting("CorretCdrDuration", value);
+            Settings.UpdateSetting("CorrectCdrDuration", value);
         }
 
         private void EditCdrSettingsButton_Click(object sender, EventArgs e)
@@ -86,8 +85,8 @@ namespace AKS_UTM_tools
         {
             if(pathBrowserDialog.ShowDialog() == DialogResult.OK)
             {
-                Settings.UpdateSetting("LocalCdrPath", pathBrowserDialog.SelectedPath);
-                LocalCdrPathLabel.Text = pathBrowserDialog.SelectedPath;
+                Settings.UpdateSetting("LocalCdrPath", pathBrowserDialog.SelectedPath + "\\");
+                LocalCdrPathLabel.Text = pathBrowserDialog.SelectedPath + "\\";
             }
         }
 

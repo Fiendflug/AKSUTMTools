@@ -11,25 +11,26 @@ namespace DGenerator.Service.Services
     {
         SettingsService AllSettings { get; }
         ConverterCdr Converter { get; }
-        string[] FilePaths { get; set; }
+        string[] FilePaths { get; }
 
         public CdrService(string[] filePaths)
         {
             AllSettings = new SettingsService();
             FilePaths = filePaths;
-            Converter = new ConverterCdr(FilePaths, AllSettings.GetSetting("LocalCdrPath"));            
+            if (AllSettings.GetSetting("RemoveCallsWithNullDuration") == "1" & AllSettings.GetSetting("CorrectCdrDuration") == "1")
+                Converter = new ConverterCdr(FilePaths, AllSettings.GetSetting("LocalCdrPath"), true, true);
+            else if (AllSettings.GetSetting("RemoveCallsWithNullDuration") == "1" & AllSettings.GetSetting("CorrectCdrDuration") == "0")
+                Converter = new ConverterCdr(FilePaths, AllSettings.GetSetting("LocalCdrPath"), true, false);
+            else if (AllSettings.GetSetting("RemoveCallsWithNullDuration") == "0" & AllSettings.GetSetting("CorrectCdrDuration") == "1")
+                Converter = new ConverterCdr(FilePaths, AllSettings.GetSetting("LocalCdrPath"), false, true);
+            else if (AllSettings.GetSetting("RemoveCallsWithNullDuration") == "0" & AllSettings.GetSetting("CorrectCdrDuration") == "0")
+                Converter = new ConverterCdr(FilePaths, AllSettings.GetSetting("LocalCdrPath"));
         }
 
         public void Convert()
         {
-            if (AllSettings.GetSetting("CorretCdrDuration") == "1")
-            {
-                
-            }
-            else
-            {
-
-            }
+            Task convertWork = new Task(() => Converter.Convert());
+            convertWork.Start();
         }
 
         public void Transfer()
