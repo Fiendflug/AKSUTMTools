@@ -102,6 +102,7 @@
             this.StatusLabel = new System.Windows.Forms.Label();
             this.mainDataGrid = new System.Windows.Forms.DataGridView();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMain)).BeginInit();
             this.menuStripMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWait)).BeginInit();
@@ -768,11 +769,20 @@
             this.openFileDialog.Filter = "\"Log файлы сатистики|*.log\"";
             this.openFileDialog.Multiselect = true;
             // 
+            // progressBar
+            // 
+            this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar.Location = new System.Drawing.Point(704, 709);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(300, 20);
+            this.progressBar.TabIndex = 33;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1016, 741);
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.mainDataGrid);
             this.Controls.Add(this.StatusLabel);
             this.Controls.Add(this.pictureBoxWait);
@@ -804,6 +814,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DGenerator";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.Load += new System.EventHandler(this.MainWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMain)).EndInit();
             this.menuStripMain.ResumeLayout(false);
@@ -889,6 +900,7 @@
         private System.Windows.Forms.Label StatusLabel;
         private System.Windows.Forms.DataGridView mainDataGrid;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }
 

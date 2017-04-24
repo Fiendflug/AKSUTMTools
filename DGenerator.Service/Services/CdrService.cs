@@ -12,11 +12,14 @@ namespace DGenerator.Service.Services
         SettingsService AllSettings { get; }
         ConverterCdr Converter { get; }
         string[] FilePaths { get; }
+        public delegate void ProgressCdrConvertation();
+        public event ProgressCdrConvertation ConvertOneCdrEvent;
 
         public CdrService(string[] filePaths)
         {
             AllSettings = new SettingsService();
             FilePaths = filePaths;
+
             if (AllSettings.GetSetting("RemoveCallsWithNullDuration") == "1" & AllSettings.GetSetting("CorrectCdrDuration") == "1")
                 Converter = new ConverterCdr(FilePaths, AllSettings.GetSetting("LocalCdrPath"), true, true);
             else if (AllSettings.GetSetting("RemoveCallsWithNullDuration") == "1" & AllSettings.GetSetting("CorrectCdrDuration") == "0")
@@ -25,6 +28,9 @@ namespace DGenerator.Service.Services
                 Converter = new ConverterCdr(FilePaths, AllSettings.GetSetting("LocalCdrPath"), false, true);
             else if (AllSettings.GetSetting("RemoveCallsWithNullDuration") == "0" & AllSettings.GetSetting("CorrectCdrDuration") == "0")
                 Converter = new ConverterCdr(FilePaths, AllSettings.GetSetting("LocalCdrPath"));
+
+            Converter.ConvertFileEvent += ChangeProgress;
+            ConvertOneCdrEvent = delegate { };
         }
 
         public void Convert()
@@ -46,6 +52,11 @@ namespace DGenerator.Service.Services
         public void View()
         {
 
+        }
+
+        void ChangeProgress()
+        {            
+            ConvertOneCdrEvent();
         }
     }
 }

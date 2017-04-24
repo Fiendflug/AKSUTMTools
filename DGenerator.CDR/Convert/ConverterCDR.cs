@@ -10,6 +10,9 @@ namespace DGenerator.CDR.Convert
 {
     public class ConverterCdr
     {
+        public delegate void ConvertOneFile();
+        public event ConvertOneFile ConvertFileEvent;
+
         string[] AllFiles { get; }
         string DestinationPath { get; }
         bool RemoveNullDirationCalls { get; }
@@ -20,6 +23,7 @@ namespace DGenerator.CDR.Convert
         {
             AllFiles = filePaths;
             DestinationPath = destionationPath;
+            ConvertFileEvent = delegate { };           
         }
 
         public ConverterCdr(string[] filePaths, string destionationPath, 
@@ -30,6 +34,7 @@ namespace DGenerator.CDR.Convert
             RemoveNullDirationCalls = removeNullDirationCalls;
             UseCorrectDurationCalls = useCorrectDurationCalls;
             CdrCorrectSettings = cdrCorrectparams;
+            ConvertFileEvent = delegate { };
         }
 
         public void Convert()
@@ -72,9 +77,10 @@ namespace DGenerator.CDR.Convert
                             inputTrunkInLine + ";" + splitedLine[2] + ";1\r\n";
                         }
                         File.AppendAllText(outCdrPath, outLine);
-                        lineCount++;
+                        lineCount++;                        
                     }                    
                     fileStream.Close();
+                    ConvertFileEvent();
                 }
             }
             catch (Exception exc)

@@ -15,6 +15,8 @@ namespace AKS_UTM_tools
     public partial class MainWindow : Form
     {
         CdrService Cdr { get; set; }
+
+
         
         public MainWindow()
         {
@@ -22,7 +24,8 @@ namespace AKS_UTM_tools
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
-        {                 
+        {
+                             
         }
 
         // SSH connection to UTM server controls section
@@ -59,9 +62,16 @@ namespace AKS_UTM_tools
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
+                progressBar.Maximum = openFileDialog.FileNames.Length;
                 Cdr = new CdrService(openFileDialog.FileNames);
+                Cdr.ConvertOneCdrEvent += ChangeCdrConvertProgress;
                 Cdr.Convert();
             }
+        }
+
+        void ChangeCdrConvertProgress()
+        {
+            
         }
 
         // Settings control
@@ -69,6 +79,14 @@ namespace AKS_UTM_tools
         private void SettingsButton_Click(object sender, EventArgs e)
         {
             new SettingsWindow().ShowDialog();
+        }
+
+        // Common section
+
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (Cdr != null)
+                Cdr.ConvertOneCdrEvent -= ChangeCdrConvertProgress;
         }
     }
 }
