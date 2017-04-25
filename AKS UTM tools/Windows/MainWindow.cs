@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DGenerator.Service.Services;
+using System.Threading;
 
 namespace AKS_UTM_tools
 {
@@ -65,13 +66,16 @@ namespace AKS_UTM_tools
                 progressBar.Maximum = openFileDialog.FileNames.Length;
                 Cdr = new CdrService(openFileDialog.FileNames);
                 Cdr.ConvertOneCdrEvent += ChangeCdrConvertProgress;
-                Cdr.Convert();
+                Cdr.Convert();                
             }
         }
 
         void ChangeCdrConvertProgress()
         {
-            
+            BeginInvoke((Action)delegate {
+                progressBar.Value++;
+                StatusLabel.Text = "Конвертирую CDR в формат UTM5";
+            });
         }
 
         // Settings control
