@@ -18,6 +18,13 @@ namespace DGenerator.Data.ServerUTM
         static KeyboardInteractiveAuthenticationMethod KeyboardInteractiveAuth { get; set; }
         public static string Status { get; set; } //Статус перенести в то место где будет образение к базе данных
 
+        public delegate void ConnectStatus();
+        public delegate void DisconnectStatus();
+        public delegate void TransferStatus();
+        public static event ConnectStatus Connvected;
+        public static event DisconnectStatus Disconnected;
+        public static event TransferStatus OneFileTransfered;
+
         static ServerUTM()
         {
             ServerConnectInfo = new ServerConnectionInfo
@@ -28,6 +35,8 @@ namespace DGenerator.Data.ServerUTM
                 ServerUsername = "kineev",
                 ServerPassword = "rootISroot"
             };
+
+            OneFileTransfered = delegate { };
 
             PasswordAuth = new PasswordAuthenticationMethod(ServerConnectInfo.ServerUsername, ServerConnectInfo.ServerPassword);
             KeyboardInteractiveAuth = new KeyboardInteractiveAuthenticationMethod(ServerConnectInfo.ServerUsername);
@@ -95,6 +104,7 @@ namespace DGenerator.Data.ServerUTM
                     {
                         SftpWorker.UploadFile(uplfileStream, fileName[fileName.Length - 1], true);
                     }
+                    OneFileTransfered();
                 }
                 SftpWorker.Disconnect();
             }

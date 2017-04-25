@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DGenerator.CDR.Convert;
+using System.Diagnostics;
+using DGenerator.Data.ServerUTM;
 
 namespace DGenerator.Service.Services
 {
@@ -13,7 +15,9 @@ namespace DGenerator.Service.Services
         ConverterCdr Converter { get; }
         string[] FilePaths { get; }
         public delegate void ProgressCdrConvertation();
+        public delegate void FinishTask();
         public event ProgressCdrConvertation ConvertOneCdrEvent;
+        public event FinishTask CurrentTaskFinished;
 
         public CdrService(string[] filePaths)
         {
@@ -29,19 +33,26 @@ namespace DGenerator.Service.Services
             else if (AllSettings.GetSetting("RemoveCallsWithNullDuration") == "0" & AllSettings.GetSetting("CorrectCdrDuration") == "0")
                 Converter = new ConverterCdr(FilePaths, AllSettings.GetSetting("LocalCdrPath"));
 
-            Converter.ConvertFileEvent += ChangeProgress;
+            
             ConvertOneCdrEvent = delegate { };
+            CurrentTaskFinished = delegate { };
         }
 
         public void Convert()
         {
-            Task convertWork = new Task(() => Converter.Convert());
-            convertWork.Start();
+            Task.Factory.StartNew(() =>
+                {
+                    Converter.ConvertFileEvent += ChangeProgress;
+                    Converter.Convert();
+                }).ContinueWith((f) => 
+                {
+                    FinishConvert();
+                });
         }
 
         public void Transfer()
         {
-
+            
         }
 
         public void Archive()
@@ -51,12 +62,18 @@ namespace DGenerator.Service.Services
 
         public void View()
         {
-
+            Process.Start("explorer.exe", AllSettings.GetSetting("LocalCdrPath"));
         }
 
         void ChangeProgress()
         {            
             ConvertOneCdrEvent();
+        }
+
+        void FinishConvert()
+        {
+            CurrentTaskFinished();
+            Converter.ConvertFileEvent -= ChangeProgress;
         }
     }
 }

@@ -6,10 +6,8 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DGenerator.Service.Services;
-using System.Threading;
 
 namespace AKS_UTM_tools
 {
@@ -24,7 +22,7 @@ namespace AKS_UTM_tools
             InitializeComponent();
         }
 
-        private void MainWindow_Load(object sender, EventArgs e)
+        void MainWindow_Load(object sender, EventArgs e)
         {
                              
         }
@@ -37,19 +35,19 @@ namespace AKS_UTM_tools
             StatusLabel.Text = ServerUTM.Status;
         }
 
-        private void ButtonCloseSshConnection_Click(object sender, EventArgs e)
+        void ButtonCloseSshConnection_Click(object sender, EventArgs e)
         {
             ServerUTM.Disconnect();
             StatusLabel.Text = ServerUTM.Status;
         }
 
-        private void ConnectToServerTopMenu_Click(object sender, EventArgs e)
+        void ConnectToServerTopMenu_Click(object sender, EventArgs e)
         {
             ServerUTM.Connect();
             StatusLabel.Text = ServerUTM.Status;
         }
 
-        private void DisconnectServerTopMenu_Click(object sender, EventArgs e)
+        void DisconnectServerTopMenu_Click(object sender, EventArgs e)
         {
             ServerUTM.Disconnect();
             StatusLabel.Text = ServerUTM.Status;
@@ -59,15 +57,28 @@ namespace AKS_UTM_tools
 
         // CDR controls section
 
-        private void ConvertCdrButton_Click(object sender, EventArgs e)
+        void ConvertCdrButton_Click(object sender, EventArgs e)
         {
+            openFileDialog.Reset();
+            openFileDialog.FileName = "*.log";
+            openFileDialog.Filter = "Log файлы сатистики|*.log";
+            openFileDialog.Multiselect = true;
+            
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 progressBar.Maximum = openFileDialog.FileNames.Length;
                 Cdr = new CdrService(openFileDialog.FileNames);
                 Cdr.ConvertOneCdrEvent += ChangeCdrConvertProgress;
+                Cdr.CurrentTaskFinished += FininshCdrConvert;
                 Cdr.Convert();                
             }
+        }
+
+        void ViewCdrInFolderButton_Click(object sender, EventArgs e)
+        {
+            if (Cdr == null)
+                Cdr = new CdrService(null);
+            Cdr.View();
         }
 
         void ChangeCdrConvertProgress()
@@ -78,19 +89,31 @@ namespace AKS_UTM_tools
             });
         }
 
+        void FininshCdrConvert()
+        {
+            BeginInvoke((Action)delegate {
+                progressBar.Value = 0;
+                StatusLabel.Text = "Все CDR-файлы были успешно сконвертированы";
+            });
+            if (Cdr != null)
+            {
+                Cdr.ConvertOneCdrEvent -= ChangeCdrConvertProgress;
+                Cdr.CurrentTaskFinished -= FininshCdrConvert;
+            }
+        }
+
         // Settings control
 
-        private void SettingsButton_Click(object sender, EventArgs e)
+        void SettingsButton_Click(object sender, EventArgs e)
         {
             new SettingsWindow().ShowDialog();
         }
 
         // Common section
 
-        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (Cdr != null)
-                Cdr.ConvertOneCdrEvent -= ChangeCdrConvertProgress;
+                          
         }
     }
 }

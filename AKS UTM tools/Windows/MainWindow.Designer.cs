@@ -675,6 +675,7 @@
             this.ViewCdrInFolderButton.TabIndex = 12;
             this.toolTipMain.SetToolTip(this.ViewCdrInFolderButton, "Просмотреть CDR - файлы");
             this.ViewCdrInFolderButton.UseVisualStyleBackColor = true;
+            this.ViewCdrInFolderButton.Click += new System.EventHandler(this.ViewCdrInFolderButton_Click);
             // 
             // TransferCdrToServerButton
             // 
@@ -762,12 +763,6 @@
             this.mainDataGrid.Name = "mainDataGrid";
             this.mainDataGrid.Size = new System.Drawing.Size(992, 624);
             this.mainDataGrid.TabIndex = 31;
-            // 
-            // openFileDialog
-            // 
-            this.openFileDialog.FileName = "*.log";
-            this.openFileDialog.Filter = "\"Log файлы сатистики|*.log\"";
-            this.openFileDialog.Multiselect = true;
             // 
             // progressBar
             // 
