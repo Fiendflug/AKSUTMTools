@@ -13,8 +13,9 @@ namespace AKS_UTM_tools
 {
     public partial class MainWindow : Form
     {
+        SettingsService Settings { get; set; }
         CdrService Cdr { get; set; }
-
+        ServerConnectService ConnectUtmServer { get; set; }
 
         
         public MainWindow()
@@ -24,33 +25,38 @@ namespace AKS_UTM_tools
 
         void MainWindow_Load(object sender, EventArgs e)
         {
-                             
+            Settings = new SettingsService();
+            ConnectUtmServer = ServerConnectService.GetInstance();                             
         }
 
         // SSH connection to UTM server controls section
 
         private void ButtonSshConnection_Click(object sender, EventArgs e)
         {
-            ServerUTM.Connect();
-            StatusLabel.Text = ServerUTM.Status;
+            //ServerUTM.Connect();
+            //StatusLabel.Text = ServerUTM.Status;
+            StatusLabel.Text = ConnectUtmServer.Connect();
         }
 
         void ButtonCloseSshConnection_Click(object sender, EventArgs e)
         {
-            ServerUTM.Disconnect();
-            StatusLabel.Text = ServerUTM.Status;
+            //ServerUTM.Disconnect();
+            //StatusLabel.Text = ServerUTM.Status;            
+            StatusLabel.Text = ConnectUtmServer.Disconnect();
         }
 
         void ConnectToServerTopMenu_Click(object sender, EventArgs e)
         {
-            ServerUTM.Connect();
-            StatusLabel.Text = ServerUTM.Status;
+            //ServerUTM.Connect();
+            //StatusLabel.Text = ServerUTM.Status;
+            StatusLabel.Text = ConnectUtmServer.Connect();
         }
 
         void DisconnectServerTopMenu_Click(object sender, EventArgs e)
         {
-            ServerUTM.Disconnect();
-            StatusLabel.Text = ServerUTM.Status;
+            StatusLabel.Text = ConnectUtmServer.Disconnect();
+            //ServerUTM.Disconnect();
+            //StatusLabel.Text = ServerUTM.Status;
             //ServerUTM.TransferCDR(new string[]
             //{ @"C:\Bills\Files\Tests\test.txt",  @"C:\Bills\Files\Tests\test1.txt", @"C:\Bills\Files\Tests\test2.txt"}, "/usr/cdr_for_utm/");
         }
@@ -67,10 +73,37 @@ namespace AKS_UTM_tools
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 progressBar.Maximum = openFileDialog.FileNames.Length;
-                Cdr = new CdrService(openFileDialog.FileNames);
+
+                if (Cdr == null)
+                    Cdr = new CdrService(openFileDialog.FileNames);
+                else
+                    Cdr.FilePaths = openFileDialog.FileNames;
+
                 Cdr.ConvertOneCdrEvent += ChangeCdrConvertProgress;
                 Cdr.CurrentTaskFinished += FininshCdrConvert;
                 Cdr.Convert();                
+            }
+        }
+
+        private void TransferCdrToServerButton_Click(object sender, EventArgs e)
+        {
+            openFileDialog.Reset();
+            openFileDialog.FileName = "*.cdr";
+            openFileDialog.Filter = "Файлы статистики в UTM формате|*.cdr";
+            openFileDialog.InitialDirectory = Settings.GetSetting("LocalCdrPath");
+            openFileDialog.Multiselect = true;            
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                progressBar.Maximum = openFileDialog.FileNames.Length;
+
+                if (Cdr == null)
+                    Cdr = new CdrService(openFileDialog.FileNames);
+                else
+                    Cdr.FilePaths = openFileDialog.FileNames;
+
+                Cdr.TransferOneCdrEvent += ChangeCdrTransferProgress;
+                Cdr.CurrentTaskFinished += FinishCdrTransfer;
+                Cdr.Transfer();
             }
         }
 
@@ -80,6 +113,8 @@ namespace AKS_UTM_tools
                 Cdr = new CdrService(null);
             Cdr.View();
         }
+
+        // Progress Info Section
 
         void ChangeCdrConvertProgress()
         {
@@ -102,6 +137,27 @@ namespace AKS_UTM_tools
             }
         }
 
+        void ChangeCdrTransferProgress()
+        {
+            BeginInvoke((Action)delegate {
+                progressBar.Value++;
+                StatusLabel.Text = "Передаю CDR-файлы на сервер";
+            });
+        }
+
+        void FinishCdrTransfer()
+        {
+            BeginInvoke((Action)delegate {
+                progressBar.Value = 0;
+                StatusLabel.Text = "Все CDR-файлы были успешно переданы на сервер";
+            });
+            if (Cdr != null)
+            {
+                Cdr.TransferOneCdrEvent -= ChangeCdrTransferProgress;
+                Cdr.CurrentTaskFinished -= FinishCdrTransfer;
+            }
+        }
+
         // Settings control
 
         void SettingsButton_Click(object sender, EventArgs e)
@@ -115,5 +171,7 @@ namespace AKS_UTM_tools
         {
                           
         }
+
+        
     }
 }

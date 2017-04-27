@@ -8,33 +8,22 @@ using Renci.SshNet.Common;
 
 namespace DGenerator.Data.ServerUTM
 {
-    public static class ServerUTM
+    public class ServerUTM
     {
-        static ServerConnectionInfo ServerConnectInfo { get; set; }
-        static SshClient SshWorker { get; set; }
-        static SftpClient SftpWorker { get; set; }
-        static ConnectionInfo SshWorkerConnectionInfo { get; set; }
-        static PasswordAuthenticationMethod PasswordAuth { get; set; }
-        static KeyboardInteractiveAuthenticationMethod KeyboardInteractiveAuth { get; set; }
-        public static string Status { get; set; } //Статус перенести в то место где будет образение к базе данных
-
-        public delegate void ConnectStatus();
-        public delegate void DisconnectStatus();
+        public ServerConnectionInfo ServerConnectInfo { get; set; }
+        SshClient SshWorker { get; set; }
+        SftpClient SftpWorker { get; set; }
+        ConnectionInfo SshWorkerConnectionInfo { get; set; }
+        PasswordAuthenticationMethod PasswordAuth { get; set; }
+        KeyboardInteractiveAuthenticationMethod KeyboardInteractiveAuth { get; set; }
+        public string Status { get; set; } //Статус перенести в то место где будет образение к базе данных
+        
         public delegate void TransferStatus();
-        public static event ConnectStatus Connvected;
-        public static event DisconnectStatus Disconnected;
-        public static event TransferStatus OneFileTransfered;
+        public event TransferStatus OneFileTransfered;
 
-        static ServerUTM()
+        public ServerUTM(ServerConnectionInfo settings)
         {
-            ServerConnectInfo = new ServerConnectionInfo
-            {
-                ServerHost = "192.168.100.1",
-                ServerPort = 22,
-                ServerForwardingPortPort = 3306,
-                ServerUsername = "kineev",
-                ServerPassword = "rootISroot"
-            };
+            ServerConnectInfo = settings;
 
             OneFileTransfered = delegate { };
 
@@ -50,37 +39,67 @@ namespace DGenerator.Data.ServerUTM
             SftpWorker = new SftpClient(SshWorkerConnectionInfo);
         }
 
-        public static void Connect()
+        public void Connect()
         {
-            if (!SshWorker.IsConnected)
+            try
             {
-                SshWorker.Connect();
-                var tunnelPort = new ForwardedPortLocal("localhost", ServerConnectInfo.ServerHost, ServerConnectInfo.ServerPort);
-                SshWorker.AddForwardedPort(tunnelPort);
-
-                tunnelPort.Exception += delegate (object sender, ExceptionEventArgs e)
+                if (!SshWorker.IsConnected)
                 {
-                    Console.WriteLine(e.Exception.ToString());
-                };
-                tunnelPort.Start();
-                Status = "Соединение с сервером установлено";
+                    SshWorker.Connect();
+                    var tunnelPort = new ForwardedPortLocal("localhost", ServerConnectInfo.ServerHost, ServerConnectInfo.ServerPort);
+                    SshWorker.AddForwardedPort(tunnelPort);
+
+                    tunnelPort.Exception += delegate (object sender, ExceptionEventArgs e)
+                    {
+                        Console.WriteLine(e.Exception.ToString());
+                    };
+                    tunnelPort.Start();
+                    Status = "Соединение с сервером установлено";
+                }
+                else
+                {
+                    Status = "Соединение с сервером было установлено ранее";
+                }
+            }
+            catch(SshConnectionException exc)
+            {
+                Status = exc.Message;
+            }
+            catch(SshAuthenticationException exc)
+            {
+                Status = exc.Message;
+            }
+            catch(SshOperationTimeoutException exc)
+            {
+                Status = exc.Message;
+            }
+            catch(SshException exc)
+            {
+                Status = exc.Message;
             }
         }
 
-        public static void Disconnect()
+        public void Disconnect()
         {
-            if (SshWorker.IsConnected)
+            try
             {
-                SshWorker.Disconnect();
-                Status = "Соединение разорвано по инициативе пользователя";
+                if (SshWorker.IsConnected)
+                {
+                    SshWorker.Disconnect();
+                    Status = "Соединение разорвано по инициативе пользователя";
+                }
+                else
+                {
+                    Status = "Соединение на данный момент уже разорвано";
+                }
             }
-            else
+            catch(SshException exc)
             {
-                Status = "Соединение на данный момент уже разорвано";
+                Status = exc.Message;
             }
         }
 
-        static void HandleKeyEvent(object sender, AuthenticationPromptEventArgs e)
+        void HandleKeyEvent(object sender, AuthenticationPromptEventArgs e)
         {
             foreach (AuthenticationPrompt prompt in e.Prompts)
             {
@@ -91,13 +110,15 @@ namespace DGenerator.Data.ServerUTM
             }
         }
 
-        public static void TransferCDR(string[] localPaths, string remotePath)
+        public void TransferCDR(string[] localPaths, string remotePath)
         {
-            if (!SftpWorker.IsConnected)
+            try
             {
-                SftpWorker.Connect();
+                if (!SftpWorker.IsConnected)
+                    SftpWorker.Connect();
+
                 SftpWorker.ChangeDirectory(remotePath);
-                foreach(var cdr in localPaths)
+                foreach (var cdr in localPaths)
                 {
                     var fileName = cdr.Split('\\');
                     using (var uplfileStream = System.IO.File.OpenRead(cdr))
@@ -108,13 +129,9 @@ namespace DGenerator.Data.ServerUTM
                 }
                 SftpWorker.Disconnect();
             }
-        }
-
-        public static void RunParse(string[] cdrNames)
-        {
-            foreach (var cdr in cdrNames)
+            catch(SshOperationTimeoutException exc)
             {
-
+                Status = exc.Message;
             }
         }
     }

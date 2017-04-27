@@ -688,6 +688,7 @@
             this.TransferCdrToServerButton.TabIndex = 11;
             this.toolTipMain.SetToolTip(this.TransferCdrToServerButton, "Передать CDR - файлы на UTM сервер");
             this.TransferCdrToServerButton.UseVisualStyleBackColor = true;
+            this.TransferCdrToServerButton.Click += new System.EventHandler(this.TransferCdrToServerButton_Click);
             // 
             // ConvertCdrButton
             // 
