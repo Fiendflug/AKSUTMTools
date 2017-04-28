@@ -31,6 +31,15 @@
             this.SettingsTabControl = new System.Windows.Forms.TabControl();
             this.CommonTab = new System.Windows.Forms.TabPage();
             this.ConnectTab = new System.Windows.Forms.TabPage();
+            this.ServerSettingsGroupBox = new System.Windows.Forms.GroupBox();
+            this.ServerPortButton = new System.Windows.Forms.Button();
+            this.ServerPasswordButton = new System.Windows.Forms.Button();
+            this.ServerUsernameButton = new System.Windows.Forms.Button();
+            this.ServerHostButton = new System.Windows.Forms.Button();
+            this.ServerPasswordLabel = new System.Windows.Forms.Label();
+            this.ServerUsernameLabel = new System.Windows.Forms.Label();
+            this.ServerPortLabel = new System.Windows.Forms.Label();
+            this.ServerHostLabel = new System.Windows.Forms.Label();
             this.CdrTab = new System.Windows.Forms.TabPage();
             this.ZipCdrPathGroup = new System.Windows.Forms.GroupBox();
             this.ZipCdrPathSelectButton = new System.Windows.Forms.Button();
@@ -51,11 +60,25 @@
             this.CancelSettingsButton = new System.Windows.Forms.Button();
             this.HelpSettingsButton = new System.Windows.Forms.Button();
             this.pathBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.DatabaseSettingsGroupBox = new System.Windows.Forms.GroupBox();
+            this.DatabasePortButton = new System.Windows.Forms.Button();
+            this.DatabasePasswordButton = new System.Windows.Forms.Button();
+            this.DatabaseUsernameButton = new System.Windows.Forms.Button();
+            this.DatabaseHostButton = new System.Windows.Forms.Button();
+            this.DatabasePasswordLabel = new System.Windows.Forms.Label();
+            this.DatabaseUsernameLabel = new System.Windows.Forms.Label();
+            this.DatabasePortLabel = new System.Windows.Forms.Label();
+            this.DatabaseHostLabel = new System.Windows.Forms.Label();
+            this.DatabaseNameButton = new System.Windows.Forms.Button();
+            this.DatabaseNameLabel = new System.Windows.Forms.Label();
             this.SettingsTabControl.SuspendLayout();
+            this.ConnectTab.SuspendLayout();
+            this.ServerSettingsGroupBox.SuspendLayout();
             this.CdrTab.SuspendLayout();
             this.ZipCdrPathGroup.SuspendLayout();
             this.CdrConvertGroup.SuspendLayout();
             this.LocalCdrPathGroup.SuspendLayout();
+            this.DatabaseSettingsGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // SettingsTabControl
@@ -82,6 +105,8 @@
             // 
             // ConnectTab
             // 
+            this.ConnectTab.Controls.Add(this.DatabaseSettingsGroupBox);
+            this.ConnectTab.Controls.Add(this.ServerSettingsGroupBox);
             this.ConnectTab.Location = new System.Drawing.Point(4, 22);
             this.ConnectTab.Name = "ConnectTab";
             this.ConnectTab.Padding = new System.Windows.Forms.Padding(3);
@@ -89,6 +114,95 @@
             this.ConnectTab.TabIndex = 1;
             this.ConnectTab.Text = "Соединение с сервером";
             this.ConnectTab.UseVisualStyleBackColor = true;
+            // 
+            // ServerSettingsGroupBox
+            // 
+            this.ServerSettingsGroupBox.Controls.Add(this.ServerPortButton);
+            this.ServerSettingsGroupBox.Controls.Add(this.ServerPasswordButton);
+            this.ServerSettingsGroupBox.Controls.Add(this.ServerUsernameButton);
+            this.ServerSettingsGroupBox.Controls.Add(this.ServerHostButton);
+            this.ServerSettingsGroupBox.Controls.Add(this.ServerPasswordLabel);
+            this.ServerSettingsGroupBox.Controls.Add(this.ServerUsernameLabel);
+            this.ServerSettingsGroupBox.Controls.Add(this.ServerPortLabel);
+            this.ServerSettingsGroupBox.Controls.Add(this.ServerHostLabel);
+            this.ServerSettingsGroupBox.Location = new System.Drawing.Point(11, 12);
+            this.ServerSettingsGroupBox.Name = "ServerSettingsGroupBox";
+            this.ServerSettingsGroupBox.Size = new System.Drawing.Size(618, 147);
+            this.ServerSettingsGroupBox.TabIndex = 0;
+            this.ServerSettingsGroupBox.TabStop = false;
+            this.ServerSettingsGroupBox.Text = "Параметры соединения с сервером";
+            // 
+            // ServerPortButton
+            // 
+            this.ServerPortButton.Location = new System.Drawing.Point(533, 106);
+            this.ServerPortButton.Name = "ServerPortButton";
+            this.ServerPortButton.Size = new System.Drawing.Size(70, 25);
+            this.ServerPortButton.TabIndex = 6;
+            this.ServerPortButton.Text = "Изменить";
+            this.ServerPortButton.UseVisualStyleBackColor = true;
+            // 
+            // ServerPasswordButton
+            // 
+            this.ServerPasswordButton.Location = new System.Drawing.Point(533, 77);
+            this.ServerPasswordButton.Name = "ServerPasswordButton";
+            this.ServerPasswordButton.Size = new System.Drawing.Size(70, 25);
+            this.ServerPasswordButton.TabIndex = 5;
+            this.ServerPasswordButton.Text = "Изменить";
+            this.ServerPasswordButton.UseVisualStyleBackColor = true;
+            // 
+            // ServerUsernameButton
+            // 
+            this.ServerUsernameButton.Location = new System.Drawing.Point(533, 50);
+            this.ServerUsernameButton.Name = "ServerUsernameButton";
+            this.ServerUsernameButton.Size = new System.Drawing.Size(70, 25);
+            this.ServerUsernameButton.TabIndex = 5;
+            this.ServerUsernameButton.Text = "Изменить";
+            this.ServerUsernameButton.UseVisualStyleBackColor = true;
+            // 
+            // ServerHostButton
+            // 
+            this.ServerHostButton.Location = new System.Drawing.Point(533, 23);
+            this.ServerHostButton.Name = "ServerHostButton";
+            this.ServerHostButton.Size = new System.Drawing.Size(70, 25);
+            this.ServerHostButton.TabIndex = 5;
+            this.ServerHostButton.Text = "Изменить";
+            this.ServerHostButton.UseVisualStyleBackColor = true;
+            // 
+            // ServerPasswordLabel
+            // 
+            this.ServerPasswordLabel.AutoSize = true;
+            this.ServerPasswordLabel.Location = new System.Drawing.Point(6, 83);
+            this.ServerPasswordLabel.Name = "ServerPasswordLabel";
+            this.ServerPasswordLabel.Size = new System.Drawing.Size(143, 13);
+            this.ServerPasswordLabel.TabIndex = 3;
+            this.ServerPasswordLabel.Text = "Пароль для авторизации - ";
+            // 
+            // ServerUsernameLabel
+            // 
+            this.ServerUsernameLabel.AutoSize = true;
+            this.ServerUsernameLabel.Location = new System.Drawing.Point(6, 56);
+            this.ServerUsernameLabel.Name = "ServerUsernameLabel";
+            this.ServerUsernameLabel.Size = new System.Drawing.Size(112, 13);
+            this.ServerUsernameLabel.TabIndex = 2;
+            this.ServerUsernameLabel.Text = "Имя пользователя - ";
+            // 
+            // ServerPortLabel
+            // 
+            this.ServerPortLabel.AutoSize = true;
+            this.ServerPortLabel.Location = new System.Drawing.Point(6, 112);
+            this.ServerPortLabel.Name = "ServerPortLabel";
+            this.ServerPortLabel.Size = new System.Drawing.Size(126, 13);
+            this.ServerPortLabel.TabIndex = 1;
+            this.ServerPortLabel.Text = "Порт для поключения - ";
+            // 
+            // ServerHostLabel
+            // 
+            this.ServerHostLabel.AutoSize = true;
+            this.ServerHostLabel.Location = new System.Drawing.Point(6, 29);
+            this.ServerHostLabel.Name = "ServerHostLabel";
+            this.ServerHostLabel.Size = new System.Drawing.Size(92, 13);
+            this.ServerHostLabel.TabIndex = 0;
+            this.ServerHostLabel.Text = "Адрес сервера - ";
             // 
             // CdrTab
             // 
@@ -289,6 +403,115 @@
             this.HelpSettingsButton.UseVisualStyleBackColor = true;
             this.HelpSettingsButton.Click += new System.EventHandler(this.HelpSettingsButton_Click);
             // 
+            // DatabaseSettingsGroupBox
+            // 
+            this.DatabaseSettingsGroupBox.Controls.Add(this.DatabaseNameButton);
+            this.DatabaseSettingsGroupBox.Controls.Add(this.DatabaseNameLabel);
+            this.DatabaseSettingsGroupBox.Controls.Add(this.DatabasePortButton);
+            this.DatabaseSettingsGroupBox.Controls.Add(this.DatabasePasswordButton);
+            this.DatabaseSettingsGroupBox.Controls.Add(this.DatabaseUsernameButton);
+            this.DatabaseSettingsGroupBox.Controls.Add(this.DatabaseHostButton);
+            this.DatabaseSettingsGroupBox.Controls.Add(this.DatabasePasswordLabel);
+            this.DatabaseSettingsGroupBox.Controls.Add(this.DatabaseUsernameLabel);
+            this.DatabaseSettingsGroupBox.Controls.Add(this.DatabasePortLabel);
+            this.DatabaseSettingsGroupBox.Controls.Add(this.DatabaseHostLabel);
+            this.DatabaseSettingsGroupBox.Location = new System.Drawing.Point(11, 170);
+            this.DatabaseSettingsGroupBox.Name = "DatabaseSettingsGroupBox";
+            this.DatabaseSettingsGroupBox.Size = new System.Drawing.Size(618, 179);
+            this.DatabaseSettingsGroupBox.TabIndex = 7;
+            this.DatabaseSettingsGroupBox.TabStop = false;
+            this.DatabaseSettingsGroupBox.Text = "Параметры подключения к базе данных";
+            // 
+            // DatabasePortButton
+            // 
+            this.DatabasePortButton.Location = new System.Drawing.Point(533, 106);
+            this.DatabasePortButton.Name = "DatabasePortButton";
+            this.DatabasePortButton.Size = new System.Drawing.Size(70, 25);
+            this.DatabasePortButton.TabIndex = 6;
+            this.DatabasePortButton.Text = "Изменить";
+            this.DatabasePortButton.UseVisualStyleBackColor = true;
+            // 
+            // DatabasePasswordButton
+            // 
+            this.DatabasePasswordButton.Location = new System.Drawing.Point(533, 77);
+            this.DatabasePasswordButton.Name = "DatabasePasswordButton";
+            this.DatabasePasswordButton.Size = new System.Drawing.Size(70, 25);
+            this.DatabasePasswordButton.TabIndex = 5;
+            this.DatabasePasswordButton.Text = "Изменить";
+            this.DatabasePasswordButton.UseVisualStyleBackColor = true;
+            // 
+            // DatabaseUsernameButton
+            // 
+            this.DatabaseUsernameButton.Location = new System.Drawing.Point(533, 50);
+            this.DatabaseUsernameButton.Name = "DatabaseUsernameButton";
+            this.DatabaseUsernameButton.Size = new System.Drawing.Size(70, 25);
+            this.DatabaseUsernameButton.TabIndex = 5;
+            this.DatabaseUsernameButton.Text = "Изменить";
+            this.DatabaseUsernameButton.UseVisualStyleBackColor = true;
+            // 
+            // DatabaseHostButton
+            // 
+            this.DatabaseHostButton.Location = new System.Drawing.Point(533, 23);
+            this.DatabaseHostButton.Name = "DatabaseHostButton";
+            this.DatabaseHostButton.Size = new System.Drawing.Size(70, 25);
+            this.DatabaseHostButton.TabIndex = 5;
+            this.DatabaseHostButton.Text = "Изменить";
+            this.DatabaseHostButton.UseVisualStyleBackColor = true;
+            // 
+            // DatabasePasswordLabel
+            // 
+            this.DatabasePasswordLabel.AutoSize = true;
+            this.DatabasePasswordLabel.Location = new System.Drawing.Point(6, 83);
+            this.DatabasePasswordLabel.Name = "DatabasePasswordLabel";
+            this.DatabasePasswordLabel.Size = new System.Drawing.Size(143, 13);
+            this.DatabasePasswordLabel.TabIndex = 3;
+            this.DatabasePasswordLabel.Text = "Пароль для авторизации - ";
+            // 
+            // DatabaseUsernameLabel
+            // 
+            this.DatabaseUsernameLabel.AutoSize = true;
+            this.DatabaseUsernameLabel.Location = new System.Drawing.Point(6, 56);
+            this.DatabaseUsernameLabel.Name = "DatabaseUsernameLabel";
+            this.DatabaseUsernameLabel.Size = new System.Drawing.Size(112, 13);
+            this.DatabaseUsernameLabel.TabIndex = 2;
+            this.DatabaseUsernameLabel.Text = "Имя пользователя - ";
+            // 
+            // DatabasePortLabel
+            // 
+            this.DatabasePortLabel.AutoSize = true;
+            this.DatabasePortLabel.Location = new System.Drawing.Point(6, 112);
+            this.DatabasePortLabel.Name = "DatabasePortLabel";
+            this.DatabasePortLabel.Size = new System.Drawing.Size(126, 13);
+            this.DatabasePortLabel.TabIndex = 1;
+            this.DatabasePortLabel.Text = "Порт для поключения - ";
+            // 
+            // DatabaseHostLabel
+            // 
+            this.DatabaseHostLabel.AutoSize = true;
+            this.DatabaseHostLabel.Location = new System.Drawing.Point(6, 29);
+            this.DatabaseHostLabel.Name = "DatabaseHostLabel";
+            this.DatabaseHostLabel.Size = new System.Drawing.Size(199, 13);
+            this.DatabaseHostLabel.TabIndex = 0;
+            this.DatabaseHostLabel.Text = "Локальный адрес для доступа к БД - ";
+            // 
+            // DatabaseNameButton
+            // 
+            this.DatabaseNameButton.Location = new System.Drawing.Point(533, 135);
+            this.DatabaseNameButton.Name = "DatabaseNameButton";
+            this.DatabaseNameButton.Size = new System.Drawing.Size(70, 25);
+            this.DatabaseNameButton.TabIndex = 8;
+            this.DatabaseNameButton.Text = "Изменить";
+            this.DatabaseNameButton.UseVisualStyleBackColor = true;
+            // 
+            // DatabaseNameLabel
+            // 
+            this.DatabaseNameLabel.AutoSize = true;
+            this.DatabaseNameLabel.Location = new System.Drawing.Point(6, 141);
+            this.DatabaseNameLabel.Name = "DatabaseNameLabel";
+            this.DatabaseNameLabel.Size = new System.Drawing.Size(135, 13);
+            this.DatabaseNameLabel.TabIndex = 7;
+            this.DatabaseNameLabel.Text = "Название базы данных - ";
+            // 
             // SettingsWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -308,6 +531,9 @@
             this.Text = "DGenerator Настройки";
             this.Load += new System.EventHandler(this.SettingsWindow_Load);
             this.SettingsTabControl.ResumeLayout(false);
+            this.ConnectTab.ResumeLayout(false);
+            this.ServerSettingsGroupBox.ResumeLayout(false);
+            this.ServerSettingsGroupBox.PerformLayout();
             this.CdrTab.ResumeLayout(false);
             this.ZipCdrPathGroup.ResumeLayout(false);
             this.ZipCdrPathGroup.PerformLayout();
@@ -315,6 +541,8 @@
             this.CdrConvertGroup.PerformLayout();
             this.LocalCdrPathGroup.ResumeLayout(false);
             this.LocalCdrPathGroup.PerformLayout();
+            this.DatabaseSettingsGroupBox.ResumeLayout(false);
+            this.DatabaseSettingsGroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -344,5 +572,25 @@
         private System.Windows.Forms.Button ZipCdrPathSelectButton;
         private System.Windows.Forms.Label ZipCdrPathLabel;
         private System.Windows.Forms.FolderBrowserDialog pathBrowserDialog;
+        private System.Windows.Forms.GroupBox ServerSettingsGroupBox;
+        private System.Windows.Forms.Label ServerHostLabel;
+        private System.Windows.Forms.Label ServerPortLabel;
+        private System.Windows.Forms.Label ServerUsernameLabel;
+        private System.Windows.Forms.Label ServerPasswordLabel;
+        private System.Windows.Forms.Button ServerPortButton;
+        private System.Windows.Forms.Button ServerPasswordButton;
+        private System.Windows.Forms.Button ServerUsernameButton;
+        private System.Windows.Forms.Button ServerHostButton;
+        private System.Windows.Forms.GroupBox DatabaseSettingsGroupBox;
+        private System.Windows.Forms.Button DatabasePortButton;
+        private System.Windows.Forms.Button DatabasePasswordButton;
+        private System.Windows.Forms.Button DatabaseUsernameButton;
+        private System.Windows.Forms.Button DatabaseHostButton;
+        private System.Windows.Forms.Label DatabasePasswordLabel;
+        private System.Windows.Forms.Label DatabaseUsernameLabel;
+        private System.Windows.Forms.Label DatabasePortLabel;
+        private System.Windows.Forms.Label DatabaseHostLabel;
+        private System.Windows.Forms.Button DatabaseNameButton;
+        private System.Windows.Forms.Label DatabaseNameLabel;
     }
 }
