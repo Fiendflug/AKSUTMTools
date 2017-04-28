@@ -33,78 +33,34 @@ namespace AKS_UTM_tools
 
         private void ButtonSshConnection_Click(object sender, EventArgs e)
         {
-            //ServerUTM.Connect();
-            //StatusLabel.Text = ServerUTM.Status;
             StatusLabel.Text = ConnectUtmServer.Connect();
         }
 
         void ButtonCloseSshConnection_Click(object sender, EventArgs e)
-        {
-            //ServerUTM.Disconnect();
-            //StatusLabel.Text = ServerUTM.Status;            
+        {       
             StatusLabel.Text = ConnectUtmServer.Disconnect();
         }
 
         void ConnectToServerTopMenu_Click(object sender, EventArgs e)
         {
-            //ServerUTM.Connect();
-            //StatusLabel.Text = ServerUTM.Status;
             StatusLabel.Text = ConnectUtmServer.Connect();
         }
 
         void DisconnectServerTopMenu_Click(object sender, EventArgs e)
         {
             StatusLabel.Text = ConnectUtmServer.Disconnect();
-            //ServerUTM.Disconnect();
-            //StatusLabel.Text = ServerUTM.Status;
-            //ServerUTM.TransferCDR(new string[]
-            //{ @"C:\Bills\Files\Tests\test.txt",  @"C:\Bills\Files\Tests\test1.txt", @"C:\Bills\Files\Tests\test2.txt"}, "/usr/cdr_for_utm/");
         }
 
         // CDR controls section
 
         void ConvertCdrButton_Click(object sender, EventArgs e)
         {
-            openFileDialog.Reset();
-            openFileDialog.FileName = "*.log";
-            openFileDialog.Filter = "Log файлы сатистики|*.log";
-            openFileDialog.Multiselect = true;
-            
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                progressBar.Maximum = openFileDialog.FileNames.Length;
-
-                if (Cdr == null)
-                    Cdr = new CdrService(openFileDialog.FileNames);
-                else
-                    Cdr.FilePaths = openFileDialog.FileNames;
-
-                Cdr.ConvertOneCdrEvent += ChangeCdrConvertProgress;
-                Cdr.CurrentTaskFinished += FininshCdrConvert;
-                Cdr.Convert();                
-            }
+            ConvertCdr();
         }
 
         private void TransferCdrToServerButton_Click(object sender, EventArgs e)
         {
-            openFileDialog.Reset();
-            openFileDialog.FileName = "*.cdr";
-            openFileDialog.Filter = "Файлы статистики в UTM формате|*.cdr";
-            openFileDialog.InitialDirectory = Settings.GetSetting("LocalCdrPath");
-            openFileDialog.Multiselect = true;            
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                progressBar.Maximum = openFileDialog.FileNames.Length;
-
-                if (Cdr == null)
-                    Cdr = new CdrService(openFileDialog.FileNames);
-                else
-                    Cdr.FilePaths = openFileDialog.FileNames;
-
-                Cdr.TransferOneCdrEvent += ChangeCdrTransferProgress;
-                Cdr.CurrentTaskFinished += FinishCdrTransfer;
-                Cdr.Transfer();
-            }
+            TransferCdr();
         }
 
         void ViewCdrInFolderButton_Click(object sender, EventArgs e)
@@ -112,6 +68,63 @@ namespace AKS_UTM_tools
             if (Cdr == null)
                 Cdr = new CdrService(null);
             Cdr.View();
+        }
+
+        void ConvertCdrTopMenu_Click(object sender, EventArgs e)
+        {
+            ConvertCdr();
+        }
+
+        private void TransferCdrToServerTopMenu_Click(object sender, EventArgs e)
+        {
+            TransferCdr();
+        }
+
+        void ViewCdrInFolderTopMenu_Click(object sender, EventArgs e)
+        {
+            if (Cdr == null)
+                Cdr = new CdrService(null);
+            Cdr.View();
+        }
+
+        // CDR methods section
+
+        void ConvertCdr()
+        {
+            openFileDialog.Reset();
+            openFileDialog.FileName = "*.log";
+            openFileDialog.Filter = "Log файлы сатистики|*.log";
+            openFileDialog.Multiselect = true;
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                progressBar.Maximum = openFileDialog.FileNames.Length;
+
+                Cdr = new CdrService(openFileDialog.FileNames);
+
+                Cdr.ConvertOneCdrEvent += ChangeCdrConvertProgress;
+                Cdr.CurrentTaskFinished += FininshCdrConvert;
+                Cdr.Convert();
+            }
+        }
+
+        void TransferCdr()
+        {
+            openFileDialog.Reset();
+            openFileDialog.FileName = "*.cdr";
+            openFileDialog.Filter = "Файлы статистики в UTM формате|*.cdr";
+            openFileDialog.InitialDirectory = Settings.GetSetting("LocalCdrPath");
+            openFileDialog.Multiselect = true;
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                progressBar.Maximum = openFileDialog.FileNames.Length;
+
+                Cdr = new CdrService(openFileDialog.FileNames);
+
+                Cdr.TransferOneCdrEvent += ChangeCdrTransferProgress;
+                Cdr.CurrentTaskFinished += FinishCdrTransfer;
+                Cdr.Transfer();
+            }
         }
 
         // Progress Info Section

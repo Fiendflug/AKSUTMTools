@@ -46,6 +46,7 @@ namespace DGenerator.Service.Services
             Task.Factory.StartNew(() =>
                 {
                     Converter.ConvertFileEvent += ConvertOneCdr;
+                    
                     Converter.Convert();
                 }).ContinueWith((f) => 
                 {

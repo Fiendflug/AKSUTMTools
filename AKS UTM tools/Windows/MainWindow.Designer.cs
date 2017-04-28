@@ -227,6 +227,7 @@
             this.ConvertCdrTopMenu.Name = "ConvertCdrTopMenu";
             this.ConvertCdrTopMenu.Size = new System.Drawing.Size(238, 22);
             this.ConvertCdrTopMenu.Text = "Преобразовать в UTM формат";
+            this.ConvertCdrTopMenu.Click += new System.EventHandler(this.ConvertCdrTopMenu_Click);
             // 
             // TransferCdrToServerTopMenu
             // 
@@ -234,6 +235,7 @@
             this.TransferCdrToServerTopMenu.Name = "TransferCdrToServerTopMenu";
             this.TransferCdrToServerTopMenu.Size = new System.Drawing.Size(238, 22);
             this.TransferCdrToServerTopMenu.Text = "Передать файлы на сервер UTM";
+            this.TransferCdrToServerTopMenu.Click += new System.EventHandler(this.TransferCdrToServerTopMenu_Click);
             // 
             // toolStripSeparator2
             // 
@@ -246,6 +248,7 @@
             this.ViewCdrInFolderTopMenu.Name = "ViewCdrInFolderTopMenu";
             this.ViewCdrInFolderTopMenu.Size = new System.Drawing.Size(238, 22);
             this.ViewCdrInFolderTopMenu.Text = "Просмотреть файлы";
+            this.ViewCdrInFolderTopMenu.Click += new System.EventHandler(this.ViewCdrInFolderTopMenu_Click);
             // 
             // ZipCdrTopMenu
             // 

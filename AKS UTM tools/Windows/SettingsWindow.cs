@@ -1,4 +1,5 @@
-﻿using DGenerator.Service.Services;
+﻿using AKS_UTM_tools.Windows;
+using DGenerator.Service.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,13 +23,13 @@ namespace AKS_UTM_tools
             Settings = new SettingsService();
         }
 
-        private void SettingsWindow_Load(object sender, EventArgs e)
+        void SettingsWindow_Load(object sender, EventArgs e)
         {
 
             //CDR Settings section (Labels, Checkboxes, Buttons)
             
-            LocalCdrPathLabel.Text = Settings.GetSetting("LocalCdrPath");
-            RemoteCdrPathlabel.Text = Settings.GetSetting("RemoteCdrPath");
+            LocalCdrPathLabel.Text += Settings.GetSetting("LocalCdrPath");
+            RemoteCdrPathlabel.Text += Settings.GetSetting("RemoteCdrPath");
             ZipCdrPathLabel.Text = Settings.GetSetting("ZipCdrPath");
             if (Settings.GetSetting("RemoveConvertedCdr") == "1")
                 DelecteLocalCdrCheckbox.Checked = true;
@@ -40,7 +41,7 @@ namespace AKS_UTM_tools
 
         //CDR Settings controls section
 
-        private void DelecteLocalCdrCheckbox_CheckedChanged(object sender, EventArgs e)
+        void DelecteLocalCdrCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             var value = "";
             if (DelecteLocalCdrCheckbox.Checked)
@@ -50,7 +51,7 @@ namespace AKS_UTM_tools
             Settings.UpdateSetting("RemoveConvertedCdr", value);
         }
 
-        private void DeleteZeroCallsCdrCheckbox_CheckedChanged(object sender, EventArgs e)
+        void DeleteZeroCallsCdrCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             var value = "";
             if (DeleteZeroCallsCdrCheckbox.Checked)
@@ -60,7 +61,7 @@ namespace AKS_UTM_tools
             Settings.UpdateSetting("RemoveCallsWithNullDuration", value);
         }
 
-        private void EditCdrCheckbox_CheckedChanged(object sender, EventArgs e)
+        void EditCdrCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             var value = "";
             if (EditCdrCheckbox.Checked)
@@ -76,21 +77,34 @@ namespace AKS_UTM_tools
             Settings.UpdateSetting("CorrectCdrDuration", value);
         }
 
-        private void EditCdrSettingsButton_Click(object sender, EventArgs e)
+        void EditCdrSettingsButton_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void LocalCdrPathSelectButton_Click(object sender, EventArgs e)
+        void LocalCdrPathSelectButton_Click(object sender, EventArgs e)
         {
             if(pathBrowserDialog.ShowDialog() == DialogResult.OK)
             {
                 Settings.UpdateSetting("LocalCdrPath", pathBrowserDialog.SelectedPath + "\\");
-                LocalCdrPathLabel.Text = pathBrowserDialog.SelectedPath + "\\";
+                LocalCdrPathLabel.Text = "Локальное расположение " + pathBrowserDialog.SelectedPath + "\\";
             }
         }
 
-        private void ZipCdrPathSelectButton_Click(object sender, EventArgs e)
+        void RemoteCdrpathButton_Click(object sender, EventArgs e)
+        {
+            InputDialog dialogForm = new InputDialog();
+            if(dialogForm.ShowDialog() == DialogResult.OK)
+            {
+                if(dialogForm.inputTextBox.Text != "")
+                {
+                    Settings.UpdateSetting("RemoteCdrPath", dialogForm.inputTextBox.Text);
+                    RemoteCdrPathlabel.Text = "Расположение на сервере - " + dialogForm.inputTextBox.Text;
+                }
+            } 
+        }
+
+        void ZipCdrPathSelectButton_Click(object sender, EventArgs e)
         {
             if (pathBrowserDialog.ShowDialog() == DialogResult.OK)
             {
@@ -103,23 +117,23 @@ namespace AKS_UTM_tools
 
         // Main controls (OK, Submit, Cancel, Help)
 
-        private void SubmitSettingsButton_Click(object sender, EventArgs e)
+        void SubmitSettingsButton_Click(object sender, EventArgs e)
         {
             Settings.SaveSettings();
         }
 
-        private void OkSettingsButton_Click(object sender, EventArgs e)
+        void OkSettingsButton_Click(object sender, EventArgs e)
         {
             Settings.SaveSettings();
             Close();
         }
 
-        private void CancelSettingsButton_Click(object sender, EventArgs e)
+        void CancelSettingsButton_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void HelpSettingsButton_Click(object sender, EventArgs e)
+        void HelpSettingsButton_Click(object sender, EventArgs e)
         {
 
         }

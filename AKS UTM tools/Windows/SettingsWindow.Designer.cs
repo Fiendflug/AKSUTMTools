@@ -210,6 +210,7 @@
             this.RemoteCdrpathButton.TabIndex = 4;
             this.RemoteCdrpathButton.Text = "Изменить";
             this.RemoteCdrpathButton.UseVisualStyleBackColor = true;
+            this.RemoteCdrpathButton.Click += new System.EventHandler(this.RemoteCdrpathButton_Click);
             // 
             // RemoteCdrPathlabel
             // 
