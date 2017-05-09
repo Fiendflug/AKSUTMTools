@@ -113,7 +113,9 @@ namespace AKS_UTM_tools
             }
         }
 
+        // Server connection Settings controls
 
+        
 
         // Main controls (OK, Submit, Cancel, Help)
 
