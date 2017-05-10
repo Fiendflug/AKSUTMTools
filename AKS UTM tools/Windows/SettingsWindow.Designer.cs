@@ -503,6 +503,7 @@
             // 
             // CancelSettingsButton
             // 
+            this.CancelSettingsButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.CancelSettingsButton.Location = new System.Drawing.Point(326, 420);
             this.CancelSettingsButton.Name = "CancelSettingsButton";
             this.CancelSettingsButton.Size = new System.Drawing.Size(150, 40);
@@ -523,8 +524,10 @@
             // 
             // SettingsWindow
             // 
+            this.AcceptButton = this.OkSettingsButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.CancelSettingsButton;
             this.ClientSize = new System.Drawing.Size(644, 475);
             this.Controls.Add(this.HelpSettingsButton);
             this.Controls.Add(this.CancelSettingsButton);

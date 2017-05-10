@@ -26,6 +26,10 @@ namespace AKS_UTM_tools
 
         void SettingsWindow_Load(object sender, EventArgs e)
         {
+            //Submit/cancel cotrols
+
+            OkSettingsButton.DialogResult = DialogResult.OK;
+            CancelButton.DialogResult = DialogResult.Cancel;
 
             //CDR Settings section (Labels, Checkboxes, Buttons)
             

@@ -11,8 +11,9 @@ namespace DGenerator.Service.Services
     {
         static ServerConnectService Instance { get; set; }
 
+        SettingsService AllSettings { get; set; }
         ServerConnectionInfo Settings { get; set; }
-        ServerUTM Server { get; set; }
+        ServerUTM Server { get; set; }        
 
         string[] CdrsForTransfer { get; set; }
 
@@ -21,13 +22,14 @@ namespace DGenerator.Service.Services
 
         private ServerConnectService()
         {
+            AllSettings = new SettingsService();
             Settings = new ServerConnectionInfo
             {
-                ServerHost = "192.168.100.1",
-                ServerPort = 22,
-                ServerForwardingPortPort = 3306,
-                ServerUsername = "kineev",
-                ServerPassword = "rootISroot"
+                ServerHost = AllSettings.GetSetting("ServerHost"),
+                ServerPort = uint.Parse(AllSettings.GetSetting("ServerPort")),
+                ServerForwardingPortPort = uint.Parse(AllSettings.GetSetting("DatabasePort")),
+                ServerUsername = AllSettings.GetSetting("ServerUser"),
+                ServerPassword = AllSettings.GetSetting("ServerPassword")
             };
 
             CdrTransferEvent = delegate { };
@@ -65,7 +67,20 @@ namespace DGenerator.Service.Services
 
         public void Transfer()
         {
-            Server.TransferCDR(CdrsForTransfer, "/usr/cdr_for_utm/");
+            Server.TransferCDR(CdrsForTransfer, AllSettings.GetSetting("RemoteCdrPath"));
+        }
+
+        public void RefreshConnectionSettings()
+        {
+            Settings = new ServerConnectionInfo
+            {
+                ServerHost = AllSettings.GetSetting("ServerHost"),
+                ServerPort = uint.Parse(AllSettings.GetSetting("ServerPort")),
+                ServerForwardingPortPort = uint.Parse(AllSettings.GetSetting("DatabasePort")),
+                ServerUsername = AllSettings.GetSetting("ServerUser"),
+                ServerPassword = AllSettings.GetSetting("ServerPassword")
+            };
+            Server = new ServerUTM(Settings);
         }
 
         void CdrTransfered()

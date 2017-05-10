@@ -50,6 +50,7 @@ namespace DGenerator.Service.Services
             {
                 ConfigurationFile.Save(ConfigurationSaveMode.Modified);
                 ConfigurationManager.RefreshSection(ConfigurationFile.AppSettings.SectionInformation.Name);
+                
             }
             catch (ConfigurationErrorsException exc)
             {

@@ -175,7 +175,12 @@ namespace AKS_UTM_tools
 
         void SettingsButton_Click(object sender, EventArgs e)
         {
-            new SettingsWindow().ShowDialog();
+            SettingsWindow settingsFormDialog = new SettingsWindow();
+            if (settingsFormDialog.ShowDialog() == DialogResult.OK)
+            {
+                ConnectUtmServer.RefreshConnectionSettings();
+                StatusLabel.Text = "Конфигурация приложения успешно изменена";
+            }
         }
 
         // Common section
