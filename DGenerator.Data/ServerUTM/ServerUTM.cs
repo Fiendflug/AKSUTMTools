@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Sockets;
 using Renci.SshNet;
 using Renci.SshNet.Common;
 
@@ -61,13 +62,17 @@ namespace DGenerator.Data.ServerUTM
                     Status = "Соединение с сервером было установлено ранее";
                 }
             }
+            catch(SocketException exc)
+            {
+                Status = "Произошла ошибка на сокете. Возможно сервер не отвечает. Проверьте журнал";
+            }
             catch(SshConnectionException exc)
             {
                 Status = exc.Message;
             }
             catch(SshAuthenticationException exc)
             {
-                Status = exc.Message;
+                Status = "Проищошла ошибка аутентификации. Проерьте журнал";
             }
             catch(SshOperationTimeoutException exc)
             {

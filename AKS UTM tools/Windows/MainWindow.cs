@@ -87,6 +87,11 @@ namespace AKS_UTM_tools
             Cdr.View();
         }
 
+        void ZipCdrButton_Click(object sender, EventArgs e)
+        {
+            ArchiveCdr();
+        }
+
         // CDR methods section
 
         void ConvertCdr()
@@ -124,6 +129,25 @@ namespace AKS_UTM_tools
                 Cdr.TransferOneCdrEvent += ChangeCdrTransferProgress;
                 Cdr.CurrentTaskFinished += FinishCdrTransfer;
                 Cdr.Transfer();
+            }
+        }
+
+        void ArchiveCdr()
+        {
+            openFileDialog.Reset();
+            openFileDialog.FileName = "*.cdr";
+            openFileDialog.Filter = "Файлы статистики в UTM формате|*.cdr";
+            openFileDialog.InitialDirectory = Settings.GetSetting("LocalCdrPath");
+            openFileDialog.Multiselect = true;
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                progressBar.Maximum = openFileDialog.FileNames.Length;
+
+                Cdr = new CdrService(openFileDialog.FileNames);
+
+                Cdr.ZipOneCdrEvent += ChangeCdrArchiveProgress;
+                Cdr.CurrentTaskFinished += FinishCdrArchive;
+                Cdr.Archive();
             }
         }
 
@@ -168,6 +192,27 @@ namespace AKS_UTM_tools
             {
                 Cdr.TransferOneCdrEvent -= ChangeCdrTransferProgress;
                 Cdr.CurrentTaskFinished -= FinishCdrTransfer;
+            }
+        }
+
+        void ChangeCdrArchiveProgress()
+        {
+            BeginInvoke((Action)delegate {
+                progressBar.Value++;
+                StatusLabel.Text = "Архивирую CDR-файлы";
+            });
+        }
+
+        void FinishCdrArchive()
+        {
+            BeginInvoke((Action)delegate {
+                progressBar.Value = 0;
+                StatusLabel.Text = "Все CDR-файлы были успешно заархивированы";
+            });
+            if (Cdr != null)
+            {
+                Cdr.ZipOneCdrEvent -= ChangeCdrArchiveProgress;
+                Cdr.CurrentTaskFinished -= FinishCdrArchive;
             }
         }
 

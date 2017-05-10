@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 
-namespace DGenerator.CDR.Convert
+namespace DGenerator.CDR
 {
     public class ConverterCdr
     {
