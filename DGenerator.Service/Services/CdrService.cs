@@ -118,5 +118,11 @@ namespace DGenerator.Service.Services
             CurrentTaskFinished();
             Converter.ConvertFileEvent -= ConvertOneCdr;
         }
+
+        void FinishArchive()
+        {
+            CurrentTaskFinished();
+            Zip.ZipOneCdrEvent -= ZipOneCdr;
+        }
     }
 }
