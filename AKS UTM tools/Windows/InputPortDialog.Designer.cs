@@ -1,6 +1,6 @@
 ﻿namespace AKS_UTM_tools.Windows
 {
-    partial class InputDialog
+    partial class InputPortDialog
     {
         /// <summary>
         /// Required designer variable.
@@ -28,68 +28,79 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.inputTextBox = new System.Windows.Forms.TextBox();
-            this.cancelButton = new System.Windows.Forms.Button();
             this.submitButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
+            this.portNumeric = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.portNumeric)).BeginInit();
             this.SuspendLayout();
             // 
-            // inputTextBox
+            // submitButton
             // 
-            this.inputTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inputTextBox.Location = new System.Drawing.Point(12, 12);
-            this.inputTextBox.Name = "inputTextBox";
-            this.inputTextBox.Size = new System.Drawing.Size(381, 20);
-            this.inputTextBox.TabIndex = 0;
+            this.submitButton.Location = new System.Drawing.Point(237, 49);
+            this.submitButton.Name = "submitButton";
+            this.submitButton.Size = new System.Drawing.Size(75, 23);
+            this.submitButton.TabIndex = 3;
+            this.submitButton.Text = "ОК";
+            this.submitButton.UseVisualStyleBackColor = true;
             // 
             // cancelButton
             // 
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(318, 48);
+            this.cancelButton.Location = new System.Drawing.Point(318, 49);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 1;
+            this.cancelButton.TabIndex = 4;
             this.cancelButton.Text = "Отмена";
             this.cancelButton.UseVisualStyleBackColor = true;
             // 
-            // submitButton
+            // portNumeric
             // 
-            this.submitButton.Location = new System.Drawing.Point(237, 48);
-            this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(75, 23);
-            this.submitButton.TabIndex = 2;
-            this.submitButton.Text = "ОК";
-            this.submitButton.UseVisualStyleBackColor = true;
-            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
+            this.portNumeric.Location = new System.Drawing.Point(12, 12);
+            this.portNumeric.Maximum = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
+            this.portNumeric.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.portNumeric.Name = "portNumeric";
+            this.portNumeric.Size = new System.Drawing.Size(381, 20);
+            this.portNumeric.TabIndex = 5;
+            this.portNumeric.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
-            // InputDialog
+            // InputPortDialog
             // 
             this.AcceptButton = this.submitButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(405, 84);
-            this.Controls.Add(this.submitButton);
+            this.Controls.Add(this.portNumeric);
             this.Controls.Add(this.cancelButton);
-            this.Controls.Add(this.inputTextBox);
+            this.Controls.Add(this.submitButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "InputDialog";
-            this.ShowIcon = false;
+            this.Name = "InputPortDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Укажите удаленный каталог для CDR-ов";
-            this.Load += new System.EventHandler(this.InputDialog_Load);
+            this.Text = "InputPortDialog";
+            this.Load += new System.EventHandler(this.InputPortDialog_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.portNumeric)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ColorDialog colorDialog1;
-        public System.Windows.Forms.TextBox inputTextBox;
-        private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button submitButton;
+        private System.Windows.Forms.Button cancelButton;
+        public System.Windows.Forms.NumericUpDown portNumeric;
     }
 }

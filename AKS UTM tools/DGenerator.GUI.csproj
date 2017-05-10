@@ -64,6 +64,18 @@
     <Compile Include="Windows\InputDialog.Designer.cs">
       <DependentUpon>InputDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Windows\InputtMaskedDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\InputtMaskedDialog.Designer.cs">
+      <DependentUpon>InputtMaskedDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\InputPortDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\InputPortDialog.Designer.cs">
+      <DependentUpon>InputPortDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +98,12 @@
     </Compile>
     <EmbeddedResource Include="Windows\InputDialog.resx">
       <DependentUpon>InputDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\InputtMaskedDialog.resx">
+      <DependentUpon>InputtMaskedDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\InputPortDialog.resx">
+      <DependentUpon>InputPortDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>

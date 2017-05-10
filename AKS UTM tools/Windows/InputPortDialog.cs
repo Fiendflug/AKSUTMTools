@@ -10,22 +10,17 @@ using System.Windows.Forms;
 
 namespace AKS_UTM_tools.Windows
 {
-    public partial class InputDialog : Form
+    public partial class InputPortDialog : Form
     {
-        public InputDialog()
+        public InputPortDialog()
         {
             InitializeComponent();
         }
 
-        private void InputDialog_Load(object sender, EventArgs e)
+        private void InputPortDialog_Load(object sender, EventArgs e)
         {
             submitButton.DialogResult = DialogResult.OK;
             cancelButton.DialogResult = DialogResult.Cancel;
-        }
-
-        private void submitButton_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
