@@ -14,9 +14,12 @@ namespace DGenerator.CDR
         string[] FilePaths { get; set; }
         string ArchivePath { get; set; }
         string ArchiveName { get; set; }
-
+        
         public delegate void ZipDelegate();
+        public delegate void StatusDelegate(string statusMessage);
+
         public event ZipDelegate ZipOneCdrEvent;
+        public event StatusDelegate ChangeStatusEvent;
 
         public ArchiveCdr(string[] filePaths, string archivePath, string archiveName)
         {
@@ -25,21 +28,41 @@ namespace DGenerator.CDR
             ArchiveName = archiveName;
 
             ZipOneCdrEvent = delegate { };
+            ChangeStatusEvent = delegate { };
         }
 
         public void StartCompress()
         {
-            using (var zip = new ZipFile(Path.Combine(ArchivePath, ArchiveName)))
+            try
             {
-                zip.CompressionLevel = CompressionLevel.Default;
-                foreach (var cdr in FilePaths)
+                var archivePath = Path.Combine(ArchivePath, ArchiveName);                
+                using (var zip = new ZipFile(archivePath))
                 {
-                    var tempFileName = Path.GetFileName(cdr);
-                    zip.AddFile(cdr, ArchiveName);
-                    ZipOneCdrEvent();
-                }
-                zip.Save();
+                    zip.CompressionLevel = CompressionLevel.Default;
+                    foreach (var cdr in FilePaths)
+                    {
+                        zip.AddFile(cdr, ArchiveName);
+                        ChangeStatusEvent("CDR-файлы успешно добавлены в архив");
+                        ZipOneCdrEvent();
+                    }
+                    zip.Save();
+                    ChangeStatusEvent("Оперция завершена. Все CDR-файлы успешно заархивированы");
+                } 
             }
-        }
+            catch(DirectoryNotFoundException exc)
+            {
+                //Не найдена папка для сохранения
+                ChangeStatusEvent("Невозможно сохранить архив. Некорректная");
+            }
+            catch(ArgumentException exc)
+            {
+                //Файл с таким именем существует
+                ChangeStatusEvent("Невозможно сохранить архив. Файл с указанным именем уже существует");
+            }
+            catch(Exception exc)
+            {
+
+            }            
+        }        
     }
 }

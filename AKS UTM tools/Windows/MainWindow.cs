@@ -17,6 +17,7 @@ namespace AKS_UTM_tools
         CdrService Cdr { get; set; }
         ServerConnectService ConnectUtmServer { get; set; }
 
+        string Status { get; set; }
         
         public MainWindow()
         {
@@ -146,6 +147,7 @@ namespace AKS_UTM_tools
                 Cdr = new CdrService(openFileDialog.FileNames);
 
                 Cdr.ZipOneCdrEvent += ChangeCdrArchiveProgress;
+                Cdr.ChangeStatusEvent += ChangeStatus;
                 Cdr.CurrentTaskFinished += FinishCdrArchive;
                 Cdr.Archive();
             }
@@ -199,7 +201,14 @@ namespace AKS_UTM_tools
         {
             BeginInvoke((Action)delegate {
                 progressBar.Value++;
-                StatusLabel.Text = "Архивирую CDR-файлы";
+                StatusLabel.Text = Status;
+            });
+        }
+
+        void ChangeStatus(string statusMessage)
+        {
+            BeginInvoke((Action)delegate {
+                Status = statusMessage;
             });
         }
 
@@ -207,11 +216,12 @@ namespace AKS_UTM_tools
         {
             BeginInvoke((Action)delegate {
                 progressBar.Value = 0;
-                StatusLabel.Text = "Все CDR-файлы были успешно заархивированы";
+                StatusLabel.Text = Status;
             });
             if (Cdr != null)
             {
                 Cdr.ZipOneCdrEvent -= ChangeCdrArchiveProgress;
+                Cdr.ChangeStatusEvent -= ChangeStatus;
                 Cdr.CurrentTaskFinished -= FinishCdrArchive;
             }
         }

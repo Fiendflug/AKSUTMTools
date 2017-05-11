@@ -20,11 +20,13 @@ namespace DGenerator.Service.Services
         public delegate void ProgressCdrTransfer();
         public delegate void ProgressCdrZip();
         public delegate void FinishTask();
+        public delegate void ChangeStatusDelegate(string statusMessage);
 
         public event ProgressCdrConvertation ConvertOneCdrEvent;
         public event ProgressCdrTransfer TransferOneCdrEvent;
         public event ProgressCdrZip ZipOneCdrEvent;
         public event FinishTask CurrentTaskFinished;
+        public event ChangeStatusDelegate ChangeStatusEvent;
 
         public CdrService(string[] filePaths)
         {
@@ -46,6 +48,7 @@ namespace DGenerator.Service.Services
             TransferOneCdrEvent = delegate { };
             ZipOneCdrEvent = delegate { };
             CurrentTaskFinished = delegate { };
+            ChangeStatusEvent = delegate { };
         }
 
         public void Convert()
@@ -79,7 +82,7 @@ namespace DGenerator.Service.Services
             Task.Factory.StartNew(() =>
             {
                 Zip.ZipOneCdrEvent += ZipOneCdr;
-
+                Zip.ChangeStatusEvent += ChangeStatus;
                 Zip.StartCompress();
             }).ContinueWith((f) =>
             {
@@ -123,6 +126,11 @@ namespace DGenerator.Service.Services
         {
             CurrentTaskFinished();
             Zip.ZipOneCdrEvent -= ZipOneCdr;
+        }
+
+        void ChangeStatus(string statusMesasge)
+        {
+            ChangeStatusEvent(statusMesasge);
         }
     }
 }
