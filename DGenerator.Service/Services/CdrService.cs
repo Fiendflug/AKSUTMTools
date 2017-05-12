@@ -56,7 +56,7 @@ namespace DGenerator.Service.Services
             Task.Factory.StartNew(() =>
                 {
                     Converter.ConvertFileEvent += ConvertOneCdr;
-                    
+                    Converter.ChangeStatusEvent += ChangeStatus;
                     Converter.Convert();
                 }).ContinueWith((f) => 
                 {
@@ -120,12 +120,14 @@ namespace DGenerator.Service.Services
         {
             CurrentTaskFinished();
             Converter.ConvertFileEvent -= ConvertOneCdr;
+            Converter.ChangeStatusEvent -= ChangeStatus;
         }
 
         void FinishArchive()
         {
             CurrentTaskFinished();
             Zip.ZipOneCdrEvent -= ZipOneCdr;
+            Zip.ChangeStatusEvent -= ChangeStatus;
         }
 
         void ChangeStatus(string statusMesasge)

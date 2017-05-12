@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net.Sockets;
 using Renci.SshNet;
 using Renci.SshNet.Common;
+using System.IO;
 
 namespace DGenerator.Data.ServerUTM
 {
@@ -20,7 +21,10 @@ namespace DGenerator.Data.ServerUTM
         public string Status { get; set; } //Статус перенести в то место где будет образение к базе данных
         
         public delegate void TransferStatus();
+        public delegate void StatusDelegate(string statusMessage);
+
         public event TransferStatus OneFileTransfered;
+        public event StatusDelegate ChangeStatusEvent;
 
         public ServerUTM(ServerConnectionInfo settings)
         {
@@ -55,32 +59,43 @@ namespace DGenerator.Data.ServerUTM
                         Console.WriteLine(e.Exception.ToString());
                     };
                     tunnelPort.Start();
-                    Status = "Соединение с сервером установлено";
+                    //Status = "Соединение с сервером установлено";
+                    ChangeStatusEvent("Соединение с сервером установлено");
                 }
                 else
                 {
-                    Status = "Соединение с сервером было установлено ранее";
+                    //Status = "Соединение с сервером было установлено ранее";
+                    ChangeStatusEvent("Соединение с сервером было установлено ранее");
                 }
             }
             catch(SocketException exc)
             {
-                Status = "Произошла ошибка на сокете. Возможно сервер не отвечает. Проверьте журнал";
+                //Status = "Произошла ошибка на сокете. Возможно сервер не отвечает. Проверьте журнал";
+                ChangeStatusEvent("Произошла ошибка на сокете. Возможно сервер не отвечает. Проверьте настройки приложения и журнал");
             }
             catch(SshConnectionException exc)
             {
-                Status = exc.Message;
+                //Status = exc.Message;
+                ChangeStatusEvent("Проблема при инициализации SSH-соединения. Проверьте настройки приложения и журнал");
             }
             catch(SshAuthenticationException exc)
             {
-                Status = "Проищошла ошибка аутентификации. Проерьте журнал";
+                //Status = "Проищошла ошибка аутентификации. Проерьте журнал";
+                ChangeStatusEvent("Произошла ошибка аутентификации. Проерьте настройки приложения и журнал");
             }
             catch(SshOperationTimeoutException exc)
             {
-                Status = exc.Message;
+                //Status = exc.Message;
+                ChangeStatusEvent("Превышен интервал ожидания. Проверьте настройки приложения и журнал");
             }
             catch(SshException exc)
             {
-                Status = exc.Message;
+                //Status = exc.Message;
+                ChangeStatusEvent("Проблема с SSH-соединением. Проверьте журнал");
+            }
+            catch(Exception exc)
+            {
+                ChangeStatusEvent("Неизвестная ошибка. Проверьте журнал для получения подробной информации");
             }
         }
 
@@ -91,11 +106,13 @@ namespace DGenerator.Data.ServerUTM
                 if (SshWorker.IsConnected)
                 {
                     SshWorker.Disconnect();
-                    Status = "Соединение разорвано по инициативе пользователя";
+                    //Status = "Соединение разорвано по инициативе пользователя";
+                    ChangeStatusEvent("Соединение разорвано по инициативе пользователя");
                 }
                 else
                 {
-                    Status = "Соединение на данный момент уже разорвано";
+                    //Status = "Соединение на данный момент уже разорвано";
+                    ChangeStatusEvent("Соединение на данный момент уже разорвано");
                 }
             }
             catch(SshException exc)
@@ -123,20 +140,31 @@ namespace DGenerator.Data.ServerUTM
                     SftpWorker.Connect();
 
                 SftpWorker.ChangeDirectory(remotePath);
+                ChangeStatusEvent("Приступаю к передаче CDR-файлов на сервер");
                 foreach (var cdr in localPaths)
                 {
                     var fileName = cdr.Split('\\');
-                    using (var uplfileStream = System.IO.File.OpenRead(cdr))
+                    using (var uplfileStream = File.OpenRead(cdr))
                     {
                         SftpWorker.UploadFile(uplfileStream, fileName[fileName.Length - 1], true);
                     }
-                    OneFileTransfered();
+                    ChangeStatusEvent("Передаю файл " + Path.GetFileName(cdr) + " на сервер");
+                    OneFileTransfered();                    
                 }
                 SftpWorker.Disconnect();
             }
             catch(SshOperationTimeoutException exc)
             {
-                Status = exc.Message;
+                //Status = exc.Message;
+                ChangeStatusEvent("Превышен интервал ожидания. Проверьте настройки приложения и журнал");
+            }
+            catch(ArgumentException exc)
+            {
+                ChangeStatusEvent("Некорректный путь на сервере либо отсутсвуют права на запись. Проверьте настройки приложения и журнал");
+            }
+            catch(Exception exc)
+            {
+                ChangeStatusEvent("Неизвестная ошибка. Проверьте журнал для получения подробной информации");
             }
         }
     }

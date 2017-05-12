@@ -11,7 +11,10 @@ namespace DGenerator.CDR
     public class ConverterCdr
     {
         public delegate void ConvertOneFile();
+        public delegate void StatusDelegate(string statusMessage);
+
         public event ConvertOneFile ConvertFileEvent;
+        public event StatusDelegate ChangeStatusEvent;
 
         string[] AllFiles { get; }
         string DestinationPath { get; }
@@ -23,7 +26,8 @@ namespace DGenerator.CDR
         {
             AllFiles = filePaths;
             DestinationPath = destionationPath;
-            ConvertFileEvent = delegate { };           
+            ConvertFileEvent = delegate { };
+            ChangeStatusEvent = delegate { };
         }
 
         public ConverterCdr(string[] filePaths, string destionationPath, 
@@ -35,12 +39,14 @@ namespace DGenerator.CDR
             UseCorrectDurationCalls = useCorrectDurationCalls;
             CdrCorrectSettings = cdrCorrectparams;
             ConvertFileEvent = delegate { };
+            ChangeStatusEvent = delegate { };
         }
 
         public void Convert()
         {
             try
             {
+                ChangeStatusEvent("Приступаю к конвертированию CDR-файлов");
                 foreach (var cdr in AllFiles)
                 {
                     StreamReader fileStream = new StreamReader(cdr);
@@ -55,7 +61,7 @@ namespace DGenerator.CDR
 
                         if (RemoveNullDirationCalls & UseCorrectDurationCalls)
                         {
-
+                            ChangeStatusEvent("Данная функция находится в разработке. Проверьте настройки приложения");
                         }
                         else if (RemoveNullDirationCalls & !UseCorrectDurationCalls)
                         {
@@ -68,7 +74,7 @@ namespace DGenerator.CDR
                         }
                         else if (!RemoveNullDirationCalls & UseCorrectDurationCalls)
                         {
-                            
+                            ChangeStatusEvent("Данная функция находится в разработке. Проверьте настройки приложения");
                         }
                         else if (!RemoveNullDirationCalls & !UseCorrectDurationCalls)
                         {
@@ -81,11 +87,16 @@ namespace DGenerator.CDR
                     }                    
                     fileStream.Close();
                     ConvertFileEvent();
+                    ChangeStatusEvent("Файл " + Path.GetFileName(outCdrPath) + " конвертируется в формат UTM5");
                 }
+            }
+            catch(DirectoryNotFoundException exc)
+            {
+                ChangeStatusEvent("Некорректный путь для сохраниния CDR-ов. CDR-файлы не были сконвертированы");
             }
             catch (Exception exc)
             {
-
+                ChangeStatusEvent("Неизвестная ошибка. Проверьте журнал для получения подробной информации");
             }
         }
     }

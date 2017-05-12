@@ -109,6 +109,7 @@ namespace AKS_UTM_tools
                 Cdr = new CdrService(openFileDialog.FileNames);
 
                 Cdr.ConvertOneCdrEvent += ChangeCdrConvertProgress;
+                Cdr.ChangeStatusEvent += ChangeStatus;
                 Cdr.CurrentTaskFinished += FininshCdrConvert;
                 Cdr.Convert();
             }
@@ -144,8 +145,7 @@ namespace AKS_UTM_tools
             {
                 progressBar.Maximum = openFileDialog.FileNames.Length;
 
-                Cdr = new CdrService(openFileDialog.FileNames);
-
+                Cdr = new CdrService(openFileDialog.FileNames);                
                 Cdr.ZipOneCdrEvent += ChangeCdrArchiveProgress;
                 Cdr.ChangeStatusEvent += ChangeStatus;
                 Cdr.CurrentTaskFinished += FinishCdrArchive;
@@ -159,7 +159,7 @@ namespace AKS_UTM_tools
         {
             BeginInvoke((Action)delegate {
                 progressBar.Value++;
-                StatusLabel.Text = "Конвертирую CDR в формат UTM5";
+                StatusLabel.Text = Status;
             });
         }
 
@@ -167,11 +167,12 @@ namespace AKS_UTM_tools
         {
             BeginInvoke((Action)delegate {
                 progressBar.Value = 0;
-                StatusLabel.Text = "Все CDR-файлы были успешно сконвертированы";
+                StatusLabel.Text = Status;
             });
             if (Cdr != null)
             {
                 Cdr.ConvertOneCdrEvent -= ChangeCdrConvertProgress;
+                Cdr.ChangeStatusEvent -= ChangeStatus;
                 Cdr.CurrentTaskFinished -= FininshCdrConvert;
             }
         }
