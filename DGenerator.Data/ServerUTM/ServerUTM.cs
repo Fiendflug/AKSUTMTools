@@ -31,6 +31,7 @@ namespace DGenerator.Data.ServerUTM
             ServerConnectInfo = settings;
 
             OneFileTransfered = delegate { };
+            ChangeStatusEvent = delegate { };
 
             PasswordAuth = new PasswordAuthenticationMethod(ServerConnectInfo.ServerUsername, ServerConnectInfo.ServerPassword);
             KeyboardInteractiveAuth = new KeyboardInteractiveAuthenticationMethod(ServerConnectInfo.ServerUsername);
@@ -152,6 +153,7 @@ namespace DGenerator.Data.ServerUTM
                     OneFileTransfered();                    
                 }
                 SftpWorker.Disconnect();
+                ChangeStatusEvent("Все CDR-файлы успешно переданы на сервер");
             }
             catch(SshOperationTimeoutException exc)
             {

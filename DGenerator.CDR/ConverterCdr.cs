@@ -89,6 +89,7 @@ namespace DGenerator.CDR
                     ConvertFileEvent();
                     ChangeStatusEvent("Файл " + Path.GetFileName(outCdrPath) + " конвертируется в формат UTM5");
                 }
+                ChangeStatusEvent("Все CDR-файлы были успешно сконверитроавны");
             }
             catch(DirectoryNotFoundException exc)
             {

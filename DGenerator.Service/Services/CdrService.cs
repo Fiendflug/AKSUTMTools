@@ -66,10 +66,11 @@ namespace DGenerator.Service.Services
 
         public void Transfer()
         {
+            ServerConnect = ServerConnectService.GetInstance(FilePaths);
             Task.Factory.StartNew(() =>
-            {
-                ServerConnect = ServerConnectService.GetInstance(FilePaths);
+            {                
                 ServerConnect.CdrTransferEvent += TransferOneCdr;
+                ServerConnect.ChangeStatusEvent += ChangeStatus;
                 ServerConnect.Transfer();
             }).ContinueWith((f) =>
             {
@@ -114,6 +115,7 @@ namespace DGenerator.Service.Services
         {
             CurrentTaskFinished();
             ServerConnect.CdrTransferEvent -= TransferOneCdr;
+            ServerConnect.ChangeStatusEvent -= ChangeStatus;
         }
 
         void FinishConvert()

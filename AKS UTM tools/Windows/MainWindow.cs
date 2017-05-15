@@ -26,30 +26,31 @@ namespace AKS_UTM_tools
 
         void MainWindow_Load(object sender, EventArgs e)
         {
-            Settings = new SettingsService();
-            ConnectUtmServer = ServerConnectService.GetInstance();                             
+            Settings = new SettingsService();            
+            ConnectUtmServer = ServerConnectService.GetInstance();
+            ConnectUtmServer.ChangeStatusEvent += ChangeStatus;
         }
 
         // SSH connection to UTM server controls section
 
         private void ButtonSshConnection_Click(object sender, EventArgs e)
-        {
-            StatusLabel.Text = ConnectUtmServer.Connect();
+        {            
+            ConnectUtmServer.Connect();
         }
 
         void ButtonCloseSshConnection_Click(object sender, EventArgs e)
         {       
-            StatusLabel.Text = ConnectUtmServer.Disconnect();
+            ConnectUtmServer.Disconnect();
         }
 
         void ConnectToServerTopMenu_Click(object sender, EventArgs e)
         {
-            StatusLabel.Text = ConnectUtmServer.Connect();
+            ConnectUtmServer.Connect();
         }
 
         void DisconnectServerTopMenu_Click(object sender, EventArgs e)
         {
-            StatusLabel.Text = ConnectUtmServer.Disconnect();
+            ConnectUtmServer.Disconnect();
         }
 
         // CDR controls section
@@ -123,12 +124,13 @@ namespace AKS_UTM_tools
             openFileDialog.InitialDirectory = Settings.GetSetting("LocalCdrPath");
             openFileDialog.Multiselect = true;
             if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
+            {   
                 progressBar.Maximum = openFileDialog.FileNames.Length;
 
                 Cdr = new CdrService(openFileDialog.FileNames);
 
                 Cdr.TransferOneCdrEvent += ChangeCdrTransferProgress;
+                Cdr.ChangeStatusEvent += ChangeStatus;
                 Cdr.CurrentTaskFinished += FinishCdrTransfer;
                 Cdr.Transfer();
             }
@@ -159,10 +161,25 @@ namespace AKS_UTM_tools
         {
             BeginInvoke((Action)delegate {
                 progressBar.Value++;
-                StatusLabel.Text = Status;
             });
         }
 
+        void ChangeCdrTransferProgress()
+        {
+            BeginInvoke((Action)delegate {
+                progressBar.Value++;
+            });
+        }
+
+        void ChangeCdrArchiveProgress()
+        {
+            BeginInvoke((Action)delegate {
+                progressBar.Value++;
+            });
+        }
+
+        // Finish events Section
+        
         void FininshCdrConvert()
         {
             BeginInvoke((Action)delegate {
@@ -175,43 +192,20 @@ namespace AKS_UTM_tools
                 Cdr.ChangeStatusEvent -= ChangeStatus;
                 Cdr.CurrentTaskFinished -= FininshCdrConvert;
             }
-        }
-
-        void ChangeCdrTransferProgress()
-        {
-            BeginInvoke((Action)delegate {
-                progressBar.Value++;
-                StatusLabel.Text = "Передаю CDR-файлы на сервер";
-            });
-        }
+        }        
 
         void FinishCdrTransfer()
         {
             BeginInvoke((Action)delegate {
                 progressBar.Value = 0;
-                StatusLabel.Text = "Все CDR-файлы были успешно переданы на сервер";
+                StatusLabel.Text = Status;
             });
             if (Cdr != null)
             {
                 Cdr.TransferOneCdrEvent -= ChangeCdrTransferProgress;
                 Cdr.CurrentTaskFinished -= FinishCdrTransfer;
             }
-        }
-
-        void ChangeCdrArchiveProgress()
-        {
-            BeginInvoke((Action)delegate {
-                progressBar.Value++;
-                StatusLabel.Text = Status;
-            });
-        }
-
-        void ChangeStatus(string statusMessage)
-        {
-            BeginInvoke((Action)delegate {
-                Status = statusMessage;
-            });
-        }
+        }        
 
         void FinishCdrArchive()
         {
@@ -225,6 +219,16 @@ namespace AKS_UTM_tools
                 Cdr.ChangeStatusEvent -= ChangeStatus;
                 Cdr.CurrentTaskFinished -= FinishCdrArchive;
             }
+        }
+
+        // Status info section
+        
+        void ChangeStatus(string statusMessage)
+        {
+            BeginInvoke((Action)delegate {
+                Status = statusMessage;
+                StatusLabel.Text = statusMessage;
+            });
         }
 
         // Settings control
@@ -243,9 +247,7 @@ namespace AKS_UTM_tools
 
         void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
-                          
-        }
-
-        
+                   
+        }        
     }
 }

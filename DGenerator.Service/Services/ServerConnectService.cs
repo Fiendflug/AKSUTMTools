@@ -18,7 +18,10 @@ namespace DGenerator.Service.Services
         string[] CdrsForTransfer { get; set; }
 
         public delegate void TransferProgress();
+        public delegate void ChangeStatusDelegate(string statusMessage);
+
         public event TransferProgress CdrTransferEvent;
+        public event ChangeStatusDelegate ChangeStatusEvent;
 
         private ServerConnectService()
         {
@@ -33,9 +36,12 @@ namespace DGenerator.Service.Services
             };
 
             CdrTransferEvent = delegate { };
+            ChangeStatusEvent = delegate { };
 
             Server = new ServerUTM(Settings);
+
             Server.OneFileTransfered += CdrTransfered;
+            Server.ChangeStatusEvent += ChangeStatus;
         }
 
         public static ServerConnectService GetInstance()
@@ -53,16 +59,14 @@ namespace DGenerator.Service.Services
             return Instance;
         }
 
-        public string Connect()
-        {
+        public void Connect()
+        {            
             Server.Connect();
-            return Server.Status;
         }
 
-        public string Disconnect()
-        {
+        public void Disconnect()
+        {            
             Server.Disconnect();
-            return Server.Status;
         }
 
         public void Transfer()
@@ -83,9 +87,14 @@ namespace DGenerator.Service.Services
             Server = new ServerUTM(Settings);
         }
 
+        void ChangeStatus(string statusMesasge)
+        {
+            ChangeStatusEvent(statusMesasge);
+        }
+
         void CdrTransfered()
         {
-            CdrTransferEvent();            
+            CdrTransferEvent();
         }
     }
 }
