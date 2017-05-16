@@ -100,9 +100,10 @@
             this.SshConnectionButton = new System.Windows.Forms.Button();
             this.pictureBoxWait = new System.Windows.Forms.PictureBox();
             this.StatusLabel = new System.Windows.Forms.Label();
-            this.mainDataGrid = new System.Windows.Forms.DataGridView();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.mainDataGrid = new System.Windows.Forms.DataGridView();
+            this.periodLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMain)).BeginInit();
             this.menuStripMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWait)).BeginInit();
@@ -117,7 +118,7 @@
             this.dataGridViewMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewMain.Location = new System.Drawing.Point(12, 69);
             this.dataGridViewMain.Name = "dataGridViewMain";
-            this.dataGridViewMain.Size = new System.Drawing.Size(992, 624);
+            this.dataGridViewMain.Size = new System.Drawing.Size(1248, 880);
             this.dataGridViewMain.TabIndex = 0;
             // 
             // menuStripMain
@@ -130,7 +131,7 @@
             this.помощьToolStripMenuItem});
             this.menuStripMain.Location = new System.Drawing.Point(0, 0);
             this.menuStripMain.Name = "menuStripMain";
-            this.menuStripMain.Size = new System.Drawing.Size(1016, 24);
+            this.menuStripMain.Size = new System.Drawing.Size(1272, 24);
             this.menuStripMain.TabIndex = 1;
             // 
             // системаToolStripMenuItem
@@ -143,45 +144,46 @@
             this.toolStripSeparator9,
             this.QuitTopMenu});
             this.системаToolStripMenuItem.Name = "системаToolStripMenuItem";
-            this.системаToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.системаToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.системаToolStripMenuItem.Text = "Система";
             // 
             // PeriodTopMenu
             // 
             this.PeriodTopMenu.Image = global::AKS_UTM_tools.Properties.Resources.calendar_24px;
             this.PeriodTopMenu.Name = "PeriodTopMenu";
-            this.PeriodTopMenu.Size = new System.Drawing.Size(227, 22);
+            this.PeriodTopMenu.Size = new System.Drawing.Size(216, 22);
             this.PeriodTopMenu.Text = "Выбрать расчетный период";
+            this.PeriodTopMenu.Click += new System.EventHandler(this.PeriodTopMenu_Click);
             // 
             // FinderTopMenu
             // 
             this.FinderTopMenu.Image = ((System.Drawing.Image)(resources.GetObject("FinderTopMenu.Image")));
             this.FinderTopMenu.Name = "FinderTopMenu";
-            this.FinderTopMenu.Size = new System.Drawing.Size(227, 22);
+            this.FinderTopMenu.Size = new System.Drawing.Size(216, 22);
             this.FinderTopMenu.Text = "Найти клиента";
             // 
             // toolStripSeparator10
             // 
             this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(224, 6);
+            this.toolStripSeparator10.Size = new System.Drawing.Size(213, 6);
             // 
             // SettingsTopMenu
             // 
             this.SettingsTopMenu.Image = global::AKS_UTM_tools.Properties.Resources.settings_24px;
             this.SettingsTopMenu.Name = "SettingsTopMenu";
-            this.SettingsTopMenu.Size = new System.Drawing.Size(227, 22);
+            this.SettingsTopMenu.Size = new System.Drawing.Size(216, 22);
             this.SettingsTopMenu.Text = "Настройки";
             // 
             // toolStripSeparator9
             // 
             this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(224, 6);
+            this.toolStripSeparator9.Size = new System.Drawing.Size(213, 6);
             // 
             // QuitTopMenu
             // 
             this.QuitTopMenu.Image = ((System.Drawing.Image)(resources.GetObject("QuitTopMenu.Image")));
             this.QuitTopMenu.Name = "QuitTopMenu";
-            this.QuitTopMenu.Size = new System.Drawing.Size(227, 22);
+            this.QuitTopMenu.Size = new System.Drawing.Size(216, 22);
             this.QuitTopMenu.Text = "Выйти";
             // 
             // действияToolStripMenuItem
@@ -190,14 +192,14 @@
             this.ConnectToServerTopMenu,
             this.DisconnectServerTopMenu});
             this.действияToolStripMenuItem.Name = "действияToolStripMenuItem";
-            this.действияToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
+            this.действияToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
             this.действияToolStripMenuItem.Text = "Соединения";
             // 
             // ConnectToServerTopMenu
             // 
             this.ConnectToServerTopMenu.Image = ((System.Drawing.Image)(resources.GetObject("ConnectToServerTopMenu.Image")));
             this.ConnectToServerTopMenu.Name = "ConnectToServerTopMenu";
-            this.ConnectToServerTopMenu.Size = new System.Drawing.Size(215, 22);
+            this.ConnectToServerTopMenu.Size = new System.Drawing.Size(206, 22);
             this.ConnectToServerTopMenu.Text = "Открыть SSH-соединение";
             this.ConnectToServerTopMenu.Click += new System.EventHandler(this.ConnectToServerTopMenu_Click);
             // 
@@ -205,7 +207,7 @@
             // 
             this.DisconnectServerTopMenu.Image = global::AKS_UTM_tools.Properties.Resources.ssh_close_24px;
             this.DisconnectServerTopMenu.Name = "DisconnectServerTopMenu";
-            this.DisconnectServerTopMenu.Size = new System.Drawing.Size(215, 22);
+            this.DisconnectServerTopMenu.Size = new System.Drawing.Size(206, 22);
             this.DisconnectServerTopMenu.Text = "Закрыть SSH-соединение";
             this.DisconnectServerTopMenu.Click += new System.EventHandler(this.DisconnectServerTopMenu_Click);
             // 
@@ -218,14 +220,14 @@
             this.ViewCdrInFolderTopMenu,
             this.ZipCdrTopMenu});
             this.действияToolStripMenuItem1.Name = "действияToolStripMenuItem1";
-            this.действияToolStripMenuItem1.Size = new System.Drawing.Size(42, 20);
+            this.действияToolStripMenuItem1.Size = new System.Drawing.Size(40, 20);
             this.действияToolStripMenuItem1.Text = "CDR";
             // 
             // ConvertCdrTopMenu
             // 
             this.ConvertCdrTopMenu.Image = global::AKS_UTM_tools.Properties.Resources.convert_24px;
             this.ConvertCdrTopMenu.Name = "ConvertCdrTopMenu";
-            this.ConvertCdrTopMenu.Size = new System.Drawing.Size(252, 22);
+            this.ConvertCdrTopMenu.Size = new System.Drawing.Size(238, 22);
             this.ConvertCdrTopMenu.Text = "Преобразовать в UTM формат";
             this.ConvertCdrTopMenu.Click += new System.EventHandler(this.ConvertCdrTopMenu_Click);
             // 
@@ -233,20 +235,20 @@
             // 
             this.TransferCdrToServerTopMenu.Image = global::AKS_UTM_tools.Properties.Resources.upload_24px;
             this.TransferCdrToServerTopMenu.Name = "TransferCdrToServerTopMenu";
-            this.TransferCdrToServerTopMenu.Size = new System.Drawing.Size(252, 22);
+            this.TransferCdrToServerTopMenu.Size = new System.Drawing.Size(238, 22);
             this.TransferCdrToServerTopMenu.Text = "Передать файлы на сервер UTM";
             this.TransferCdrToServerTopMenu.Click += new System.EventHandler(this.TransferCdrToServerTopMenu_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(249, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(235, 6);
             // 
             // ViewCdrInFolderTopMenu
             // 
             this.ViewCdrInFolderTopMenu.Image = global::AKS_UTM_tools.Properties.Resources.browse_24px;
             this.ViewCdrInFolderTopMenu.Name = "ViewCdrInFolderTopMenu";
-            this.ViewCdrInFolderTopMenu.Size = new System.Drawing.Size(252, 22);
+            this.ViewCdrInFolderTopMenu.Size = new System.Drawing.Size(238, 22);
             this.ViewCdrInFolderTopMenu.Text = "Просмотреть файлы";
             this.ViewCdrInFolderTopMenu.Click += new System.EventHandler(this.ViewCdrInFolderTopMenu_Click);
             // 
@@ -254,8 +256,9 @@
             // 
             this.ZipCdrTopMenu.Image = global::AKS_UTM_tools.Properties.Resources.arch_24px;
             this.ZipCdrTopMenu.Name = "ZipCdrTopMenu";
-            this.ZipCdrTopMenu.Size = new System.Drawing.Size(252, 22);
+            this.ZipCdrTopMenu.Size = new System.Drawing.Size(238, 22);
             this.ZipCdrTopMenu.Text = "Зархивировать файлы";
+            this.ZipCdrTopMenu.Click += new System.EventHandler(this.ZipCdrTopMenu_Click);
             // 
             // документыToolStripMenuItem
             // 
@@ -266,7 +269,7 @@
             this.сформироватьМежоператорскийОтчетToolStripMenuItem,
             this.сформироватьОтчетПоТрафикуToolStripMenuItem});
             this.документыToolStripMenuItem.Name = "документыToolStripMenuItem";
-            this.документыToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
+            this.документыToolStripMenuItem.Size = new System.Drawing.Size(77, 20);
             this.документыToolStripMenuItem.Text = "Документы";
             // 
             // сформироватьДетализацииToolStripMenuItem
@@ -280,45 +283,45 @@
             this.выделенномуКлиентуToolStripMenuItem});
             this.сформироватьДетализацииToolStripMenuItem.Image = global::AKS_UTM_tools.Properties.Resources.detail_24px;
             this.сформироватьДетализацииToolStripMenuItem.Name = "сформироватьДетализацииToolStripMenuItem";
-            this.сформироватьДетализацииToolStripMenuItem.Size = new System.Drawing.Size(296, 22);
+            this.сформироватьДетализацииToolStripMenuItem.Size = new System.Drawing.Size(276, 22);
             this.сформироватьДетализацииToolStripMenuItem.Text = "Сформировать детализации";
             // 
             // всемПользователямToolStripMenuItem
             // 
             this.всемПользователямToolStripMenuItem.Image = global::AKS_UTM_tools.Properties.Resources.all_clients_24px;
             this.всемПользователямToolStripMenuItem.Name = "всемПользователямToolStripMenuItem";
-            this.всемПользователямToolStripMenuItem.Size = new System.Drawing.Size(234, 22);
+            this.всемПользователямToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
             this.всемПользователямToolStripMenuItem.Text = "Всем пользователям";
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(231, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(212, 6);
             // 
             // толькоФизическимЛицамToolStripMenuItem
             // 
             this.толькоФизическимЛицамToolStripMenuItem.Image = global::AKS_UTM_tools.Properties.Resources.legal_24px;
             this.толькоФизическимЛицамToolStripMenuItem.Name = "толькоФизическимЛицамToolStripMenuItem";
-            this.толькоФизическимЛицамToolStripMenuItem.Size = new System.Drawing.Size(234, 22);
+            this.толькоФизическимЛицамToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
             this.толькоФизическимЛицамToolStripMenuItem.Text = "Только физическим лицам";
             // 
             // толькоЮридическимЛицамToolStripMenuItem
             // 
             this.толькоЮридическимЛицамToolStripMenuItem.Image = global::AKS_UTM_tools.Properties.Resources.organizations_24px;
             this.толькоЮридическимЛицамToolStripMenuItem.Name = "толькоЮридическимЛицамToolStripMenuItem";
-            this.толькоЮридическимЛицамToolStripMenuItem.Size = new System.Drawing.Size(234, 22);
+            this.толькоЮридическимЛицамToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
             this.толькоЮридическимЛицамToolStripMenuItem.Text = "Только юридическим лицам";
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(231, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(212, 6);
             // 
             // выделенномуКлиентуToolStripMenuItem
             // 
             this.выделенномуКлиентуToolStripMenuItem.Image = global::AKS_UTM_tools.Properties.Resources.selected_24px;
             this.выделенномуКлиентуToolStripMenuItem.Name = "выделенномуКлиентуToolStripMenuItem";
-            this.выделенномуКлиентуToolStripMenuItem.Size = new System.Drawing.Size(234, 22);
+            this.выделенномуКлиентуToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
             this.выделенномуКлиентуToolStripMenuItem.Text = "Выделенному клиенту";
             // 
             // сформироватьКвитанцииToolStripMenuItem
@@ -329,26 +332,26 @@
             this.выделенномуКлиентуToolStripMenuItem1});
             this.сформироватьКвитанцииToolStripMenuItem.Image = global::AKS_UTM_tools.Properties.Resources.bill_24px;
             this.сформироватьКвитанцииToolStripMenuItem.Name = "сформироватьКвитанцииToolStripMenuItem";
-            this.сформироватьКвитанцииToolStripMenuItem.Size = new System.Drawing.Size(296, 22);
+            this.сформироватьКвитанцииToolStripMenuItem.Size = new System.Drawing.Size(276, 22);
             this.сформироватьКвитанцииToolStripMenuItem.Text = "Сформировать квитанции";
             // 
             // физическимЛицамToolStripMenuItem
             // 
             this.физическимЛицамToolStripMenuItem.Image = global::AKS_UTM_tools.Properties.Resources.legal_24px1;
             this.физическимЛицамToolStripMenuItem.Name = "физическимЛицамToolStripMenuItem";
-            this.физическимЛицамToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.физическимЛицамToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.физическимЛицамToolStripMenuItem.Text = "Физическим лицам";
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(195, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(185, 6);
             // 
             // выделенномуКлиентуToolStripMenuItem1
             // 
             this.выделенномуКлиентуToolStripMenuItem1.Image = global::AKS_UTM_tools.Properties.Resources.selected_24px;
             this.выделенномуКлиентуToolStripMenuItem1.Name = "выделенномуКлиентуToolStripMenuItem1";
-            this.выделенномуКлиентуToolStripMenuItem1.Size = new System.Drawing.Size(198, 22);
+            this.выделенномуКлиентуToolStripMenuItem1.Size = new System.Drawing.Size(188, 22);
             this.выделенномуКлиентуToolStripMenuItem1.Text = "Выделенному клиенту";
             // 
             // сформироватьОтчетыToolStripMenuItem
@@ -360,40 +363,40 @@
             this.толькоЮридическимЛицамToolStripMenuItem1});
             this.сформироватьОтчетыToolStripMenuItem.Image = global::AKS_UTM_tools.Properties.Resources.base_report_24px;
             this.сформироватьОтчетыToolStripMenuItem.Name = "сформироватьОтчетыToolStripMenuItem";
-            this.сформироватьОтчетыToolStripMenuItem.Size = new System.Drawing.Size(296, 22);
+            this.сформироватьОтчетыToolStripMenuItem.Size = new System.Drawing.Size(276, 22);
             this.сформироватьОтчетыToolStripMenuItem.Text = "Сформировать базовый отчет";
             // 
             // всемПользователямToolStripMenuItem1
             // 
             this.всемПользователямToolStripMenuItem1.Image = global::AKS_UTM_tools.Properties.Resources.all_clients_24px;
             this.всемПользователямToolStripMenuItem1.Name = "всемПользователямToolStripMenuItem1";
-            this.всемПользователямToolStripMenuItem1.Size = new System.Drawing.Size(234, 22);
+            this.всемПользователямToolStripMenuItem1.Size = new System.Drawing.Size(215, 22);
             this.всемПользователямToolStripMenuItem1.Text = "Всем пользователям";
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(231, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(212, 6);
             // 
             // толькоФизическимЛицамToolStripMenuItem1
             // 
             this.толькоФизическимЛицамToolStripMenuItem1.Image = global::AKS_UTM_tools.Properties.Resources.legal_24px;
             this.толькоФизическимЛицамToolStripMenuItem1.Name = "толькоФизическимЛицамToolStripMenuItem1";
-            this.толькоФизическимЛицамToolStripMenuItem1.Size = new System.Drawing.Size(234, 22);
+            this.толькоФизическимЛицамToolStripMenuItem1.Size = new System.Drawing.Size(215, 22);
             this.толькоФизическимЛицамToolStripMenuItem1.Text = "Только физическим лицам";
             // 
             // толькоЮридическимЛицамToolStripMenuItem1
             // 
             this.толькоЮридическимЛицамToolStripMenuItem1.Image = global::AKS_UTM_tools.Properties.Resources.organizations_24px;
             this.толькоЮридическимЛицамToolStripMenuItem1.Name = "толькоЮридическимЛицамToolStripMenuItem1";
-            this.толькоЮридическимЛицамToolStripMenuItem1.Size = new System.Drawing.Size(234, 22);
+            this.толькоЮридическимЛицамToolStripMenuItem1.Size = new System.Drawing.Size(215, 22);
             this.толькоЮридическимЛицамToolStripMenuItem1.Text = "Только юридическим лицам";
             // 
             // сформироватьМежоператорскийОтчетToolStripMenuItem
             // 
             this.сформироватьМежоператорскийОтчетToolStripMenuItem.Image = global::AKS_UTM_tools.Properties.Resources.operatirs_report_24px;
             this.сформироватьМежоператорскийОтчетToolStripMenuItem.Name = "сформироватьМежоператорскийОтчетToolStripMenuItem";
-            this.сформироватьМежоператорскийОтчетToolStripMenuItem.Size = new System.Drawing.Size(296, 22);
+            this.сформироватьМежоператорскийОтчетToolStripMenuItem.Size = new System.Drawing.Size(276, 22);
             this.сформироватьМежоператорскийОтчетToolStripMenuItem.Text = "Сформировать межоператорский отчет";
             // 
             // сформироватьОтчетПоТрафикуToolStripMenuItem
@@ -404,28 +407,28 @@
             this.транкГруппаВСторонуБилайнToolStripMenuItem});
             this.сформироватьОтчетПоТрафикуToolStripMenuItem.Image = global::AKS_UTM_tools.Properties.Resources.traffic_report_24px;
             this.сформироватьОтчетПоТрафикуToolStripMenuItem.Name = "сформироватьОтчетПоТрафикуToolStripMenuItem";
-            this.сформироватьОтчетПоТрафикуToolStripMenuItem.Size = new System.Drawing.Size(296, 22);
+            this.сформироватьОтчетПоТрафикуToolStripMenuItem.Size = new System.Drawing.Size(276, 22);
             this.сформироватьОтчетПоТрафикуToolStripMenuItem.Text = "Сформировать отчет по трафику";
             // 
             // поВсемОператорамToolStripMenuItem
             // 
             this.поВсемОператорамToolStripMenuItem.Image = global::AKS_UTM_tools.Properties.Resources.all_clients_24px;
             this.поВсемОператорамToolStripMenuItem.Name = "поВсемОператорамToolStripMenuItem";
-            this.поВсемОператорамToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
+            this.поВсемОператорамToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.поВсемОператорамToolStripMenuItem.Text = "По всем операторам";
             // 
             // транкГруппаВСторонуРостелекомToolStripMenuItem
             // 
             this.транкГруппаВСторонуРостелекомToolStripMenuItem.Image = global::AKS_UTM_tools.Properties.Resources.rostelekom_24px;
             this.транкГруппаВСторонуРостелекомToolStripMenuItem.Name = "транкГруппаВСторонуРостелекомToolStripMenuItem";
-            this.транкГруппаВСторонуРостелекомToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
+            this.транкГруппаВСторонуРостелекомToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.транкГруппаВСторонуРостелекомToolStripMenuItem.Text = "Транк группа в сторону Ростелеком";
             // 
             // транкГруппаВСторонуБилайнToolStripMenuItem
             // 
             this.транкГруппаВСторонуБилайнToolStripMenuItem.Image = global::AKS_UTM_tools.Properties.Resources.beeline_24px;
             this.транкГруппаВСторонуБилайнToolStripMenuItem.Name = "транкГруппаВСторонуБилайнToolStripMenuItem";
-            this.транкГруппаВСторонуБилайнToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
+            this.транкГруппаВСторонуБилайнToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.транкГруппаВСторонуБилайнToolStripMenuItem.Text = "Транк группа в сторону Билайн";
             // 
             // помощьToolStripMenuItem
@@ -437,38 +440,38 @@
             this.toolStripSeparator8,
             this.лицензионноеСоглашениеToolStripMenuItem});
             this.помощьToolStripMenuItem.Name = "помощьToolStripMenuItem";
-            this.помощьToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
+            this.помощьToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.помощьToolStripMenuItem.Text = "Помощь";
             // 
             // справкаToolStripMenuItem
             // 
             this.справкаToolStripMenuItem.Image = global::AKS_UTM_tools.Properties.Resources.help_24px;
             this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
+            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
             this.справкаToolStripMenuItem.Text = "Справка";
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(223, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(206, 6);
             // 
             // оПрограммеToolStripMenuItem
             // 
             this.оПрограммеToolStripMenuItem.Image = global::AKS_UTM_tools.Properties.Resources.about_24px;
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
             // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(223, 6);
+            this.toolStripSeparator8.Size = new System.Drawing.Size(206, 6);
             // 
             // лицензионноеСоглашениеToolStripMenuItem
             // 
             this.лицензионноеСоглашениеToolStripMenuItem.Image = global::AKS_UTM_tools.Properties.Resources.license_24px;
             this.лицензионноеСоглашениеToolStripMenuItem.Name = "лицензионноеСоглашениеToolStripMenuItem";
-            this.лицензионноеСоглашениеToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
+            this.лицензионноеСоглашениеToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
             this.лицензионноеСоглашениеToolStripMenuItem.Text = "Лицензионное соглашение";
             // 
             // buttonShowOrganizationClients
@@ -477,7 +480,7 @@
             this.buttonShowOrganizationClients.FlatAppearance.BorderSize = 0;
             this.buttonShowOrganizationClients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonShowOrganizationClients.Image = global::AKS_UTM_tools.Properties.Resources.organizations_24px;
-            this.buttonShowOrganizationClients.Location = new System.Drawing.Point(96, 701);
+            this.buttonShowOrganizationClients.Location = new System.Drawing.Point(96, 957);
             this.buttonShowOrganizationClients.Name = "buttonShowOrganizationClients";
             this.buttonShowOrganizationClients.Size = new System.Drawing.Size(28, 28);
             this.buttonShowOrganizationClients.TabIndex = 28;
@@ -490,7 +493,7 @@
             this.buttonShowLegalClients.FlatAppearance.BorderSize = 0;
             this.buttonShowLegalClients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonShowLegalClients.Image = global::AKS_UTM_tools.Properties.Resources.legal_24px;
-            this.buttonShowLegalClients.Location = new System.Drawing.Point(54, 701);
+            this.buttonShowLegalClients.Location = new System.Drawing.Point(54, 957);
             this.buttonShowLegalClients.Name = "buttonShowLegalClients";
             this.buttonShowLegalClients.Size = new System.Drawing.Size(28, 28);
             this.buttonShowLegalClients.TabIndex = 27;
@@ -503,7 +506,7 @@
             this.buttonShowAllClients.FlatAppearance.BorderSize = 0;
             this.buttonShowAllClients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonShowAllClients.Image = global::AKS_UTM_tools.Properties.Resources.all_clients_24px1;
-            this.buttonShowAllClients.Location = new System.Drawing.Point(12, 701);
+            this.buttonShowAllClients.Location = new System.Drawing.Point(12, 957);
             this.buttonShowAllClients.Name = "buttonShowAllClients";
             this.buttonShowAllClients.Size = new System.Drawing.Size(28, 28);
             this.buttonShowAllClients.TabIndex = 26;
@@ -521,6 +524,7 @@
             this.PeriodButton.TabIndex = 25;
             this.toolTipMain.SetToolTip(this.PeriodButton, "Выбрать отчетный период");
             this.PeriodButton.UseVisualStyleBackColor = true;
+            this.PeriodButton.Click += new System.EventHandler(this.PeriodButton_Click);
             // 
             // FinderButton
             // 
@@ -743,7 +747,7 @@
             this.pictureBoxWait.InitialImage = null;
             this.pictureBoxWait.Location = new System.Drawing.Point(12, 69);
             this.pictureBoxWait.Name = "pictureBoxWait";
-            this.pictureBoxWait.Size = new System.Drawing.Size(992, 624);
+            this.pictureBoxWait.Size = new System.Drawing.Size(1248, 880);
             this.pictureBoxWait.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxWait.TabIndex = 29;
             this.pictureBoxWait.TabStop = false;
@@ -752,11 +756,19 @@
             // 
             this.StatusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.StatusLabel.AutoSize = true;
-            this.StatusLabel.Location = new System.Drawing.Point(145, 711);
+            this.StatusLabel.Location = new System.Drawing.Point(145, 967);
             this.StatusLabel.Name = "StatusLabel";
             this.StatusLabel.Size = new System.Drawing.Size(256, 13);
             this.StatusLabel.TabIndex = 30;
             this.StatusLabel.Text = "Подключение к серверу еще не осуществлялось";
+            // 
+            // progressBar
+            // 
+            this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar.Location = new System.Drawing.Point(960, 965);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(300, 20);
+            this.progressBar.TabIndex = 33;
             // 
             // mainDataGrid
             // 
@@ -766,22 +778,27 @@
             this.mainDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.mainDataGrid.Location = new System.Drawing.Point(12, 69);
             this.mainDataGrid.Name = "mainDataGrid";
-            this.mainDataGrid.Size = new System.Drawing.Size(992, 624);
+            this.mainDataGrid.Size = new System.Drawing.Size(1248, 880);
             this.mainDataGrid.TabIndex = 31;
             // 
-            // progressBar
+            // periodLabel
             // 
-            this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar.Location = new System.Drawing.Point(704, 709);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(300, 20);
-            this.progressBar.TabIndex = 33;
+            this.periodLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.periodLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.periodLabel.Location = new System.Drawing.Point(994, 34);
+            this.periodLabel.Name = "periodLabel";
+            this.periodLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.periodLabel.Size = new System.Drawing.Size(266, 23);
+            this.periodLabel.TabIndex = 34;
+            this.periodLabel.Text = "Расчетный период - ";
+            this.periodLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1016, 741);
+            this.ClientSize = new System.Drawing.Size(1272, 997);
+            this.Controls.Add(this.periodLabel);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.mainDataGrid);
             this.Controls.Add(this.StatusLabel);
@@ -810,6 +827,7 @@
             this.Controls.Add(this.dataGridViewMain);
             this.Controls.Add(this.menuStripMain);
             this.MainMenuStrip = this.menuStripMain;
+            this.MinimumSize = new System.Drawing.Size(1278, 978);
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DGenerator";
@@ -898,9 +916,10 @@
         private System.Windows.Forms.Button buttonShowOrganizationClients;
         private System.Windows.Forms.PictureBox pictureBoxWait;
         private System.Windows.Forms.Label StatusLabel;
-        private System.Windows.Forms.DataGridView mainDataGrid;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.DataGridView mainDataGrid;
+        private System.Windows.Forms.Label periodLabel;
     }
 }
 

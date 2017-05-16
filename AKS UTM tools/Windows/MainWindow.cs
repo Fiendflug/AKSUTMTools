@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using DGenerator.Service.Services;
+using System.Globalization;
 
 namespace AKS_UTM_tools
 {
@@ -16,6 +17,7 @@ namespace AKS_UTM_tools
         SettingsService Settings { get; set; }
         CdrService Cdr { get; set; }
         ServerConnectService ConnectUtmServer { get; set; }
+        PeriodService Period { get; set; }
 
         string Status { get; set; }
         
@@ -27,8 +29,13 @@ namespace AKS_UTM_tools
         void MainWindow_Load(object sender, EventArgs e)
         {
             Settings = new SettingsService();            
+
             ConnectUtmServer = ServerConnectService.GetInstance();
             ConnectUtmServer.ChangeStatusEvent += ChangeStatus;
+
+            Period = PeriodService.GetInstance();
+            Period.ShowPeriodEvent += ChangePeriodStatus;
+            ChangePeriodStatus();
         }
 
         // SSH connection to UTM server controls section
@@ -72,6 +79,11 @@ namespace AKS_UTM_tools
             Cdr.View();
         }
 
+        void ZipCdrButton_Click(object sender, EventArgs e)
+        {
+            ArchiveCdr();
+        }
+
         void ConvertCdrTopMenu_Click(object sender, EventArgs e)
         {
             ConvertCdr();
@@ -89,9 +101,21 @@ namespace AKS_UTM_tools
             Cdr.View();
         }
 
-        void ZipCdrButton_Click(object sender, EventArgs e)
+        private void ZipCdrTopMenu_Click(object sender, EventArgs e)
         {
             ArchiveCdr();
+        }
+
+        // Period controls section
+
+        private void PeriodButton_Click(object sender, EventArgs e)
+        {
+            SetPeriod();
+        }
+
+        private void PeriodTopMenu_Click(object sender, EventArgs e)
+        {
+            SetPeriod();
         }
 
         // CDR methods section
@@ -155,7 +179,18 @@ namespace AKS_UTM_tools
             }
         }
 
-        // Progress Info Section
+        // Period methods section
+
+        void SetPeriod()
+        {
+            PeriodWindow periodFormDialog = new PeriodWindow();
+            if (periodFormDialog.ShowDialog() == DialogResult.OK)
+            {
+                Period.SetCurrentPeriod(periodFormDialog.dateTimePicker.Value);
+            }
+        }
+
+        // Progressinfo section
 
         void ChangeCdrConvertProgress()
         {
@@ -229,6 +264,12 @@ namespace AKS_UTM_tools
                 Status = statusMessage;
                 StatusLabel.Text = statusMessage;
             });
+        }
+
+        void ChangePeriodStatus()
+        {
+            periodLabel.Text = "Расчетный период - " +
+                Period.LabeledPeriod.ToString("MMMM") + " " + Period.LabeledPeriod.Year.ToString();
         }
 
         // Settings control

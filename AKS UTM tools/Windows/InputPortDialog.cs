@@ -22,5 +22,10 @@ namespace AKS_UTM_tools.Windows
             submitButton.DialogResult = DialogResult.OK;
             cancelButton.DialogResult = DialogResult.Cancel;
         }
+
+        private void submitButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
