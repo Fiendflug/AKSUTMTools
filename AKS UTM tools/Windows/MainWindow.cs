@@ -190,6 +190,18 @@ namespace AKS_UTM_tools
             }
         }
 
+        // Settings methods section
+
+        void ShowSettingsForm()
+        {
+            SettingsWindow settingsFormDialog = new SettingsWindow();
+            if (settingsFormDialog.ShowDialog() == DialogResult.OK)
+            {
+                //ConnectUtmServer.RefreshConnectionSettings(); Обнаовляем комменкт
+                ChangeStatus("Конфигурация приложения успешно изменена");
+            }
+        }
+
         // Progressinfo section
 
         void ChangeCdrConvertProgress()
@@ -262,7 +274,7 @@ namespace AKS_UTM_tools
         {
             BeginInvoke((Action)delegate {
                 Status = statusMessage;
-                StatusLabel.Text = statusMessage;
+                StatusLabel.Text = Status;
             });
         }
 
@@ -276,19 +288,24 @@ namespace AKS_UTM_tools
 
         void SettingsButton_Click(object sender, EventArgs e)
         {
-            SettingsWindow settingsFormDialog = new SettingsWindow();
-            if (settingsFormDialog.ShowDialog() == DialogResult.OK)
-            {
-                ConnectUtmServer.RefreshConnectionSettings();
-                StatusLabel.Text = "Конфигурация приложения успешно изменена";
-            }
+            ShowSettingsForm();
         }
 
-        // Common section
-
-        void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        private void SettingsTopMenu_Click(object sender, EventArgs e)
         {
-                   
-        }        
+            ShowSettingsForm();
+        }
+
+        // Common controls section
+
+        private void QuitButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void QuitTopMenu_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

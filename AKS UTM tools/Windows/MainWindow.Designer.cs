@@ -173,6 +173,7 @@
             this.SettingsTopMenu.Name = "SettingsTopMenu";
             this.SettingsTopMenu.Size = new System.Drawing.Size(216, 22);
             this.SettingsTopMenu.Text = "Настройки";
+            this.SettingsTopMenu.Click += new System.EventHandler(this.SettingsTopMenu_Click);
             // 
             // toolStripSeparator9
             // 
@@ -185,6 +186,7 @@
             this.QuitTopMenu.Name = "QuitTopMenu";
             this.QuitTopMenu.Size = new System.Drawing.Size(216, 22);
             this.QuitTopMenu.Text = "Выйти";
+            this.QuitTopMenu.Click += new System.EventHandler(this.QuitTopMenu_Click);
             // 
             // действияToolStripMenuItem
             // 
@@ -549,6 +551,7 @@
             this.QuitButton.TabIndex = 23;
             this.toolTipMain.SetToolTip(this.QuitButton, "Выйти");
             this.QuitButton.UseVisualStyleBackColor = true;
+            this.QuitButton.Click += new System.EventHandler(this.QuitButton_Click);
             // 
             // buttonLicense
             // 
@@ -832,7 +835,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DGenerator";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.Load += new System.EventHandler(this.MainWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMain)).EndInit();
             this.menuStripMain.ResumeLayout(false);
