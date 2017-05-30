@@ -18,8 +18,7 @@ namespace DGenerator.Data.ServerUTM
         ConnectionInfo SshWorkerConnectionInfo { get; set; }
         PasswordAuthenticationMethod PasswordAuth { get; set; }
         KeyboardInteractiveAuthenticationMethod KeyboardInteractiveAuth { get; set; }
-        public string Status { get; set; } //Статус перенести в то место где будет образение к базе данных
-        
+                
         public delegate void TransferStatus();
         public delegate void StatusDelegate(string statusMessage);
 
@@ -52,7 +51,9 @@ namespace DGenerator.Data.ServerUTM
                 if (!SshWorker.IsConnected)
                 {
                     SshWorker.Connect();
-                    var tunnelPort = new ForwardedPortLocal("localhost", ServerConnectInfo.ServerHost, ServerConnectInfo.ServerPort);
+                    var tunnelPort = new ForwardedPortLocal(ServerConnectInfo.HostForForwarding, ServerConnectInfo.ServerForwardingPort, 
+                        ServerConnectInfo.HostForForwarding, ServerConnectInfo.ServerForwardingPort);
+
                     SshWorker.AddForwardedPort(tunnelPort);
 
                     tunnelPort.Exception += delegate (object sender, ExceptionEventArgs e)
@@ -60,38 +61,32 @@ namespace DGenerator.Data.ServerUTM
                         Console.WriteLine(e.Exception.ToString());
                     };
                     tunnelPort.Start();
-                    //Status = "Соединение с сервером установлено";
+                    var port = tunnelPort.Port;
                     ChangeStatusEvent("Соединение с сервером установлено");
                 }
                 else
                 {
-                    //Status = "Соединение с сервером было установлено ранее";
                     ChangeStatusEvent("Соединение с сервером было установлено ранее");
                 }
             }
             catch(SocketException exc)
             {
-                //Status = "Произошла ошибка на сокете. Возможно сервер не отвечает. Проверьте журнал";
                 ChangeStatusEvent("Произошла ошибка на сокете. Возможно сервер не отвечает. Проверьте настройки приложения и журнал");
             }
             catch(SshConnectionException exc)
             {
-                //Status = exc.Message;
                 ChangeStatusEvent("Проблема при инициализации SSH-соединения. Проверьте настройки приложения и журнал");
             }
             catch(SshAuthenticationException exc)
             {
-                //Status = "Проищошла ошибка аутентификации. Проерьте журнал";
                 ChangeStatusEvent("Произошла ошибка аутентификации. Проерьте настройки приложения и журнал");
             }
             catch(SshOperationTimeoutException exc)
             {
-                //Status = exc.Message;
                 ChangeStatusEvent("Превышен интервал ожидания. Проверьте настройки приложения и журнал");
             }
             catch(SshException exc)
             {
-                //Status = exc.Message;
                 ChangeStatusEvent("Проблема с SSH-соединением. Проверьте журнал");
             }
             catch(Exception exc)
@@ -107,18 +102,16 @@ namespace DGenerator.Data.ServerUTM
                 if (SshWorker.IsConnected)
                 {
                     SshWorker.Disconnect();
-                    //Status = "Соединение разорвано по инициативе пользователя";
                     ChangeStatusEvent("Соединение разорвано по инициативе пользователя");
                 }
                 else
                 {
-                    //Status = "Соединение на данный момент уже разорвано";
                     ChangeStatusEvent("Соединение на данный момент уже разорвано");
                 }
             }
             catch(SshException exc)
             {
-                Status = exc.Message;
+                ChangeStatusEvent("Неизвестная ошибка. Проверьте журнал для получения подробной информации");
             }
         }
 
@@ -157,7 +150,6 @@ namespace DGenerator.Data.ServerUTM
             }
             catch(SshOperationTimeoutException exc)
             {
-                //Status = exc.Message;
                 ChangeStatusEvent("Превышен интервал ожидания. Проверьте настройки приложения и журнал");
             }
             catch(ArgumentException exc)

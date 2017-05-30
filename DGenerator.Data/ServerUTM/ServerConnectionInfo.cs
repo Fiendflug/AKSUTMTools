@@ -10,8 +10,9 @@ namespace DGenerator.Data.ServerUTM
     {
         public string ServerHost { get; set; }
         public uint ServerPort { get; set; }
-        public uint ServerForwardingPortPort { get; set; }
+        public uint ServerForwardingPort { get; set; }
         public string ServerUsername { get; set; }
         public string ServerPassword { get; set; }
+        public string HostForForwarding { get; set; }
     }
 }

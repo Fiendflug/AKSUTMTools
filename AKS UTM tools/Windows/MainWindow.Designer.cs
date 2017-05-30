@@ -488,6 +488,7 @@
             this.buttonShowOrganizationClients.TabIndex = 28;
             this.toolTipMain.SetToolTip(this.buttonShowOrganizationClients, "Юридические лица");
             this.buttonShowOrganizationClients.UseVisualStyleBackColor = true;
+            this.buttonShowOrganizationClients.Click += new System.EventHandler(this.buttonShowOrganizationClients_Click);
             // 
             // buttonShowLegalClients
             // 
@@ -501,6 +502,7 @@
             this.buttonShowLegalClients.TabIndex = 27;
             this.toolTipMain.SetToolTip(this.buttonShowLegalClients, "Физические лица");
             this.buttonShowLegalClients.UseVisualStyleBackColor = true;
+            this.buttonShowLegalClients.Click += new System.EventHandler(this.buttonShowLegalClients_Click);
             // 
             // buttonShowAllClients
             // 
@@ -514,6 +516,7 @@
             this.buttonShowAllClients.TabIndex = 26;
             this.toolTipMain.SetToolTip(this.buttonShowAllClients, "Все клиенты");
             this.buttonShowAllClients.UseVisualStyleBackColor = true;
+            this.buttonShowAllClients.Click += new System.EventHandler(this.buttonShowAllClients_Click);
             // 
             // PeriodButton
             // 
@@ -778,6 +781,8 @@
             this.mainDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.mainDataGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.mainDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.mainDataGrid.Location = new System.Drawing.Point(12, 69);
             this.mainDataGrid.Name = "mainDataGrid";

@@ -17,6 +17,7 @@ namespace AKS_UTM_tools
         SettingsService Settings { get; set; }
         CdrService Cdr { get; set; }
         ServerConnectService ConnectUtmServer { get; set; }
+        DataService DataAccess { get; set; }
         PeriodService Period { get; set; }
 
         string Status { get; set; }
@@ -33,6 +34,10 @@ namespace AKS_UTM_tools
             ConnectUtmServer = ServerConnectService.GetInstance();
             ConnectUtmServer.ChangeStatusEvent += ChangeStatus;
 
+            DataAccess = DataService.GetInstance();
+            DataAccess.ChangeStatusEvent += ChangeStatus;
+            DataAccess.FillDataSetEvent += FinishFillDataSetForGridView;
+
             Period = PeriodService.GetInstance();
             Period.ShowPeriodEvent += ChangePeriodStatus;
             ChangePeriodStatus();
@@ -43,11 +48,15 @@ namespace AKS_UTM_tools
         private void ButtonSshConnection_Click(object sender, EventArgs e)
         {            
             ConnectUtmServer.Connect();
+            //if (ConnectUtmServer.IsConnected)
+            //    FillDataGrid();                   
+            DataAccess.FillDataGridView();
         }
 
         void ButtonCloseSshConnection_Click(object sender, EventArgs e)
         {       
             ConnectUtmServer.Disconnect();
+            EmptyDataGrid();
         }
 
         void ConnectToServerTopMenu_Click(object sender, EventArgs e)
@@ -116,6 +125,41 @@ namespace AKS_UTM_tools
         private void PeriodTopMenu_Click(object sender, EventArgs e)
         {
             SetPeriod();
+        }
+
+        // Data grid view groups controls
+
+        private void buttonShowAllClients_Click(object sender, EventArgs e)
+        {            
+            if (!ConnectUtmServer.IsConnected)
+                ConnectUtmServer.Connect();
+            DataAccess.FillDataGridView();
+        }
+
+        private void buttonShowLegalClients_Click(object sender, EventArgs e)
+        {
+            if (!ConnectUtmServer.IsConnected)
+                ConnectUtmServer.Connect();
+            DataAccess.FillDataGridView("civil");
+        }
+
+        private void buttonShowOrganizationClients_Click(object sender, EventArgs e)
+        {
+            if (!ConnectUtmServer.IsConnected)
+                ConnectUtmServer.Connect();
+            DataAccess.FillDataGridView("legal");
+        }
+
+        // Data methods section
+
+        void FillDataGrid()
+        {
+            mainDataGrid.DataSource = DataAccess.FillDataGrid().Tables[0];
+        }
+
+        void EmptyDataGrid()
+        {
+            mainDataGrid.DataSource = null;
         }
 
         // CDR methods section
@@ -253,6 +297,14 @@ namespace AKS_UTM_tools
                 Cdr.CurrentTaskFinished -= FinishCdrTransfer;
             }
         }        
+
+        void FinishFillDataSetForGridView()
+        {
+            BeginInvoke((Action)delegate
+            {
+                mainDataGrid.DataSource = DataAccess.DataGrid.Tables[0];
+            });
+        }
 
         void FinishCdrArchive()
         {

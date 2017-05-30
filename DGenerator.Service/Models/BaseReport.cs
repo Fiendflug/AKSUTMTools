@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DGenerator.Data.Models
+namespace DGenerator.Service.Models
 {
-    class TrunkDetail
+    class BaseReport
     {
     }
 }

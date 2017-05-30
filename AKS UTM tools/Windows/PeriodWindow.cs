@@ -23,6 +23,8 @@ namespace AKS_UTM_tools
         {
             dateTimePicker.Format = DateTimePickerFormat.Custom;
             dateTimePicker.CustomFormat = "MMMM yyyy";
+            dateTimePicker.MinDate = new DateTime(1988, 7, 20);
+            dateTimePicker.MaxDate = new DateTime(2095, 7, 20);
             dateTimePicker.ShowUpDown = true;
 
             submitButton.DialogResult = DialogResult.OK;

@@ -13,7 +13,7 @@ namespace DGenerator.Service.Services
 
         SettingsService AllSettings { get; set; }
         ServerConnectionInfo Settings { get; set; }
-        ServerUTM Server { get; set; }        
+        ServerUTM Server { get; set; } 
 
         string[] CdrsForTransfer { get; set; }
 
@@ -23,6 +23,8 @@ namespace DGenerator.Service.Services
         public event TransferProgress CdrTransferEvent;
         public event ChangeStatusDelegate ChangeStatusEvent;
 
+        public bool IsConnected { get; set; }
+
         private ServerConnectService()
         {
             AllSettings = new SettingsService();
@@ -30,9 +32,10 @@ namespace DGenerator.Service.Services
             {
                 ServerHost = AllSettings.GetSetting("ServerHost"),
                 ServerPort = uint.Parse(AllSettings.GetSetting("ServerPort")),
-                ServerForwardingPortPort = uint.Parse(AllSettings.GetSetting("DatabasePort")),
+                ServerForwardingPort = uint.Parse(AllSettings.GetSetting("DatabasePort")),
                 ServerUsername = AllSettings.GetSetting("ServerUser"),
-                ServerPassword = AllSettings.GetSetting("ServerPassword")
+                ServerPassword = AllSettings.GetSetting("ServerPassword"),
+                HostForForwarding = AllSettings.GetSetting("DatabaseHost")
             };
 
             CdrTransferEvent = delegate { };
@@ -62,11 +65,13 @@ namespace DGenerator.Service.Services
         public void Connect()
         {            
             Server.Connect();
+            IsConnected = true;            
         }
 
         public void Disconnect()
         {            
             Server.Disconnect();
+            IsConnected = false;
         }
 
         public void Transfer()
@@ -80,7 +85,7 @@ namespace DGenerator.Service.Services
             {
                 ServerHost = AllSettings.GetSetting("ServerHost"),
                 ServerPort = uint.Parse(AllSettings.GetSetting("ServerPort")),
-                ServerForwardingPortPort = uint.Parse(AllSettings.GetSetting("DatabasePort")),
+                ServerForwardingPort = uint.Parse(AllSettings.GetSetting("DatabasePort")),
                 ServerUsername = AllSettings.GetSetting("ServerUser"),
                 ServerPassword = AllSettings.GetSetting("ServerPassword")
             };

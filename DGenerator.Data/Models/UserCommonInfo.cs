@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DGenerator.Data.Models
 {
-    public class User
+    public class UserCommonInfo
     {
         public int AccountID { get; set; }
         public int GroupID { get; set; }
