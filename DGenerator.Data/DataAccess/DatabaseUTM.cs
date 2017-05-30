@@ -71,6 +71,9 @@ namespace DGenerator.Data.DataAccess
                     case null:
                         adapter = new MySqlDataAdapter(Commands.GetAllUsersForDataGrid, Connection);
                         break;
+                    default:
+                        adapter = new MySqlDataAdapter(Commands.GetAllUsersForDataGrid, Connection);
+                        break;
                 }
                 DataSet dataSet = new DataSet();
                 adapter.Fill(dataSet);

@@ -302,7 +302,8 @@ namespace AKS_UTM_tools
         {
             BeginInvoke((Action)delegate
             {
-                mainDataGrid.DataSource = DataAccess.DataGrid.Tables[0];
+                if(DataAccess.DataGrid != null)
+                    mainDataGrid.DataSource = DataAccess.DataGrid.Tables[0];
             });
         }
 

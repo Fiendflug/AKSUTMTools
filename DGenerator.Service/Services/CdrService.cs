@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DGenerator.CDR;
 using System.Diagnostics;
 using DGenerator.Data.ServerUTM;
+using System.IO;
 
 namespace DGenerator.Service.Services
 {
@@ -93,6 +94,8 @@ namespace DGenerator.Service.Services
 
         public void View()
         {
+            if (!Directory.Exists(AllSettings.GetSetting("LocalCdrPath")))
+                Directory.CreateDirectory(AllSettings.GetSetting("LocalCdrPath"));            
             Process.Start("explorer.exe", AllSettings.GetSetting("LocalCdrPath"));
         }
 
