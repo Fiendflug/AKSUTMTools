@@ -14,7 +14,7 @@ namespace DGenerator.Data.Models
         public string FullName { get; set; }
         public int LinesCount { get; set; }
         public decimal Balance { get; set; }
-        public Call[] AllPhoneConnections { get; set; }
+        public List<Call> AllPhoneConnections { get; set; }
         public decimal MGSumm { get; set; }
         public decimal PeriodicSumm { get; set; }
         public decimal TotalSumm { get; set; }

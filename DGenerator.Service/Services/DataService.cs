@@ -1,4 +1,6 @@
 ﻿using DGenerator.Data.DataAccess;
+using DGenerator.Data.Models;
+using DGenerator.Service.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -53,11 +55,6 @@ namespace DGenerator.Service.Services
             Connect.Connect();
         }
 
-        //public DataSet FillDataGrid()
-        //{            
-        //    return Connect.GetUsersForDataGrid();
-        //}
-
         public void FillDataGridView(string groupName = null)
         {
             Task.Factory.StartNew(() =>
@@ -67,6 +64,21 @@ namespace DGenerator.Service.Services
             {
                 FinishFillDataGrid();
             });
+        }
+
+        public BaseReport GenerateBaseReport()
+        {
+            return null;
+        }
+
+        public Bill GenerateBill()
+        {
+            return null;
+        }
+
+        public List<Bill> GenerateAllBills()
+        {
+            return null;
         }
 
         void ChangeStatus(string statusMesasge)

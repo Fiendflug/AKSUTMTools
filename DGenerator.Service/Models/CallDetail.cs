@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DGenerator.Service.Models
 {
-    class CallDetail
+    public class CallDetail
     {
     }
 }

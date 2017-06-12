@@ -52,7 +52,7 @@ namespace DGenerator.Data.DataAccess
             }
         }
         
-        public DataSet GetUsersForDataGrid(string groupName = null)
+        public DataSet GetUsersForDataGrid(string groupName = "civil")
         {
             if (Connection.State == ConnectionState.Closed)
                 Connect();
@@ -68,9 +68,6 @@ namespace DGenerator.Data.DataAccess
                     case "legal":
                         adapter = new MySqlDataAdapter(Commands.GetLegalUsersForDataGrid, Connection);
                         break;                   
-                    default:
-                        adapter = new MySqlDataAdapter(Commands.GetAllUsersForDataGrid, Connection);
-                        break;
                 }
                 DataSet dataSet = new DataSet();
                 adapter.Fill(dataSet);
@@ -82,16 +79,29 @@ namespace DGenerator.Data.DataAccess
             }
         }
 
+        public List<Call> GetCalls(long startPeriod, long endPeriod)
+        {
+            return null;
+        }
+
         public List<UserCommonInfo> GetUsers()
         {
             return null;
         }
 
-        public UserCommonInfo GetUser(int account = 0, string login = null)
+        public UserCommonInfo GetUser(int account)
         {
             return null;
         }
 
+        public List<UserDetailInfo> GetUserDetails (long startPeriod, long endPeriod)
+        {
+            return null;
+        }
 
+        public UserDetailInfo GetUserDatail(int account, long startPeriod, long endPeriod)
+        {
+            return null;
+        }
     }
 }

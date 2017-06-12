@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace DGenerator.Service.Models
 {
-    class Bill
+    public class Bill
     {
+        public string Account { get; set; }
+        public string Login { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public string FlatNumber
     }
 }

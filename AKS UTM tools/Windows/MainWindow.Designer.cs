@@ -790,7 +790,9 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.mainDataGrid.DefaultCellStyle = dataGridViewCellStyle2;
             this.mainDataGrid.Location = new System.Drawing.Point(12, 69);
+            this.mainDataGrid.MultiSelect = false;
             this.mainDataGrid.Name = "mainDataGrid";
+            this.mainDataGrid.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -800,6 +802,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.mainDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.mainDataGrid.RowHeadersWidth = 80;
+            this.mainDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.mainDataGrid.Size = new System.Drawing.Size(1248, 880);
             this.mainDataGrid.TabIndex = 31;
             this.mainDataGrid.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.mainDataGrid_RowPrePaint);

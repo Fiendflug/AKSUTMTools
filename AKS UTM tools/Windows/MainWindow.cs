@@ -47,8 +47,9 @@ namespace AKS_UTM_tools
 
         private void ButtonSshConnection_Click(object sender, EventArgs e)
         {            
-            ConnectUtmServer.Connect();       
-            DataAccess.FillDataGridView();
+            ConnectUtmServer.Connect();      
+            if(!ConnectUtmServer.IsConnected) // TEMPORARY
+                DataAccess.FillDataGridView();
         }
 
         void ButtonCloseSshConnection_Click(object sender, EventArgs e)
@@ -142,12 +143,7 @@ namespace AKS_UTM_tools
         }
 
         // Data methods section
-
-        //void FillDataGrid()
-        //{
-        //    mainDataGrid.DataSource = DataAccess.FillDataGrid().Tables[0];
-        //}
-
+        
         void EmptyDataGrid()
         {
             mainDataGrid.DataSource = null;
@@ -296,27 +292,6 @@ namespace AKS_UTM_tools
                 if(DataAccess.DataGrid != null)
                 {                    
                     mainDataGrid.DataSource = DataAccess.DataGrid.Tables[0];
-                    if(mainDataGrid.Columns.Count == 8)
-                    {
-                        mainDataGrid.Columns[0].HeaderText = "Аккаунт";
-                        mainDataGrid.Columns[1].HeaderText = "Логин";
-                        mainDataGrid.Columns[2].HeaderText = "Полное имя";
-                        mainDataGrid.Columns[3].HeaderText = "Баланс счета";
-                        mainDataGrid.Columns[4].HeaderText = "Абонентский номер";
-                        mainDataGrid.Columns[5].HeaderText = "Номер договора";
-                        mainDataGrid.Columns[6].HeaderText = "Полный адрес";
-                        mainDataGrid.Columns[7].HeaderText = "Квратира (опционально)";
-                                            
-                    }
-                    else if(mainDataGrid.Columns.Count == 5)
-                    {
-                        mainDataGrid.Columns[0].HeaderText = "Аккаунт";
-                        mainDataGrid.Columns[1].HeaderText = "Логин";
-                        mainDataGrid.Columns[2].HeaderText = "Наименование";
-                        mainDataGrid.Columns[3].HeaderText = "Юридический адрес";
-                        mainDataGrid.Columns[4].HeaderText = "Номер договора";
-                    }
-                    
                 }                    
             });
         }
