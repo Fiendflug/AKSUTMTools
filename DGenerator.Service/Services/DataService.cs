@@ -53,11 +53,10 @@ namespace DGenerator.Service.Services
             Connect.Connect();
         }
 
-        public DataSet FillDataGrid()
-        {
-            
-            return Connect.GetUsersForDataGrid();
-        }
+        //public DataSet FillDataGrid()
+        //{            
+        //    return Connect.GetUsersForDataGrid();
+        //}
 
         public void FillDataGridView(string groupName = null)
         {

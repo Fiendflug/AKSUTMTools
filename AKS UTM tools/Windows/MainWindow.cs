@@ -127,13 +127,6 @@ namespace AKS_UTM_tools
 
         // Data grid view groups controls
 
-        private void buttonShowAllClients_Click(object sender, EventArgs e)
-        {            
-            if (!ConnectUtmServer.IsConnected)
-                ConnectUtmServer.Connect();
-            DataAccess.FillDataGridView();
-        }
-
         private void buttonShowLegalClients_Click(object sender, EventArgs e)
         {
             if (!ConnectUtmServer.IsConnected)
@@ -150,10 +143,10 @@ namespace AKS_UTM_tools
 
         // Data methods section
 
-        void FillDataGrid()
-        {
-            mainDataGrid.DataSource = DataAccess.FillDataGrid().Tables[0];
-        }
+        //void FillDataGrid()
+        //{
+        //    mainDataGrid.DataSource = DataAccess.FillDataGrid().Tables[0];
+        //}
 
         void EmptyDataGrid()
         {
