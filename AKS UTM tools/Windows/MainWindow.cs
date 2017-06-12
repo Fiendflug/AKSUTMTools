@@ -47,9 +47,7 @@ namespace AKS_UTM_tools
 
         private void ButtonSshConnection_Click(object sender, EventArgs e)
         {            
-            ConnectUtmServer.Connect();
-            //if (ConnectUtmServer.IsConnected)
-            //    FillDataGrid();                   
+            ConnectUtmServer.Connect();       
             DataAccess.FillDataGridView();
         }
 
@@ -303,7 +301,30 @@ namespace AKS_UTM_tools
             BeginInvoke((Action)delegate
             {
                 if(DataAccess.DataGrid != null)
+                {                    
                     mainDataGrid.DataSource = DataAccess.DataGrid.Tables[0];
+                    if(mainDataGrid.Columns.Count == 8)
+                    {
+                        mainDataGrid.Columns[0].HeaderText = "Аккаунт";
+                        mainDataGrid.Columns[1].HeaderText = "Логин";
+                        mainDataGrid.Columns[2].HeaderText = "Полное имя";
+                        mainDataGrid.Columns[3].HeaderText = "Баланс счета";
+                        mainDataGrid.Columns[4].HeaderText = "Абонентский номер";
+                        mainDataGrid.Columns[5].HeaderText = "Номер договора";
+                        mainDataGrid.Columns[6].HeaderText = "Полный адрес";
+                        mainDataGrid.Columns[7].HeaderText = "Квратира (опционально)";
+                                            
+                    }
+                    else if(mainDataGrid.Columns.Count == 5)
+                    {
+                        mainDataGrid.Columns[0].HeaderText = "Аккаунт";
+                        mainDataGrid.Columns[1].HeaderText = "Логин";
+                        mainDataGrid.Columns[2].HeaderText = "Наименование";
+                        mainDataGrid.Columns[3].HeaderText = "Юридический адрес";
+                        mainDataGrid.Columns[4].HeaderText = "Номер договора";
+                    }
+                    
+                }                    
             });
         }
 
@@ -335,6 +356,17 @@ namespace AKS_UTM_tools
         {
             periodLabel.Text = "Расчетный период - " +
                 Period.LabeledPeriod.ToString("MMMM") + " " + Period.LabeledPeriod.Year.ToString();
+        }
+
+        // Data Grid View styles mmethods and events
+
+        private void mainDataGrid_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            var index = e.RowIndex;
+            var indexStr = (index + 1).ToString();
+            object header = mainDataGrid.Rows[index].HeaderCell.Value;
+            if (header == null || !header.Equals(indexStr))
+                mainDataGrid.Rows[index].HeaderCell.Value = indexStr;            
         }
 
         // Settings control

@@ -30,6 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewMain = new System.Windows.Forms.DataGridView();
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.системаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,7 +82,6 @@
             this.toolTipMain = new System.Windows.Forms.ToolTip(this.components);
             this.buttonShowOrganizationClients = new System.Windows.Forms.Button();
             this.buttonShowLegalClients = new System.Windows.Forms.Button();
-            this.buttonShowAllClients = new System.Windows.Forms.Button();
             this.PeriodButton = new System.Windows.Forms.Button();
             this.FinderButton = new System.Windows.Forms.Button();
             this.QuitButton = new System.Windows.Forms.Button();
@@ -482,7 +484,7 @@
             this.buttonShowOrganizationClients.FlatAppearance.BorderSize = 0;
             this.buttonShowOrganizationClients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonShowOrganizationClients.Image = global::AKS_UTM_tools.Properties.Resources.organizations_24px;
-            this.buttonShowOrganizationClients.Location = new System.Drawing.Point(96, 957);
+            this.buttonShowOrganizationClients.Location = new System.Drawing.Point(54, 957);
             this.buttonShowOrganizationClients.Name = "buttonShowOrganizationClients";
             this.buttonShowOrganizationClients.Size = new System.Drawing.Size(28, 28);
             this.buttonShowOrganizationClients.TabIndex = 28;
@@ -496,27 +498,13 @@
             this.buttonShowLegalClients.FlatAppearance.BorderSize = 0;
             this.buttonShowLegalClients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonShowLegalClients.Image = global::AKS_UTM_tools.Properties.Resources.legal_24px;
-            this.buttonShowLegalClients.Location = new System.Drawing.Point(54, 957);
+            this.buttonShowLegalClients.Location = new System.Drawing.Point(12, 957);
             this.buttonShowLegalClients.Name = "buttonShowLegalClients";
             this.buttonShowLegalClients.Size = new System.Drawing.Size(28, 28);
             this.buttonShowLegalClients.TabIndex = 27;
             this.toolTipMain.SetToolTip(this.buttonShowLegalClients, "Физические лица");
             this.buttonShowLegalClients.UseVisualStyleBackColor = true;
             this.buttonShowLegalClients.Click += new System.EventHandler(this.buttonShowLegalClients_Click);
-            // 
-            // buttonShowAllClients
-            // 
-            this.buttonShowAllClients.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonShowAllClients.FlatAppearance.BorderSize = 0;
-            this.buttonShowAllClients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonShowAllClients.Image = global::AKS_UTM_tools.Properties.Resources.all_clients_24px1;
-            this.buttonShowAllClients.Location = new System.Drawing.Point(12, 957);
-            this.buttonShowAllClients.Name = "buttonShowAllClients";
-            this.buttonShowAllClients.Size = new System.Drawing.Size(28, 28);
-            this.buttonShowAllClients.TabIndex = 26;
-            this.toolTipMain.SetToolTip(this.buttonShowAllClients, "Все клиенты");
-            this.buttonShowAllClients.UseVisualStyleBackColor = true;
-            this.buttonShowAllClients.Click += new System.EventHandler(this.buttonShowAllClients_Click);
             // 
             // PeriodButton
             // 
@@ -762,7 +750,7 @@
             // 
             this.StatusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.StatusLabel.AutoSize = true;
-            this.StatusLabel.Location = new System.Drawing.Point(145, 967);
+            this.StatusLabel.Location = new System.Drawing.Point(103, 967);
             this.StatusLabel.Name = "StatusLabel";
             this.StatusLabel.Size = new System.Drawing.Size(256, 13);
             this.StatusLabel.TabIndex = 30;
@@ -778,16 +766,43 @@
             // 
             // mainDataGrid
             // 
+            this.mainDataGrid.AllowUserToAddRows = false;
             this.mainDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mainDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.mainDataGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.mainDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.mainDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.mainDataGrid.DefaultCellStyle = dataGridViewCellStyle2;
             this.mainDataGrid.Location = new System.Drawing.Point(12, 69);
             this.mainDataGrid.Name = "mainDataGrid";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.mainDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.mainDataGrid.RowHeadersWidth = 80;
             this.mainDataGrid.Size = new System.Drawing.Size(1248, 880);
             this.mainDataGrid.TabIndex = 31;
+            this.mainDataGrid.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.mainDataGrid_RowPrePaint);
             // 
             // periodLabel
             // 
@@ -813,7 +828,6 @@
             this.Controls.Add(this.pictureBoxWait);
             this.Controls.Add(this.buttonShowOrganizationClients);
             this.Controls.Add(this.buttonShowLegalClients);
-            this.Controls.Add(this.buttonShowAllClients);
             this.Controls.Add(this.PeriodButton);
             this.Controls.Add(this.FinderButton);
             this.Controls.Add(this.QuitButton);
@@ -918,7 +932,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
         private System.Windows.Forms.Button FinderButton;
         private System.Windows.Forms.Button PeriodButton;
-        private System.Windows.Forms.Button buttonShowAllClients;
         private System.Windows.Forms.Button buttonShowLegalClients;
         private System.Windows.Forms.Button buttonShowOrganizationClients;
         private System.Windows.Forms.PictureBox pictureBoxWait;
