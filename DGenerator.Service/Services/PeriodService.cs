@@ -26,9 +26,8 @@ namespace DGenerator.Service.Services
         private PeriodService()
         {
             UnixStartDate = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-            LabeledPeriod = DateTime.Now;
             ShowPeriodEvent = delegate { };
-            PeriodDays = GetCurrentPeriod(DateTime.Now);
+            PeriodDays = GetCurrentPeriod(DateTime.Now.AddMonths(-1));
         }
 
         public static PeriodService GetInstance()

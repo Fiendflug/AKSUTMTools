@@ -67,10 +67,7 @@ namespace DGenerator.Data.DataAccess
                         break;
                     case "legal":
                         adapter = new MySqlDataAdapter(Commands.GetLegalUsersForDataGrid, Connection);
-                        break;
-                    case null:
-                        adapter = new MySqlDataAdapter(Commands.GetAllUsersForDataGrid, Connection);
-                        break;
+                        break;                   
                     default:
                         adapter = new MySqlDataAdapter(Commands.GetAllUsersForDataGrid, Connection);
                         break;
@@ -79,7 +76,7 @@ namespace DGenerator.Data.DataAccess
                 adapter.Fill(dataSet);
                 return dataSet;
             }
-            catch (MySqlException exc)
+            catch (MySqlException)
             {
                 return null;
             }
