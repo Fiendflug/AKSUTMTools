@@ -4,6 +4,7 @@ using DGenerator.Service.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -71,9 +72,22 @@ namespace DGenerator.Service.Services
             return null;
         }
 
-        public Bill GenerateBill()
+        void GenerateBill(CurrentPeriod period, string group)
         {
-            return null;
+            var clientsInfo = Connect.GetAllCilentsInfo(period.StartPeriod, period.EndPeriod);
+            List<string> allClients = null;
+            var fileName = ""; // ДОДЕЛАТЬ
+            var lineCount = 0;
+            foreach(var client in clientsInfo)
+            {
+                if(client.Group == group)
+                {
+                    allClients.Add(string.Format("{0};{1};{2};{3};{4};{5};{6};{7}", 
+                            lineCount, client.Account, client.Login, client.ContractNumber, client.FullName, client.MGSumm, client.PeriodicSumm, client.TotalSumm
+                        ));
+                }
+            }
+            File.AppendAllLines(Path.Combine(Settings.GetSetting("CommonReportPath"), fileName), allClients);      
         }
 
         public List<Bill> GenerateAllBills()

@@ -12,6 +12,6 @@ namespace DGenerator.Service.Models
         public string Login { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
-        public string FlatNumber
+        public string FlatNumber { get; set; }
     }
 }

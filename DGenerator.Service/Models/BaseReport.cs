@@ -8,5 +8,6 @@ namespace DGenerator.Service.Models
 {
     public class BaseReport
     {
+
     }
 }

@@ -84,22 +84,12 @@ namespace DGenerator.Data.DataAccess
             return null;
         }
 
-        public List<UserCommonInfo> GetUsers()
+        public List<ClientInfo> GetAllCilentsInfo (long startPeriod, long endPeriod)
         {
             return null;
         }
 
-        public UserCommonInfo GetUser(int account)
-        {
-            return null;
-        }
-
-        public List<UserDetailInfo> GetUserDetails (long startPeriod, long endPeriod)
-        {
-            return null;
-        }
-
-        public UserDetailInfo GetUserDatail(int account, long startPeriod, long endPeriod)
+        public ClientInfo GetClientInfo(int account, long startPeriod, long endPeriod)
         {
             return null;
         }

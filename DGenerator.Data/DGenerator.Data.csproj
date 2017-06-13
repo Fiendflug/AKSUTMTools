@@ -51,8 +51,7 @@
     <Compile Include="DataAccess\DatabaseUTM.cs" />
     <Compile Include="DataAccess\SqlQueries.cs" />
     <Compile Include="Models\Call.cs" />
-    <Compile Include="Models\UserDetailInfo.cs" />
-    <Compile Include="Models\UserCommonInfo.cs" />
+    <Compile Include="Models\ClientInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServerUTM\ServerConnectionInfo.cs" />
     <Compile Include="ServerUTM\ServerUTM.cs" />
