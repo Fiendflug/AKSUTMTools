@@ -3,15 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DGenerator.Data.DataAccess;
 
 namespace DGenerator.Service.Services
 {
-    public struct CurrentPeriod
-    {
-        public long StartPeriod;
-        public long EndPeriod;
-    }
-
     public class PeriodService
     {
         static PeriodService Instance { get; set; }

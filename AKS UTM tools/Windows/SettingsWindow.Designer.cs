@@ -66,11 +66,27 @@
             this.LocalCdrPathSelectButton = new System.Windows.Forms.Button();
             this.LocalCdrPathLabel = new System.Windows.Forms.Label();
             this.ReportsTab = new System.Windows.Forms.TabPage();
+            this.BillsPathsGroup = new System.Windows.Forms.GroupBox();
+            this.loadBillTemplateButton = new System.Windows.Forms.Button();
+            this.loadNewTemplateLabel = new System.Windows.Forms.Label();
+            this.localBillsPathSelectButton = new System.Windows.Forms.Button();
+            this.localBillsPathLabel = new System.Windows.Forms.Label();
             this.SubmitSettingsButton = new System.Windows.Forms.Button();
             this.OkSettingsButton = new System.Windows.Forms.Button();
             this.CancelSettingsButton = new System.Windows.Forms.Button();
             this.HelpSettingsButton = new System.Windows.Forms.Button();
             this.pathBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.detailPathsGroup = new System.Windows.Forms.GroupBox();
+            this.detailsPathSelectButton = new System.Windows.Forms.Button();
+            this.localDetailsPathLabel = new System.Windows.Forms.Label();
+            this.ReportsGroup = new System.Windows.Forms.GroupBox();
+            this.baseReportPathSelectButton = new System.Windows.Forms.Button();
+            this.localBaseReportPathsLabel = new System.Windows.Forms.Label();
+            this.operatorReportPathSelectButton = new System.Windows.Forms.Button();
+            this.localOperatorPathsLabel = new System.Windows.Forms.Label();
+            this.traficReportPathSelectButton = new System.Windows.Forms.Button();
+            this.localtraficReportPathLabel = new System.Windows.Forms.Label();
+            this.openBillTemplateFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.SettingsTabControl.SuspendLayout();
             this.ConnectTab.SuspendLayout();
             this.DatabaseSettingsGroupBox.SuspendLayout();
@@ -79,6 +95,10 @@
             this.ZipCdrPathGroup.SuspendLayout();
             this.CdrConvertGroup.SuspendLayout();
             this.LocalCdrPathGroup.SuspendLayout();
+            this.ReportsTab.SuspendLayout();
+            this.BillsPathsGroup.SuspendLayout();
+            this.detailPathsGroup.SuspendLayout();
+            this.ReportsGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // SettingsTabControl
@@ -474,12 +494,66 @@
             // 
             // ReportsTab
             // 
+            this.ReportsTab.Controls.Add(this.ReportsGroup);
+            this.ReportsTab.Controls.Add(this.detailPathsGroup);
+            this.ReportsTab.Controls.Add(this.BillsPathsGroup);
             this.ReportsTab.Location = new System.Drawing.Point(4, 22);
             this.ReportsTab.Name = "ReportsTab";
             this.ReportsTab.Size = new System.Drawing.Size(642, 379);
             this.ReportsTab.TabIndex = 3;
             this.ReportsTab.Text = "Отчеты";
             this.ReportsTab.UseVisualStyleBackColor = true;
+            // 
+            // BillsPathsGroup
+            // 
+            this.BillsPathsGroup.Controls.Add(this.loadBillTemplateButton);
+            this.BillsPathsGroup.Controls.Add(this.loadNewTemplateLabel);
+            this.BillsPathsGroup.Controls.Add(this.localBillsPathSelectButton);
+            this.BillsPathsGroup.Controls.Add(this.localBillsPathLabel);
+            this.BillsPathsGroup.Location = new System.Drawing.Point(11, 12);
+            this.BillsPathsGroup.Name = "BillsPathsGroup";
+            this.BillsPathsGroup.Size = new System.Drawing.Size(618, 93);
+            this.BillsPathsGroup.TabIndex = 1;
+            this.BillsPathsGroup.TabStop = false;
+            this.BillsPathsGroup.Text = "Параметры квитанций пользователей ";
+            // 
+            // loadBillTemplateButton
+            // 
+            this.loadBillTemplateButton.Location = new System.Drawing.Point(535, 51);
+            this.loadBillTemplateButton.Name = "loadBillTemplateButton";
+            this.loadBillTemplateButton.Size = new System.Drawing.Size(70, 25);
+            this.loadBillTemplateButton.TabIndex = 4;
+            this.loadBillTemplateButton.Text = "Загрузить";
+            this.loadBillTemplateButton.UseVisualStyleBackColor = true;
+            this.loadBillTemplateButton.Click += new System.EventHandler(this.loadBillTemplateButton_Click);
+            // 
+            // loadNewTemplateLabel
+            // 
+            this.loadNewTemplateLabel.AutoSize = true;
+            this.loadNewTemplateLabel.Location = new System.Drawing.Point(4, 57);
+            this.loadNewTemplateLabel.Name = "loadNewTemplateLabel";
+            this.loadNewTemplateLabel.Size = new System.Drawing.Size(168, 13);
+            this.loadNewTemplateLabel.TabIndex = 3;
+            this.loadNewTemplateLabel.Text = "Загрузите новый HTML шаблон";
+            // 
+            // localBillsPathSelectButton
+            // 
+            this.localBillsPathSelectButton.Location = new System.Drawing.Point(581, 26);
+            this.localBillsPathSelectButton.Name = "localBillsPathSelectButton";
+            this.localBillsPathSelectButton.Size = new System.Drawing.Size(24, 23);
+            this.localBillsPathSelectButton.TabIndex = 2;
+            this.localBillsPathSelectButton.Text = "...";
+            this.localBillsPathSelectButton.UseVisualStyleBackColor = true;
+            this.localBillsPathSelectButton.Click += new System.EventHandler(this.localBillsPathSelectButton_Click);
+            // 
+            // localBillsPathLabel
+            // 
+            this.localBillsPathLabel.AutoSize = true;
+            this.localBillsPathLabel.Location = new System.Drawing.Point(4, 31);
+            this.localBillsPathLabel.Name = "localBillsPathLabel";
+            this.localBillsPathLabel.Size = new System.Drawing.Size(147, 13);
+            this.localBillsPathLabel.TabIndex = 1;
+            this.localBillsPathLabel.Text = "Расположение квитанций - ";
             // 
             // SubmitSettingsButton
             // 
@@ -522,13 +596,115 @@
             this.HelpSettingsButton.UseVisualStyleBackColor = true;
             this.HelpSettingsButton.Click += new System.EventHandler(this.HelpSettingsButton_Click);
             // 
+            // detailPathsGroup
+            // 
+            this.detailPathsGroup.Controls.Add(this.detailsPathSelectButton);
+            this.detailPathsGroup.Controls.Add(this.localDetailsPathLabel);
+            this.detailPathsGroup.Location = new System.Drawing.Point(11, 120);
+            this.detailPathsGroup.Name = "detailPathsGroup";
+            this.detailPathsGroup.Size = new System.Drawing.Size(618, 64);
+            this.detailPathsGroup.TabIndex = 2;
+            this.detailPathsGroup.TabStop = false;
+            this.detailPathsGroup.Text = "Параметры детализаций вызовов";
+            // 
+            // detailsPathSelectButton
+            // 
+            this.detailsPathSelectButton.Location = new System.Drawing.Point(581, 26);
+            this.detailsPathSelectButton.Name = "detailsPathSelectButton";
+            this.detailsPathSelectButton.Size = new System.Drawing.Size(24, 23);
+            this.detailsPathSelectButton.TabIndex = 2;
+            this.detailsPathSelectButton.Text = "...";
+            this.detailsPathSelectButton.UseVisualStyleBackColor = true;
+            this.detailsPathSelectButton.Click += new System.EventHandler(this.detailsPathSelectButton_Click);
+            // 
+            // localDetailsPathLabel
+            // 
+            this.localDetailsPathLabel.AutoSize = true;
+            this.localDetailsPathLabel.Location = new System.Drawing.Point(4, 31);
+            this.localDetailsPathLabel.Name = "localDetailsPathLabel";
+            this.localDetailsPathLabel.Size = new System.Drawing.Size(159, 13);
+            this.localDetailsPathLabel.TabIndex = 1;
+            this.localDetailsPathLabel.Text = "Расположение детализаций - ";
+            // 
+            // ReportsGroup
+            // 
+            this.ReportsGroup.Controls.Add(this.traficReportPathSelectButton);
+            this.ReportsGroup.Controls.Add(this.localtraficReportPathLabel);
+            this.ReportsGroup.Controls.Add(this.operatorReportPathSelectButton);
+            this.ReportsGroup.Controls.Add(this.localOperatorPathsLabel);
+            this.ReportsGroup.Controls.Add(this.baseReportPathSelectButton);
+            this.ReportsGroup.Controls.Add(this.localBaseReportPathsLabel);
+            this.ReportsGroup.Location = new System.Drawing.Point(11, 201);
+            this.ReportsGroup.Name = "ReportsGroup";
+            this.ReportsGroup.Size = new System.Drawing.Size(618, 117);
+            this.ReportsGroup.TabIndex = 3;
+            this.ReportsGroup.TabStop = false;
+            this.ReportsGroup.Text = "Параметры отчетных документов";
+            // 
+            // baseReportPathSelectButton
+            // 
+            this.baseReportPathSelectButton.Location = new System.Drawing.Point(581, 26);
+            this.baseReportPathSelectButton.Name = "baseReportPathSelectButton";
+            this.baseReportPathSelectButton.Size = new System.Drawing.Size(24, 23);
+            this.baseReportPathSelectButton.TabIndex = 2;
+            this.baseReportPathSelectButton.Text = "...";
+            this.baseReportPathSelectButton.UseVisualStyleBackColor = true;
+            this.baseReportPathSelectButton.Click += new System.EventHandler(this.baseReportPathSelectButton_Click);
+            // 
+            // localBaseReportPathsLabel
+            // 
+            this.localBaseReportPathsLabel.AutoSize = true;
+            this.localBaseReportPathsLabel.Location = new System.Drawing.Point(4, 31);
+            this.localBaseReportPathsLabel.Name = "localBaseReportPathsLabel";
+            this.localBaseReportPathsLabel.Size = new System.Drawing.Size(182, 13);
+            this.localBaseReportPathsLabel.TabIndex = 1;
+            this.localBaseReportPathsLabel.Text = "Расположение базовых отчетов -  ";
+            // 
+            // operatorReportPathSelectButton
+            // 
+            this.operatorReportPathSelectButton.Location = new System.Drawing.Point(581, 54);
+            this.operatorReportPathSelectButton.Name = "operatorReportPathSelectButton";
+            this.operatorReportPathSelectButton.Size = new System.Drawing.Size(24, 23);
+            this.operatorReportPathSelectButton.TabIndex = 4;
+            this.operatorReportPathSelectButton.Text = "...";
+            this.operatorReportPathSelectButton.UseVisualStyleBackColor = true;
+            this.operatorReportPathSelectButton.Click += new System.EventHandler(this.operatorReportPathSelectButton_Click);
+            // 
+            // localOperatorPathsLabel
+            // 
+            this.localOperatorPathsLabel.AutoSize = true;
+            this.localOperatorPathsLabel.Location = new System.Drawing.Point(4, 59);
+            this.localOperatorPathsLabel.Name = "localOperatorPathsLabel";
+            this.localOperatorPathsLabel.Size = new System.Drawing.Size(234, 13);
+            this.localOperatorPathsLabel.TabIndex = 3;
+            this.localOperatorPathsLabel.Text = "Расположение межоператороских отчетов - ";
+            // 
+            // traficReportPathSelectButton
+            // 
+            this.traficReportPathSelectButton.Location = new System.Drawing.Point(581, 81);
+            this.traficReportPathSelectButton.Name = "traficReportPathSelectButton";
+            this.traficReportPathSelectButton.Size = new System.Drawing.Size(24, 23);
+            this.traficReportPathSelectButton.TabIndex = 6;
+            this.traficReportPathSelectButton.Text = "...";
+            this.traficReportPathSelectButton.UseVisualStyleBackColor = true;
+            this.traficReportPathSelectButton.Click += new System.EventHandler(this.traficReportPathSelectButton_Click);
+            // 
+            // localtraficReportPathLabel
+            // 
+            this.localtraficReportPathLabel.AutoSize = true;
+            this.localtraficReportPathLabel.Location = new System.Drawing.Point(4, 86);
+            this.localtraficReportPathLabel.Name = "localtraficReportPathLabel";
+            this.localtraficReportPathLabel.Size = new System.Drawing.Size(199, 13);
+            this.localtraficReportPathLabel.TabIndex = 5;
+            this.localtraficReportPathLabel.Text = "Расположение отчетов по трафику -   ";
+            // 
             // SettingsWindow
             // 
             this.AcceptButton = this.OkSettingsButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CancelSettingsButton;
-            this.ClientSize = new System.Drawing.Size(644, 475);
+            this.ClientSize = new System.Drawing.Size(640, 475);
             this.Controls.Add(this.HelpSettingsButton);
             this.Controls.Add(this.CancelSettingsButton);
             this.Controls.Add(this.OkSettingsButton);
@@ -555,6 +731,13 @@
             this.CdrConvertGroup.PerformLayout();
             this.LocalCdrPathGroup.ResumeLayout(false);
             this.LocalCdrPathGroup.PerformLayout();
+            this.ReportsTab.ResumeLayout(false);
+            this.BillsPathsGroup.ResumeLayout(false);
+            this.BillsPathsGroup.PerformLayout();
+            this.detailPathsGroup.ResumeLayout(false);
+            this.detailPathsGroup.PerformLayout();
+            this.ReportsGroup.ResumeLayout(false);
+            this.ReportsGroup.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -604,5 +787,21 @@
         private System.Windows.Forms.Label DatabaseHostLabel;
         private System.Windows.Forms.Button DatabaseNameButton;
         private System.Windows.Forms.Label DatabaseNameLabel;
+        private System.Windows.Forms.GroupBox BillsPathsGroup;
+        private System.Windows.Forms.Button loadBillTemplateButton;
+        private System.Windows.Forms.Label loadNewTemplateLabel;
+        private System.Windows.Forms.Button localBillsPathSelectButton;
+        private System.Windows.Forms.Label localBillsPathLabel;
+        private System.Windows.Forms.GroupBox detailPathsGroup;
+        private System.Windows.Forms.Button detailsPathSelectButton;
+        private System.Windows.Forms.Label localDetailsPathLabel;
+        private System.Windows.Forms.GroupBox ReportsGroup;
+        private System.Windows.Forms.Button baseReportPathSelectButton;
+        private System.Windows.Forms.Label localBaseReportPathsLabel;
+        private System.Windows.Forms.Button traficReportPathSelectButton;
+        private System.Windows.Forms.Label localtraficReportPathLabel;
+        private System.Windows.Forms.Button operatorReportPathSelectButton;
+        private System.Windows.Forms.Label localOperatorPathsLabel;
+        private System.Windows.Forms.OpenFileDialog openBillTemplateFileDialog;
     }
 }

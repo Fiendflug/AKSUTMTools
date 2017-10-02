@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -57,6 +58,14 @@ namespace AKS_UTM_tools
             DatabasePasswordLabel.Text += Settings.GetSetting("DatabasePassword");
             DatabasePortLabel.Text += Settings.GetSetting("DatabasePort");
             DatabaseNameLabel.Text += Settings.GetSetting("DatabaseName");
+
+            //Documents section
+
+            localBillsPathLabel.Text += Settings.GetSetting("LocalBillsPath");
+            localDetailsPathLabel.Text += Settings.GetSetting("LocalDetailsPath");
+            localBaseReportPathsLabel.Text += Settings.GetSetting("BaseReportPath");
+            localOperatorPathsLabel.Text += Settings.GetSetting("LocalOperatorReportPath");
+            localtraficReportPathLabel.Text += Settings.GetSetting("LocalTraficReportPath");
         }
 
         //CDR Settings controls section
@@ -174,7 +183,65 @@ namespace AKS_UTM_tools
             ShowInputDialog("DatabaseName", DatabaseNameLabel, DialogType.Name);
         }
 
-        
+        // Documents settings controls
+
+        private void localBillsPathSelectButton_Click(object sender, EventArgs e)
+        {
+            if (pathBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                Settings.UpdateSetting("LocalBillsPath", pathBrowserDialog.SelectedPath + "\\");
+                localBillsPathLabel.Text = "Расположение квитанций - " + pathBrowserDialog.SelectedPath + "\\";
+            }
+        }
+
+        private void loadBillTemplateButton_Click(object sender, EventArgs e)
+        {
+            openBillTemplateFileDialog.Reset();
+            openBillTemplateFileDialog.FileName = "*.html";
+            openBillTemplateFileDialog.Filter = "HTML файл шаблона|*.html";
+            openBillTemplateFileDialog.Multiselect = false;
+
+            if (openBillTemplateFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                CopyBillTemplate(openBillTemplateFileDialog.FileName);
+            }
+        }
+
+        private void detailsPathSelectButton_Click(object sender, EventArgs e)
+        {
+            if (pathBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                Settings.UpdateSetting("LocalDetailsPath", pathBrowserDialog.SelectedPath + "\\");
+                localDetailsPathLabel.Text = "Расположение детализаций - " + pathBrowserDialog.SelectedPath + "\\";
+            }
+        }
+
+        private void baseReportPathSelectButton_Click(object sender, EventArgs e)
+        {
+            if (pathBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                Settings.UpdateSetting("BaseReportPath", pathBrowserDialog.SelectedPath + "\\");
+                localBaseReportPathsLabel.Text = "Расположение базовых отчетов - " + pathBrowserDialog.SelectedPath + "\\";
+            }
+        }
+
+        private void operatorReportPathSelectButton_Click(object sender, EventArgs e)
+        {
+            if (pathBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                Settings.UpdateSetting("LocalOperatorReportPath", pathBrowserDialog.SelectedPath + "\\");
+                localOperatorPathsLabel.Text = "Расположение межоператорских отчетов - " + pathBrowserDialog.SelectedPath + "\\";
+            }
+        }
+
+        private void traficReportPathSelectButton_Click(object sender, EventArgs e)
+        {
+            if (pathBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                Settings.UpdateSetting("LocalTraficReportPath", pathBrowserDialog.SelectedPath + "\\");
+                localtraficReportPathLabel.Text = "Расположение отчетов по трафику - " + pathBrowserDialog.SelectedPath + "\\";
+            }
+        }
 
         // Main controls (OK, Submit, Cancel, Help)
 
@@ -197,7 +264,7 @@ namespace AKS_UTM_tools
         void HelpSettingsButton_Click(object sender, EventArgs e)
         {
 
-        }
+        }        
 
         // Advanced methods
 
@@ -274,6 +341,15 @@ namespace AKS_UTM_tools
                     }
                     break;
             }
+        }
+
+        void CopyBillTemplate(string sourcePath)
+        {            
+            var path = Directory.GetCurrentDirectory() + @"\template";
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+            File.Copy(sourcePath, Directory.GetCurrentDirectory() + @"\template\template.html", true);
+            Settings.UpdateSetting("BillTemplatePath", Directory.GetCurrentDirectory() + @"\template\template.html");
         }
     }
 }

@@ -17,6 +17,7 @@ namespace DGenerator.Service.Services
         DatabaseUTM Connect { get; set; }
         DatabaseConnectionInfo ConnectionInfo { get; set; }
         SettingsService Settings { get; set; }
+        PeriodService Period { get; set; }
 
         public delegate void ChangeStatusDelegate(string statusMessage);
         public delegate void FinishFillDataSet();
@@ -37,8 +38,9 @@ namespace DGenerator.Service.Services
                 DatabaseUser = Settings.GetSetting("DatabaseUser"),
                 DatabasePassword = Settings.GetSetting("DatabasePassword")
             };
+            Period = PeriodService.GetInstance();
             Connect = new DatabaseUTM(ConnectionInfo);
-
+            
             ChangeStatusEvent = delegate { };
             FillDataSetEvent = delegate { };
             Connect.ChangeStatusEvent += ChangeStatus;

@@ -79,8 +79,34 @@ namespace DGenerator.Data.DataAccess
             }
         }
 
-        public List<Call> GetCalls(long startPeriod, long endPeriod)
+        public List<Call> GetCalls(long startPeriod, long endPeriod, string account = "all")
         {
+            List<Call> calls = null;
+            if (Connection.State == ConnectionState.Closed)
+                Connect();
+            try
+            {
+                if(account == "all")
+                {
+                    MySqlCommand command = new MySqlCommand(Commands.GetAllCalls, Connection);
+                    MySqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        calls.Add(new Call
+                        {
+                            
+                        });
+                    }
+                }
+                else
+                {
+
+                }
+            }
+            catch(MySqlException exc)
+            {
+
+            }
             return null;
         }
 
